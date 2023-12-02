@@ -5,8 +5,11 @@
 package model;
 
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Date;
+import java.util.Locale;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
@@ -30,11 +33,14 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "memasak")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Memasak.findAll", query = "SELECT m FROM Memasak m"),
-    @NamedQuery(name = "Memasak.findByIdPegawai", query = "SELECT m FROM Memasak m WHERE m.memasakPK.idPegawai = :idPegawai"),
-    @NamedQuery(name = "Memasak.findByTanggal", query = "SELECT m FROM Memasak m WHERE m.tanggal = :tanggal"),
-    @NamedQuery(name = "Memasak.findByKeterangan", query = "SELECT m FROM Memasak m WHERE m.keterangan = :keterangan"),
-    @NamedQuery(name = "Memasak.findByNoMasak", query = "SELECT m FROM Memasak m WHERE m.memasakPK.noMasak = :noMasak")})
+    @NamedQuery(name = "Memasak.getAll", query = "SELECT m FROM Memasak m ORDER BY m.memasakPK.noMasak"),
+    @NamedQuery(name = "Memasak.getByNo", query = "SELECT m FROM Memasak m WHERE m.memasakPK.noMasak = :noMasak"),
+    @NamedQuery(name = "Memasak.getByPegawai", query = "SELECT m FROM Memasak m WHERE LOWER(m.pegawai.nama) LIKE LOWER(:nama) ORDER BY m.memasakPK.noMasak"),
+    @NamedQuery(name = "Memasak.getByTanggal", query = "SELECT m FROM Memasak m WHERE m.tanggal = :tanggal ORDER BY m.memasakPK.noMasak"),
+    @NamedQuery(name = "Memasak.getByKeterangan", query = "SELECT m FROM Memasak m WHERE LOWER(m.keterangan) LIKE LOWER(:keterangan) ORDER BY m.memasakPK.noMasak"),
+    @NamedQuery(name = "Memasak.getByNO", query = "SELECT m FROM Memasak m WHERE LOWER(m.memasakPK.noMasak) LIKE LOWER(:noMasak) ORDER BY m.memasakPK.noMasak"),
+    @NamedQuery(name = "Memasak.getByMenu", query = "SELECT m FROM Memasak m WHERE m.memasakPK.noMasak IN (SELECT dm.detailMasakPK.noMasak FROM DetailMasak dm WHERE LOWER(dm.menu.nama) LIKE LOWER(:menu)) ORDER BY m.memasakPK.noMasak"),
+    @NamedQuery(name = "Memasak.getNomer", query = "SELECT SUBSTRING(m.memasakPK.noMasak, LENGTH(m.memasakPK.noMasak) - 2) AS nomor FROM Memasak m WHERE m.memasakPK.noMasak LIKE 'C%' ORDER BY m.memasakPK.noMasak DESC")})
 public class Memasak implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -137,5 +143,27 @@ public class Memasak implements Serializable {
                 b = b + ", " + db.getMenu().getNama() + " " + db.getJumlah().toString() + "x";
         }
         return b;
+    }
+    
+    public String getTgl(){
+        SimpleDateFormat inputDateFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.ENGLISH);
+        SimpleDateFormat outputDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+        String tgl = "";
+        try {
+            Date date = inputDateFormat.parse(tanggal.toString());
+            tgl = outputDateFormat.format(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return tgl;
+    }
+    
+    public void setTgl(String tgl){
+        SimpleDateFormat inputDateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        try {
+            tanggal = inputDateFormat.parse(tgl);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -43,7 +43,7 @@ public class MenuMasak extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        pnMain = new custom.JPanelCustom();
+        pnMain = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblConten = new javax.swing.JTable();
         btnTambah = new javax.swing.JButton();
@@ -55,11 +55,9 @@ public class MenuMasak extends javax.swing.JPanel {
         tf_cari = new javax.swing.JTextField();
         cbx_cari = new javax.swing.JComboBox<>();
 
-        setLayout(new java.awt.BorderLayout());
+        setLayout(new java.awt.CardLayout());
 
         pnMain.setBackground(new java.awt.Color(255, 255, 255));
-        pnMain.setKananAtas(20);
-        pnMain.setKiriAtas(20);
 
         tblConten.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -226,7 +224,7 @@ public class MenuMasak extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        add(pnMain, java.awt.BorderLayout.PAGE_START);
+        add(pnMain, "card3");
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnTambahMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTambahMouseExited
@@ -325,7 +323,7 @@ public class MenuMasak extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private custom.JPanelCustom pnMain;
+    private javax.swing.JPanel pnMain;
     private javax.swing.JTable tblConten;
     private javax.swing.JTextField tf_cari;
     // End of variables declaration//GEN-END:variables
@@ -341,7 +339,7 @@ public class MenuMasak extends javax.swing.JPanel {
 
     private void setColWidht() {
         int[] noCol = {0,1,2,4};
-        int[] noColW = {35,90,70,50};
+        int[] noColW = {35,90,70,80};
         TableColumnModel tblModel = tblConten.getColumnModel();
         for (int i = 0; i < noCol.length; i++) {
             tblModel.getColumn(noCol[i]).setPreferredWidth(noColW[i]);

@@ -12,7 +12,6 @@ import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 import model.Pembelian;
-import model.Supply;
 import servis.ServisPembelian;
 
 /**

@@ -33,7 +33,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Menu.getByNama", query = "SELECT m FROM Menu m WHERE LOWER(m.nama) LIKE LOWER(:nama) ORDER BY m.kodeMenu"),
     @NamedQuery(name = "Menu.getByHarga", query = "SELECT m FROM Menu m WHERE m.harga = :harga ORDER BY m.kodeMenu"),
     @NamedQuery(name = "Menu.getByStok", query = "SELECT m FROM Menu m WHERE m.stok = :stok ORDER BY m.kodeMenu"),
-//    @NamedQuery(name = "Menu.getTerlaris", query = "SELECT m FROM Menu m WHERE m.kodeMenu IN (SELECT b.kodeMenu FROM (SELECT d.kodeMenu, SUM(d.jumlah) AS jml FROM DetailPembelian d GROUP BY d.kodeMenu ORDER BY jml DESC) AS b LIMIT 6)"),
+//    @NamedQuery(name = "Menu.getTerlaris", query = "SELECT m FROM Menu m WHERE m.kodeMenu IN (SELECT b.kodeMenu FROM (SELECT d.kodeMenu, SUM(d.jumlah) AS jml FROM DetailPembelian d GROUP BY d.kodeMenu ORDER BY jml DESC) AS b)"),
     @NamedQuery(name = "Menu.getByBahan", query = "SELECT m FROM Menu m WHERE m.kodeMenu IN (SELECT d.detailBahanPK.kodeMenu FROM DetailBahan d WHERE LOWER(d.bahan.nama) LIKE LOWER(:bahan)) ORDER BY m.kodeMenu"),
     @NamedQuery(name = "Menu.getNomer", query = "SELECT SUBSTRING(m.kodeMenu, LENGTH(m.kodeMenu) - 2) AS nomor FROM Menu m WHERE m.kodeMenu LIKE 'MN%' ORDER BY m.kodeMenu DESC")})
 public class Menu implements Serializable {

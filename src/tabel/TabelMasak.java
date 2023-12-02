@@ -51,7 +51,7 @@ public class TabelMasak extends AbstractTableModel{
         } else {
             switch (columnIndex-1){
                 case 0 : return list.get(rowIndex).getMemasakPK().getNoMasak();
-                case 1 : return list.get(rowIndex).getTanggal();
+                case 1 : return list.get(rowIndex).getTgl();
                 case 2 : return list.get(rowIndex).getAllMenu();
                 case 3 : return list.get(rowIndex).getKeterangan();
                 default : return null;

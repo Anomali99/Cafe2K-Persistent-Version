@@ -99,7 +99,7 @@
                           </Group>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" pref="242" max="32767" attributes="0"/>
+                      <Component id="jScrollPane1" pref="254" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="pnDetail" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -304,48 +304,41 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="jPanelCustom6" min="-2" pref="101" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jPanelCustom7" min="-2" pref="96" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="tfNo" min="-2" pref="165" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel12" min="-2" pref="81" max="-2" attributes="0"/>
-                                      <Component id="jLabel14" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                              <Component id="jScrollPane2" pref="916" max="32767" attributes="0"/>
+                              <Group type="102" alignment="1" attributes="0">
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="lbTgl" max="32767" attributes="0"/>
-                                      <Component id="lbTotal" pref="114" max="32767" attributes="0"/>
+                                      <Component id="jLabel16" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jLabel18" alignment="0" min="-2" pref="138" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jLabel18" max="32767" attributes="0"/>
-                                      <Component id="jLabel16" max="32767" attributes="0"/>
+                                      <Component id="lbNamaPel" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="lbIdPel" alignment="0" min="-2" pref="140" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="lbIdPel" max="32767" attributes="0"/>
-                                      <Component id="lbNamaPel" max="32767" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jLabel22" alignment="0" min="-2" pref="132" max="-2" attributes="0"/>
                                       <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace pref="1" max="-2" attributes="0"/>
+                                          <Component id="jLabel22" min="-2" pref="132" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="lbNamaPet" min="-2" pref="137" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
                                           <Component id="jLabel20" min="-2" pref="131" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="lbIdPet" min="-2" pref="138" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="lbNamaPet" min="-2" pref="109" max="-2" attributes="0"/>
-                                      <Component id="lbIdPet" min="-2" pref="109" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
                                   <Component id="btnBatal1" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="jScrollPane2" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -361,36 +354,33 @@
                                   <Component id="jLabel4" alignment="3" max="32767" attributes="0"/>
                               </Group>
                               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                              <Component id="jPanelCustom6" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jPanelCustom7" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jSeparator2" min="-2" pref="10" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Component id="jLabel12" pref="22" max="32767" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jLabel14" pref="29" max="32767" attributes="0"/>
-                              </Group>
-                              <Component id="btnBatal1" alignment="0" max="32767" attributes="0"/>
-                              <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="lbTgl" max="32767" attributes="0"/>
-                                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                                      <Component id="lbIdPet" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel20" alignment="0" max="32767" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel16" alignment="3" max="32767" attributes="0"/>
                                           <Component id="lbIdPel" alignment="3" max="32767" attributes="0"/>
                                       </Group>
-                                      <Component id="lbIdPet" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jLabel20" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel18" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="lbNamaPel" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jLabel22" alignment="1" max="32767" attributes="0"/>
-                                      <Component id="lbNamaPet" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="lbTotal" alignment="1" max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                                          <Component id="lbNamaPel" alignment="3" max="32767" attributes="0"/>
+                                          <Component id="jLabel22" alignment="3" max="32767" attributes="0"/>
+                                          <Component id="lbNamaPet" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="jLabel18" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
+                              <Component id="btnBatal1" min="-2" pref="45" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jScrollPane2" min="-2" pref="118" max="-2" attributes="0"/>
@@ -475,7 +465,92 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Component class="javax.swing.JLabel" name="jLabel12">
+                <Component class="javax.swing.JButton" name="btnBatal1">
+                  <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="c8" red="0" type="rgb"/>
+                    </Property>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="18" style="1"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="c8" green="0" red="0" type="rgb"/>
+                    </Property>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/img/report1.png"/>
+                    </Property>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="mouseMoved" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="btnBatal1MouseMoved"/>
+                    <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnBatal1MouseExited"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBatal1ActionPerformed"/>
+                  </Events>
+                </Component>
+                <Container class="custom.JPanelCustom" name="jPanelCustom6">
+                  <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="18" green="2a" red="4f" type="rgb"/>
+                    </Property>
+                    <Property name="kananAtas" type="int" value="10"/>
+                    <Property name="kananBawah" type="int" value="10"/>
+                    <Property name="kiriAtas" type="int" value="10"/>
+                    <Property name="kiriBawah" type="int" value="10"/>
+                  </Properties>
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
+                  <SubComponents>
+                    <Component class="javax.swing.JLabel" name="lbTgl">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Arial" size="14" style="1"/>
+                        </Property>
+                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                        </Property>
+                        <Property name="horizontalAlignment" type="int" value="0"/>
+                        <Property name="text" type="java.lang.String" value="Tanggal "/>
+                      </Properties>
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
+                          <BorderConstraints direction="Center"/>
+                        </Constraint>
+                      </Constraints>
+                    </Component>
+                  </SubComponents>
+                </Container>
+                <Container class="custom.JPanelCustom" name="jPanelCustom7">
+                  <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="8a" green="91" red="a6" type="rgb"/>
+                    </Property>
+                    <Property name="kananAtas" type="int" value="10"/>
+                    <Property name="kananBawah" type="int" value="10"/>
+                    <Property name="kiriAtas" type="int" value="10"/>
+                    <Property name="kiriBawah" type="int" value="10"/>
+                  </Properties>
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
+                  <SubComponents>
+                    <Component class="javax.swing.JLabel" name="lbTotal">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Arial" size="18" style="1"/>
+                        </Property>
+                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="18" green="2a" red="4f" type="rgb"/>
+                        </Property>
+                        <Property name="horizontalAlignment" type="int" value="0"/>
+                        <Property name="text" type="java.lang.String" value="Total"/>
+                      </Properties>
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
+                          <BorderConstraints direction="Center"/>
+                        </Constraint>
+                      </Constraints>
+                    </Component>
+                  </SubComponents>
+                </Container>
+                <Component class="javax.swing.JLabel" name="jLabel22">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="14" style="1"/>
@@ -483,84 +558,7 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="18" green="2a" red="4f" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Tanggal :"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel14">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Arial" size="18" style="1"/>
-                    </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="18" green="2a" red="4f" type="rgb"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Total   : "/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lbTgl">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Arial" size="14" style="1"/>
-                    </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="18" green="2a" red="4f" type="rgb"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Tanggal "/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lbTotal">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Arial" size="18" style="1"/>
-                    </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="18" green="2a" red="4f" type="rgb"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Total   "/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel16">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Arial" size="14" style="1"/>
-                    </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="18" green="2a" red="4f" type="rgb"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="ID Supplier         :"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lbIdPel">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Arial" size="14" style="1"/>
-                    </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="18" green="2a" red="4f" type="rgb"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Tanggal "/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel18">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Arial" size="14" style="1"/>
-                    </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="18" green="2a" red="4f" type="rgb"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Nama supplier    :"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lbNamaPel">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Arial" size="14" style="1"/>
-                    </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="18" green="2a" red="4f" type="rgb"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Tanggal "/>
+                    <Property name="text" type="java.lang.String" value="Nama Pegawai :"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel20">
@@ -585,17 +583,6 @@
                     <Property name="text" type="java.lang.String" value="Tanggal "/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel22">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Arial" size="14" style="1"/>
-                    </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="18" green="2a" red="4f" type="rgb"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Nama Pegawai :"/>
-                  </Properties>
-                </Component>
                 <Component class="javax.swing.JLabel" name="lbNamaPet">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -607,26 +594,49 @@
                     <Property name="text" type="java.lang.String" value="Tanggal "/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="btnBatal1">
+                <Component class="javax.swing.JLabel" name="lbIdPel">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="0" green="c8" red="0" type="rgb"/>
-                    </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Segoe UI" size="18" style="1"/>
+                      <Font name="Arial" size="14" style="1"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="c8" green="0" red="0" type="rgb"/>
+                      <Color blue="18" green="2a" red="4f" type="rgb"/>
                     </Property>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/img/report1.png"/>
-                    </Property>
+                    <Property name="text" type="java.lang.String" value="Tanggal "/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="mouseMoved" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="btnBatal1MouseMoved"/>
-                    <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnBatal1MouseExited"/>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBatal1ActionPerformed"/>
-                  </Events>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lbNamaPel">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Arial" size="14" style="1"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="18" green="2a" red="4f" type="rgb"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Tanggal "/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel16">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Arial" size="14" style="1"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="18" green="2a" red="4f" type="rgb"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="ID Pelanggan      :"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel18">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Arial" size="14" style="1"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="18" green="2a" red="4f" type="rgb"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Nama Pelanggan :"/>
+                  </Properties>
                 </Component>
               </SubComponents>
             </Container>

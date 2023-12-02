@@ -75,19 +75,19 @@ public class MenuSupply extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblConten1 = new javax.swing.JTable();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
+        btnBatal1 = new javax.swing.JButton();
+        jPanelCustom6 = new custom.JPanelCustom();
         lbTgl = new javax.swing.JLabel();
+        jPanelCustom7 = new custom.JPanelCustom();
         lbTotal = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        lbIdPel = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        lbNamaPel = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         lbIdPet = new javax.swing.JLabel();
-        jLabel22 = new javax.swing.JLabel();
         lbNamaPet = new javax.swing.JLabel();
-        btnBatal1 = new javax.swing.JButton();
+        lbIdPel = new javax.swing.JLabel();
+        lbNamaPel = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
         pnTambah = new javax.swing.JPanel();
         jSeparator3 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
@@ -288,54 +288,6 @@ public class MenuSupply extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(tblConten1);
 
-        jLabel12.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(79, 42, 24));
-        jLabel12.setText("Tanggal :");
-
-        jLabel14.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(79, 42, 24));
-        jLabel14.setText("Total   : ");
-
-        lbTgl.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        lbTgl.setForeground(new java.awt.Color(79, 42, 24));
-        lbTgl.setText("Tanggal ");
-
-        lbTotal.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        lbTotal.setForeground(new java.awt.Color(79, 42, 24));
-        lbTotal.setText("Total   ");
-
-        jLabel16.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(79, 42, 24));
-        jLabel16.setText("ID Supplier         :");
-
-        lbIdPel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        lbIdPel.setForeground(new java.awt.Color(79, 42, 24));
-        lbIdPel.setText("Tanggal ");
-
-        jLabel18.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(79, 42, 24));
-        jLabel18.setText("Nama supplier    :");
-
-        lbNamaPel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        lbNamaPel.setForeground(new java.awt.Color(79, 42, 24));
-        lbNamaPel.setText("Tanggal ");
-
-        jLabel20.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(79, 42, 24));
-        jLabel20.setText("ID Pegawai      :");
-
-        lbIdPet.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        lbIdPet.setForeground(new java.awt.Color(79, 42, 24));
-        lbIdPet.setText("Tanggal ");
-
-        jLabel22.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel22.setForeground(new java.awt.Color(79, 42, 24));
-        jLabel22.setText("Nama Pegawai :");
-
-        lbNamaPet.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        lbNamaPet.setForeground(new java.awt.Color(79, 42, 24));
-        lbNamaPet.setText("Tanggal ");
-
         btnBatal1.setBackground(new java.awt.Color(0, 200, 0));
         btnBatal1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnBatal1.setForeground(new java.awt.Color(0, 0, 200));
@@ -356,6 +308,64 @@ public class MenuSupply extends javax.swing.JPanel {
             }
         });
 
+        jPanelCustom6.setBackground(new java.awt.Color(79, 42, 24));
+        jPanelCustom6.setKananAtas(10);
+        jPanelCustom6.setKananBawah(10);
+        jPanelCustom6.setKiriAtas(10);
+        jPanelCustom6.setKiriBawah(10);
+        jPanelCustom6.setLayout(new java.awt.BorderLayout());
+
+        lbTgl.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lbTgl.setForeground(new java.awt.Color(255, 255, 255));
+        lbTgl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbTgl.setText("Tanggal ");
+        jPanelCustom6.add(lbTgl, java.awt.BorderLayout.CENTER);
+
+        jPanelCustom7.setBackground(new java.awt.Color(166, 145, 138));
+        jPanelCustom7.setKananAtas(10);
+        jPanelCustom7.setKananBawah(10);
+        jPanelCustom7.setKiriAtas(10);
+        jPanelCustom7.setKiriBawah(10);
+        jPanelCustom7.setLayout(new java.awt.BorderLayout());
+
+        lbTotal.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        lbTotal.setForeground(new java.awt.Color(79, 42, 24));
+        lbTotal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbTotal.setText("Total");
+        jPanelCustom7.add(lbTotal, java.awt.BorderLayout.CENTER);
+
+        jLabel22.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(79, 42, 24));
+        jLabel22.setText("Nama Pegawai :");
+
+        jLabel20.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(79, 42, 24));
+        jLabel20.setText("ID Pegawai      :");
+
+        lbIdPet.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lbIdPet.setForeground(new java.awt.Color(79, 42, 24));
+        lbIdPet.setText("Tanggal ");
+
+        lbNamaPet.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lbNamaPet.setForeground(new java.awt.Color(79, 42, 24));
+        lbNamaPet.setText("Tanggal ");
+
+        lbIdPel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lbIdPel.setForeground(new java.awt.Color(79, 42, 24));
+        lbIdPel.setText("Tanggal ");
+
+        lbNamaPel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lbNamaPel.setForeground(new java.awt.Color(79, 42, 24));
+        lbNamaPel.setText("Tanggal ");
+
+        jLabel16.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(79, 42, 24));
+        jLabel16.setText("ID Pelanggan      :");
+
+        jLabel18.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(79, 42, 24));
+        jLabel18.setText("Nama Pelanggan :");
+
         javax.swing.GroupLayout pnDetailLayout = new javax.swing.GroupLayout(pnDetail);
         pnDetail.setLayout(pnDetailLayout);
         pnDetailLayout.setHorizontalGroup(
@@ -366,39 +376,34 @@ public class MenuSupply extends javax.swing.JPanel {
                 .addGroup(pnDetailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnDetailLayout.createSequentialGroup()
                         .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanelCustom6, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanelCustom7, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(tfNo, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnDetailLayout.createSequentialGroup()
-                        .addGroup(pnDetailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel14))
-                        .addGap(0, 0, 0)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 916, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnDetailLayout.createSequentialGroup()
                         .addGroup(pnDetailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lbTgl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lbTotal, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE))
+                            .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnDetailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnDetailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbIdPel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lbNamaPel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(lbNamaPel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lbIdPel, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(pnDetailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(pnDetailLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnDetailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lbNamaPet, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbIdPet, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnBatal1))
-                    .addComponent(jScrollPane2))
+                                .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lbNamaPet, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pnDetailLayout.createSequentialGroup()
+                                .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lbIdPet, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnBatal1)))
                 .addContainerGap())
         );
         pnDetailLayout.setVerticalGroup(
@@ -409,31 +414,28 @@ public class MenuSupply extends javax.swing.JPanel {
                     .addGroup(pnDetailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(tfNo)
                         .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jLabel2))
+                    .addComponent(jLabel2)
+                    .addComponent(jPanelCustom6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelCustom7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnDetailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnDetailLayout.createSequentialGroup()
-                        .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE))
-                    .addComponent(btnBatal1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(pnDetailLayout.createSequentialGroup()
                         .addGroup(pnDetailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbTgl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lbIdPet)
+                            .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(pnDetailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lbIdPel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(lbIdPet, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(lbIdPel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnDetailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lbNamaPel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel22, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lbNamaPet, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lbTotal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGroup(pnDetailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(pnDetailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lbNamaPel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lbNamaPet))
+                            .addComponent(jLabel18)))
+                    .addComponent(btnBatal1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -489,7 +491,7 @@ public class MenuSupply extends javax.swing.JPanel {
                         .addComponent(btnHapus, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnTambah, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnDetail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -1172,10 +1174,10 @@ public class MenuSupply extends javax.swing.JPanel {
         pnMain.add(pnTambah);
         pnMain.repaint();
         pnMain.revalidate();
-        
+
         Date now = new Date();
         SimpleDateFormat nonformat = new SimpleDateFormat("dd-MM-yyyy");
-        Supplier mod =  new DaoSupplier().getById("S000000001");
+        Supplier mod = new DaoSupplier().getById("S000000001");
         tfNama.setText(mod.getNama());
         tfId.setText(mod.getIdSupplier());
         tfTgl.setText(nonformat.format(now));
@@ -1256,7 +1258,7 @@ public class MenuSupply extends javax.swing.JPanel {
             mod.setPegawai(MenuUtama.mod);
             mod.setSupplier(new DaoSupplier().getById(tfId.getText()));
             mod.setTgl(tfTgl.getText());
-            mod.setTotal(BigInteger.valueOf(Long.parseLong(tfTotal.getText()) ));
+            mod.setTotal(BigInteger.valueOf(Long.parseLong(tfTotal.getText())));
             List<DetailSupply> list = new ArrayList();
             DefaultTableModel tbl1 = (DefaultTableModel) tblMn.getModel();
             int index = tbl1.getRowCount() - 1;
@@ -1348,7 +1350,21 @@ public class MenuSupply extends javax.swing.JPanel {
             long harga = Long.parseLong(tfHarga.getText());
             long subtotal = jml * harga;
             String ket = tfKet.getText();
-            tbl1.addRow(new Object[]{kode, nama, harga, jml, subtotal, ket});
+            int c = -1;
+            for (int i = 0; i < tbl1.getRowCount(); i++) {
+                if (tbl1.getValueAt(i, 0).toString().equals(kode)) {
+                    c = i;
+                }
+            }
+            if (c == -1) {
+                tbl1.addRow(new Object[]{kode, nama, harga, jml, subtotal, ket});
+            } else {
+                int nJml = Integer.parseInt(tbl1.getValueAt(c, 3).toString()) + jml;
+                long nSubtotal = Long.parseLong(tbl1.getValueAt(c, 4).toString()) + subtotal;
+                tbl1.setValueAt(nJml, c, 3);
+                tbl1.setValueAt(nSubtotal, c, 4);
+                tbl1.setValueAt(ket, c, 4);
+            }
             tblMn.setModel(tbl1);
             resetTable();
             setTotal();
@@ -1404,12 +1420,12 @@ public class MenuSupply extends javax.swing.JPanel {
     }//GEN-LAST:event_btnBatal3ActionPerformed
 
     private void tfJmlFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfJmlFocusGained
-        if(tfJml.getText().equals("0"))
+        if (tfJml.getText().equals("0"))
             tfJml.setText("");
     }//GEN-LAST:event_tfJmlFocusGained
 
     private void tfJmlFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfJmlFocusLost
-        if(tfJml.getText().equals(""))
+        if (tfJml.getText().equals(""))
             tfJml.setText("0");
     }//GEN-LAST:event_tfJmlFocusLost
 
@@ -1431,9 +1447,7 @@ public class MenuSupply extends javax.swing.JPanel {
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
@@ -1458,6 +1472,8 @@ public class MenuSupply extends javax.swing.JPanel {
     private custom.JPanelCustom jPanelCustom3;
     private custom.JPanelCustom jPanelCustom4;
     private custom.JPanelCustom jPanelCustom5;
+    private custom.JPanelCustom jPanelCustom6;
+    private custom.JPanelCustom jPanelCustom7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;

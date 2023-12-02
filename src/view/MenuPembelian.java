@@ -127,6 +127,8 @@ public class MenuPembelian extends javax.swing.JPanel {
         pnDetail = new javax.swing.JPanel();
         jPanelCustom2 = new custom.JPanelCustom();
         lbTgl = new javax.swing.JLabel();
+        jPanelCustom3 = new custom.JPanelCustom();
+        lbTotal = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel2 = new javax.swing.JLabel();
         tfNo = new javax.swing.JTextField();
@@ -142,8 +144,6 @@ public class MenuPembelian extends javax.swing.JPanel {
         jLabel22 = new javax.swing.JLabel();
         lbNamaPet = new javax.swing.JLabel();
         btnBatal1 = new javax.swing.JButton();
-        jPanelCustom3 = new custom.JPanelCustom();
-        lbTotal = new javax.swing.JLabel();
         jPanelCustom4 = new custom.JPanelCustom();
         lbStatus = new javax.swing.JLabel();
 
@@ -904,6 +904,19 @@ public class MenuPembelian extends javax.swing.JPanel {
         lbTgl.setText("Tanggal ");
         jPanelCustom2.add(lbTgl, java.awt.BorderLayout.CENTER);
 
+        jPanelCustom3.setBackground(new java.awt.Color(166, 145, 138));
+        jPanelCustom3.setKananAtas(10);
+        jPanelCustom3.setKananBawah(10);
+        jPanelCustom3.setKiriAtas(10);
+        jPanelCustom3.setKiriBawah(10);
+        jPanelCustom3.setLayout(new java.awt.BorderLayout());
+
+        lbTotal.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        lbTotal.setForeground(new java.awt.Color(79, 42, 24));
+        lbTotal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbTotal.setText("Total");
+        jPanelCustom3.add(lbTotal, java.awt.BorderLayout.CENTER);
+
         jSeparator2.setBackground(new java.awt.Color(79, 42, 24));
         jSeparator2.setForeground(new java.awt.Color(79, 42, 24));
 
@@ -986,19 +999,6 @@ public class MenuPembelian extends javax.swing.JPanel {
             }
         });
 
-        jPanelCustom3.setBackground(new java.awt.Color(166, 145, 138));
-        jPanelCustom3.setKananAtas(10);
-        jPanelCustom3.setKananBawah(10);
-        jPanelCustom3.setKiriAtas(10);
-        jPanelCustom3.setKiriBawah(10);
-        jPanelCustom3.setLayout(new java.awt.BorderLayout());
-
-        lbTotal.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        lbTotal.setForeground(new java.awt.Color(79, 42, 24));
-        lbTotal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbTotal.setText("Total");
-        jPanelCustom3.add(lbTotal, java.awt.BorderLayout.CENTER);
-
         jPanelCustom4.setBackground(new java.awt.Color(166, 145, 138));
         jPanelCustom4.setKananAtas(10);
         jPanelCustom4.setKananBawah(10);
@@ -1038,19 +1038,18 @@ public class MenuPembelian extends javax.swing.JPanel {
                         .addGroup(pnDetailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(lbNamaPel, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
                             .addComponent(lbIdPel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(pnDetailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnDetailLayout.createSequentialGroup()
-                                .addGap(1, 1, 1)
-                                .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel22, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnDetailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lbIdPet, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
-                            .addComponent(lbNamaPet, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(pnDetailLayout.createSequentialGroup()
+                                .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lbNamaPet, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pnDetailLayout.createSequentialGroup()
+                                .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lbIdPet, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGap(79, 79, 79)
                         .addComponent(jPanelCustom4, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
                         .addComponent(btnBatal1))
                     .addComponent(jScrollPane2))
                 .addContainerGap())
@@ -1071,24 +1070,21 @@ public class MenuPembelian extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnDetailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnDetailLayout.createSequentialGroup()
-                        .addGroup(pnDetailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lbIdPel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(pnDetailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbIdPet)
+                            .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(pnDetailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lbIdPel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnDetailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
-                            .addComponent(lbNamaPel)))
-                    .addGroup(pnDetailLayout.createSequentialGroup()
-                        .addGroup(pnDetailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbIdPet))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(pnDetailLayout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addGroup(pnDetailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lbNamaPet, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(btnBatal1, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
+                            .addGroup(pnDetailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lbNamaPel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lbNamaPet, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(8, 8, 8))
+                    .addComponent(btnBatal1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanelCustom4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1396,7 +1392,21 @@ public class MenuPembelian extends javax.swing.JPanel {
             long harga = Long.parseLong(tfHarga.getText());
             long subtotal = jml * harga;
             String ket = tfKet21.getText();
-            tbl1.addRow(new Object[]{kode, nama, harga, jml, subtotal, ket});
+            int c = -1;
+            for (int i = 0; i < tbl1.getRowCount(); i++) {
+                if (tbl1.getValueAt(i, 0).toString().equals(kode)) {
+                    c = i;
+                }
+            }
+            if (c == -1) {
+                tbl1.addRow(new Object[]{kode, nama, harga, jml, subtotal, ket});
+            } else {
+                int nJml = Integer.parseInt(tbl1.getValueAt(c, 3).toString()) + jml;
+                long nSubtotal = Long.parseLong(tbl1.getValueAt(c, 4).toString()) + subtotal;
+                tbl1.setValueAt(nJml, c, 3);
+                tbl1.setValueAt(nSubtotal, c, 4);
+                tbl1.setValueAt(ket, c, 4);
+            }
             tblMn21.setModel(tbl1);
             resetTable();
             setTotal();

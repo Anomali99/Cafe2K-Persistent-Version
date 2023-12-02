@@ -66,6 +66,7 @@ public class DaoMenu implements ServisMenu {
             EntityManager em = Persistence.createEntityManagerFactory("NewCafe2KPU").createEntityManager();
             em.getTransaction().begin();
             TypedQuery<Menu> query = em.createNamedQuery("Menu.getTerlaris", Menu.class);
+            query.setMaxResults(6);
             List<Menu> list = query.getResultList();
             em.getTransaction().commit();
             em.close();
