@@ -22,8 +22,6 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 import model.DetailPembelian;
 import model.DetailPembelianPK;
-import model.DetailSupply;
-import model.DetailSupplyPK;
 import model.Menu;
 import model.Pelanggan;
 import model.Pembelian;
@@ -49,10 +47,10 @@ public class MenuPembelian extends javax.swing.JPanel {
         initComponents();
         tblConten.setModel(tbl);
         tblConten1.setModel(tblP);
-        int[] tbC = {0,1,2};
-        int[] tbCW = {35,90,70};
-        int[] tbC1 = {0,1,5};
-        int[] tbC1W = {35,70,70};
+        int[] tbC = {0, 1, 2};
+        int[] tbCW = {35, 90, 70};
+        int[] tbC1 = {0, 1, 5};
+        int[] tbC1W = {35, 70, 70};
         setColWidht(tblConten, tbC, tbCW);
         setColWidht(tblConten1, tbC1, tbC1W);
         resetData();
@@ -121,9 +119,9 @@ public class MenuPembelian extends javax.swing.JPanel {
         btnBatal = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
-        btn_cari = new javax.swing.JButton();
-        tf_cari = new javax.swing.JTextField();
-        cbx_cari = new javax.swing.JComboBox<>();
+        btnCari = new javax.swing.JButton();
+        tfCari = new javax.swing.JTextField();
+        cbxCari = new javax.swing.JComboBox<>();
         pnDetail = new javax.swing.JPanel();
         jPanelCustom2 = new custom.JPanelCustom();
         lbTgl = new javax.swing.JLabel();
@@ -146,6 +144,7 @@ public class MenuPembelian extends javax.swing.JPanel {
         btnBatal1 = new javax.swing.JButton();
         jPanelCustom4 = new custom.JPanelCustom();
         lbStatus = new javax.swing.JLabel();
+        dateCoser = new com.toedter.calendar.JDateChooser();
 
         setLayout(new java.awt.CardLayout());
 
@@ -862,31 +861,36 @@ public class MenuPembelian extends javax.swing.JPanel {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pembelian1.png"))); // NOI18N
         jLabel1.setText("Data Pembelian");
 
-        btn_cari.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
-        btn_cari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cari.png"))); // NOI18N
-        btn_cari.addActionListener(new java.awt.event.ActionListener() {
+        btnCari.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        btnCari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cari.png"))); // NOI18N
+        btnCari.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_cariActionPerformed(evt);
+                btnCariActionPerformed(evt);
             }
         });
 
-        tf_cari.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        tf_cari.setForeground(new java.awt.Color(204, 204, 204));
-        tf_cari.setText("Cari");
-        tf_cari.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
-        tf_cari.addFocusListener(new java.awt.event.FocusAdapter() {
+        tfCari.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        tfCari.setForeground(new java.awt.Color(204, 204, 204));
+        tfCari.setText("Cari");
+        tfCari.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
+        tfCari.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                tf_cariFocusGained(evt);
+                tfCariFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                tf_cariFocusLost(evt);
+                tfCariFocusLost(evt);
             }
         });
 
-        cbx_cari.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        cbx_cari.setForeground(new java.awt.Color(204, 204, 204));
-        cbx_cari.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "NO", "TANGGAL", "PETUGAS", "PELANGGAN" }));
-        cbx_cari.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        cbxCari.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        cbxCari.setForeground(new java.awt.Color(204, 204, 204));
+        cbxCari.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "NO", "TANGGAL", "PETUGAS", "PELANGGAN" }));
+        cbxCari.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        cbxCari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxCariActionPerformed(evt);
+            }
+        });
 
         pnDetail.setBackground(new java.awt.Color(255, 255, 255));
         pnDetail.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(79, 42, 24)));
@@ -1110,13 +1114,15 @@ public class MenuPembelian extends javax.swing.JPanel {
                                 .addComponent(btnHapus)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnBatal)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 311, Short.MAX_VALUE)
                         .addGroup(pnDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(cbx_cari, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbxCari, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(pnDataLayout.createSequentialGroup()
-                                .addComponent(tf_cari, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(dateCoser, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btn_cari, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(tfCari, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnCari, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 918, Short.MAX_VALUE))
                 .addContainerGap())
             .addComponent(pnDetail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1131,11 +1137,12 @@ public class MenuPembelian extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnDataLayout.createSequentialGroup()
-                        .addGroup(pnDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tf_cari, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_cari, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(pnDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(tfCari, javax.swing.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE)
+                            .addComponent(btnCari, javax.swing.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE)
+                            .addComponent(dateCoser, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cbx_cari, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(cbxCari, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(btnBatal, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnHapus, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1157,15 +1164,16 @@ public class MenuPembelian extends javax.swing.JPanel {
         btnTambah.setIcon(tambah);
     }//GEN-LAST:event_btnTambahMouseExited
 
-    private void btn_cariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cariActionPerformed
-        String sc = tf_cari.getText();
+    private void btnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariActionPerformed
+        String sc = tfCari.getText();
+        Date sc1 = dateCoser.getDate();
         List list = new ArrayList();
-        switch (cbx_cari.getSelectedIndex()) {
+        switch (cbxCari.getSelectedIndex()) {
             case 0:
                 list = servis.getByNO(sc);
                 break;
             case 1:
-                list = servis.getByTanggal(sc);
+                list = servis.getByTanggal(sc1);
                 break;
             case 2:
                 list = servis.getByPetugas(sc);
@@ -1175,17 +1183,17 @@ public class MenuPembelian extends javax.swing.JPanel {
                 break;
         }
         tbl.setData(list);
-    }//GEN-LAST:event_btn_cariActionPerformed
+    }//GEN-LAST:event_btnCariActionPerformed
 
-    private void tf_cariFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tf_cariFocusGained
-        if (tf_cari.getText().equals("Cari") || tf_cari.getText().equalsIgnoreCase(""))
-            tf_cari.setText("");
-    }//GEN-LAST:event_tf_cariFocusGained
+    private void tfCariFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCariFocusGained
+        if (tfCari.getText().equals("Cari") || tfCari.getText().equalsIgnoreCase(""))
+            tfCari.setText("");
+    }//GEN-LAST:event_tfCariFocusGained
 
-    private void tf_cariFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tf_cariFocusLost
-        if (tf_cari.getText().equals("Cari") || tf_cari.getText().equalsIgnoreCase(""))
-            tf_cari.setText("Cari");
-    }//GEN-LAST:event_tf_cariFocusLost
+    private void tfCariFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCariFocusLost
+        if (tfCari.getText().equals("Cari") || tfCari.getText().equalsIgnoreCase(""))
+            tfCari.setText("Cari");
+    }//GEN-LAST:event_tfCariFocusLost
 
     private void btnTambahMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTambahMouseMoved
         btnTambah.setForeground(Color.WHITE);
@@ -1367,12 +1375,12 @@ public class MenuPembelian extends javax.swing.JPanel {
 
     private void tfKet21FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfKet21FocusGained
         if (tfKet21.getText().equals("Tidak Ada"))
-        tfKet21.setText("");
+            tfKet21.setText("");
     }//GEN-LAST:event_tfKet21FocusGained
 
     private void tfKet21FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfKet21FocusLost
         if (tfKet21.getText().equals(""))
-        tfKet21.setText("Tidak Ada");
+            tfKet21.setText("Tidak Ada");
     }//GEN-LAST:event_tfKet21FocusLost
 
     private void btnTambah21MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTambah21MouseMoved
@@ -1461,21 +1469,33 @@ public class MenuPembelian extends javax.swing.JPanel {
         resetTable();
     }//GEN-LAST:event_btnBatal22ActionPerformed
 
+    private void cbxCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxCariActionPerformed
+        if (cbxCari.getSelectedIndex() == 1) {
+            tfCari.setVisible(false);
+            dateCoser.setVisible(true);
+        } else {
+            dateCoser.setVisible(false);
+            tfCari.setVisible(true);
+        }
+        tfCari.setText("Cari");
+    }//GEN-LAST:event_cbxCariActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBatal;
     private javax.swing.JButton btnBatal1;
     private javax.swing.JButton btnBatal21;
     private javax.swing.JButton btnBatal22;
+    private javax.swing.JButton btnCari;
     private javax.swing.JButton btnHapus;
     private javax.swing.JButton btnHapus21;
     private javax.swing.JButton btnSimpan21;
     private javax.swing.JButton btnTambah;
     private javax.swing.JButton btnTambah21;
     private javax.swing.JButton btnUbah21;
-    private javax.swing.JButton btn_cari;
+    private javax.swing.JComboBox<String> cbxCari;
     private javax.swing.JComboBox<String> cbxStatus;
-    private javax.swing.JComboBox<String> cbx_cari;
+    private com.toedter.calendar.JDateChooser dateCoser;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
@@ -1529,6 +1549,7 @@ public class MenuPembelian extends javax.swing.JPanel {
     private javax.swing.JTable tblConten;
     private javax.swing.JTable tblConten1;
     private javax.swing.JTable tblMn21;
+    private javax.swing.JTextField tfCari;
     private javax.swing.JTextField tfHarga;
     private javax.swing.JTextField tfId21;
     private javax.swing.JTextField tfJml21;
@@ -1541,7 +1562,6 @@ public class MenuPembelian extends javax.swing.JPanel {
     private javax.swing.JTextField tfSubtotal21;
     private javax.swing.JTextField tfTgl;
     private javax.swing.JTextField tfTotal;
-    private javax.swing.JTextField tf_cari;
     // End of variables declaration//GEN-END:variables
 
     private void resetData() {
@@ -1554,6 +1574,7 @@ public class MenuPembelian extends javax.swing.JPanel {
         btnHapus.setVisible(false);
         pnDetail.setVisible(false);
         btnTambah.setVisible(true);
+        dateCoser.setVisible(false);
         jLabel1.requestFocus();
     }
 

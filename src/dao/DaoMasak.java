@@ -11,7 +11,11 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
+import model.Bahan;
+import model.DetailBahan;
+import model.DetailMasak;
 import model.Memasak;
+import model.Menu;
 import servis.ServisMasak;
 
 /**
@@ -25,6 +29,16 @@ public class DaoMasak implements ServisMasak {
         EntityManager em = Persistence.createEntityManagerFactory("NewCafe2KPU").createEntityManager();
         em.getTransaction().begin();
         em.persist(mod);
+        for(DetailMasak dm : mod.getDetailMasakCollection()){
+            Menu m = dm.getMenu();
+            m.setStok(m.getStok() + dm.getJumlah());
+            em.merge(m);
+            for(DetailBahan db : m.getDetailBahanCollection()){
+                Bahan b = db.getBahan();
+                b.setStok(b.getStok() - (db.getJumlah()*dm.getJumlah()));
+                em.merge(b);
+            }
+        }
         em.getTransaction().commit();
         em.close();
     }
@@ -66,7 +80,7 @@ public class DaoMasak implements ServisMasak {
     }
 
     @Override
-    public List<Memasak> getByTanggal(String tanggal) {
+    public List<Memasak> getByTanggal(Date tanggal) {
         EntityManager em = Persistence.createEntityManagerFactory("NewCafe2KPU").createEntityManager();
         em.getTransaction().begin();
         TypedQuery<Memasak> query = em.createNamedQuery("Memasak.getByTanggal", Memasak.class);

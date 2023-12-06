@@ -157,4 +157,16 @@ public class Menu implements Serializable {
         }
         return b;
     }
+    
+    public String getAllBahan(int i){
+        String b = "";
+        for(DetailBahan db : detailBahanCollection){
+            int j = db.getJumlah() * i;
+            if(b.equals(""))
+                b = db.getBahan().getNama() + " " + j + "x";
+            else
+                b = b + ", " + db.getBahan().getNama() + " " + j + "x";
+        }
+        return b;
+    }
 }

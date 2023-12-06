@@ -11,7 +11,7 @@ Cafe2Kadalah aplikasi untuk memanjemen cafe sederhana;
 - PostgreSQL JDBC Driver `NetBeans`
 - Absolute Layout `NetBeans`
 - EnclipseLink (JPA 2.1) `NetBeans`
-- [Library lainnya](https://drive.google.com/drive/folders/12aqJtgMWrztnQLhqt8XpMU1gMrIvPGSz?usp=sharing)
+- [Library lainnya](https://drive.google.com/drive/folders/1-1C7ivcdcNgZgFO-iLgTfvNCHY7bG2SJ?usp=sharing)
 
 
 ## Installation
@@ -42,8 +42,7 @@ KODE_BAHAN
 create table DETAIL_BAHAN (
    KODE_MENU            CHAR(5)              not null,
    KODE_BAHAN           CHAR(5)              not null,
-   JUMLAH_MENU          INT4                 null,
-   JUMLAH_BAHAN         INT4                 null,
+   JUMLAH               INT4                 null,
    constraint PK_DETAIL_BAHAN primary key (KODE_MENU, KODE_BAHAN)
 );
 
@@ -67,6 +66,41 @@ KODE_BAHAN
 /*==============================================================*/
 create  index MEMILIKI1_FK on DETAIL_BAHAN (
 KODE_MENU
+);
+
+/*==============================================================*/
+/* Table: DETAIL_MASAK                                          */
+/*==============================================================*/
+create table DETAIL_MASAK (
+   ID_PEGAWAI           CHAR(5)              not null,
+   NO_MASAK             CHAR(10)             not null,
+   KODE_MENU            CHAR(5)              not null,
+   JUMLAH               INT4                 null,
+   constraint PK_DETAIL_MASAK primary key (ID_PEGAWAI, NO_MASAK, KODE_MENU)
+);
+
+/*==============================================================*/
+/* Index: DETAIL_MASAK_PK                                       */
+/*==============================================================*/
+create unique index DETAIL_MASAK_PK on DETAIL_MASAK (
+ID_PEGAWAI,
+NO_MASAK,
+KODE_MENU
+);
+
+/*==============================================================*/
+/* Index: MEMILIKI32_FK                                         */
+/*==============================================================*/
+create  index MEMILIKI32_FK on DETAIL_MASAK (
+KODE_MENU
+);
+
+/*==============================================================*/
+/* Index: MEMILIKI31_FK                                         */
+/*==============================================================*/
+create  index MEMILIKI31_FK on DETAIL_MASAK (
+ID_PEGAWAI,
+NO_MASAK
 );
 
 /*==============================================================*/
@@ -154,11 +188,10 @@ KODE_BAHAN
 /*==============================================================*/
 create table MEMASAK (
    ID_PEGAWAI           CHAR(5)              not null,
-   KODE_MENU            CHAR(5)              not null,
    TANGGAL              DATE                 null,
    KETERANGAN           VARCHAR(100)         null,
    NO_MASAK             CHAR(10)             not null,
-   constraint PK_MEMASAK primary key (ID_PEGAWAI, KODE_MENU, NO_MASAK)
+   constraint PK_MEMASAK primary key (ID_PEGAWAI, NO_MASAK)
 );
 
 /*==============================================================*/
@@ -166,7 +199,6 @@ create table MEMASAK (
 /*==============================================================*/
 create unique index MEMASAK_PK on MEMASAK (
 ID_PEGAWAI,
-KODE_MENU,
 NO_MASAK
 );
 
@@ -175,13 +207,6 @@ NO_MASAK
 /*==============================================================*/
 create  index MELAKUKAN_FK on MEMASAK (
 ID_PEGAWAI
-);
-
-/*==============================================================*/
-/* Index: MEMILIKI_FK                                           */
-/*==============================================================*/
-create  index MEMILIKI_FK on MEMASAK (
-KODE_MENU
 );
 
 /*==============================================================*/
@@ -252,6 +277,7 @@ create table PEMBELIAN (
    NO_PEMBELIAN         CHAR(10)             not null,
    TANGGAL              DATE                 null,
    TOTAL                INT8                 null,
+   STATUS               VARCHAR(11)          null,
    constraint PK_PEMBELIAN primary key (ID_PEGAWAI, ID_PELANGGAN, NO_PEMBELIAN)
 );
 
@@ -341,6 +367,16 @@ alter table DETAIL_BAHAN
       references BAHAN (KODE_BAHAN)
       on delete restrict on update restrict;
 
+alter table DETAIL_MASAK
+   add constraint FK_DETAIL_M_MEMILIKI3_MEMASAK foreign key (ID_PEGAWAI, NO_MASAK)
+      references MEMASAK (ID_PEGAWAI, NO_MASAK)
+      on delete restrict on update restrict;
+
+alter table DETAIL_MASAK
+   add constraint FK_DETAIL_M_MEMILIKI3_MENU foreign key (KODE_MENU)
+      references MENU (KODE_MENU)
+      on delete restrict on update restrict;
+
 alter table DETAIL_PEMBELIAN
    add constraint FK_DETAIL_P_MEMILIKI5_PEMBELIA foreign key (ID_PEGAWAI, ID_PELANGGAN, NO_PEMBELIAN)
       references PEMBELIAN (ID_PEGAWAI, ID_PELANGGAN, NO_PEMBELIAN)
@@ -364,11 +400,6 @@ alter table DETAIL_SUPPLY
 alter table MEMASAK
    add constraint FK_MEMASAK_MELAKUKAN_PEGAWAI foreign key (ID_PEGAWAI)
       references PEGAWAI (ID_PEGAWAI)
-      on delete restrict on update restrict;
-
-alter table MEMASAK
-   add constraint FK_MEMASAK_MEMILIKI_MENU foreign key (KODE_MENU)
-      references MENU (KODE_MENU)
       on delete restrict on update restrict;
 
 alter table PEMBELIAN

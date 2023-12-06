@@ -4,6 +4,7 @@
  */
 package servis;
 
+import java.util.Date;
 import java.util.List;
 import model.Supply;
 
@@ -17,7 +18,7 @@ public interface ServisSupply {
     
     List<Supply> ambilData();
     List<Supply> getByNO(String no);
-    List<Supply> getByTanggal(String tanggal);
+    List<Supply> getByTanggal(Date tanggal);
     List<Supply> getByPetugas(String nama);
     List<Supply> getBySupplier(String nama);
     Supply getByNo(String no);

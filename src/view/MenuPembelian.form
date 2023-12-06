@@ -1084,13 +1084,15 @@
                                       <Component id="btnBatal" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace pref="311" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="cbx_cari" alignment="1" min="-2" pref="166" max="-2" attributes="0"/>
+                                  <Component id="cbxCari" alignment="1" min="-2" pref="166" max="-2" attributes="0"/>
                                   <Group type="102" alignment="1" attributes="0">
-                                      <Component id="tf_cari" min="-2" pref="174" max="-2" attributes="0"/>
+                                      <Component id="dateCoser" min="-2" pref="157" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="btn_cari" min="-2" pref="23" max="-2" attributes="0"/>
+                                      <Component id="tfCari" min="-2" pref="174" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="btnCari" min="-2" pref="23" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -1111,12 +1113,13 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="tf_cari" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
-                                  <Component id="btn_cari" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="tfCari" alignment="0" pref="22" max="32767" attributes="0"/>
+                                  <Component id="btnCari" alignment="0" pref="22" max="32767" attributes="0"/>
+                                  <Component id="dateCoser" pref="0" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="cbx_cari" min="-2" pref="20" max="-2" attributes="0"/>
+                              <Component id="cbxCari" min="-2" pref="20" max="-2" attributes="0"/>
                           </Group>
                           <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                               <Component id="btnBatal" alignment="0" max="32767" attributes="0"/>
@@ -1244,7 +1247,7 @@
                 <Property name="text" type="java.lang.String" value="Data Pembelian"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="btn_cari">
+            <Component class="javax.swing.JButton" name="btnCari">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="10" style="0"/>
@@ -1254,10 +1257,10 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_cariActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCariActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JTextField" name="tf_cari">
+            <Component class="javax.swing.JTextField" name="tfCari">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="12" style="0"/>
@@ -1275,11 +1278,11 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tf_cariFocusGained"/>
-                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tf_cariFocusLost"/>
+                <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tfCariFocusGained"/>
+                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tfCariFocusLost"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JComboBox" name="cbx_cari">
+            <Component class="javax.swing.JComboBox" name="cbxCari">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="11" style="0"/>
@@ -1303,6 +1306,9 @@
                   </Border>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbxCariActionPerformed"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
@@ -1699,6 +1705,8 @@
                 </Container>
               </SubComponents>
             </Container>
+            <Component class="com.toedter.calendar.JDateChooser" name="dateCoser">
+            </Component>
           </SubComponents>
         </Container>
       </SubComponents>

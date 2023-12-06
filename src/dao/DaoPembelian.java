@@ -11,6 +11,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
+import model.DetailPembelian;
+import model.Menu;
 import model.Pembelian;
 import servis.ServisPembelian;
 
@@ -25,6 +27,11 @@ public class DaoPembelian implements ServisPembelian {
         EntityManager em = Persistence.createEntityManagerFactory("NewCafe2KPU").createEntityManager();
         em.getTransaction().begin();
         em.persist(mod);
+        for(DetailPembelian p : mod.getDetailPembelianCollection()){
+            Menu m = p.getMenu();
+            m.setStok(m.getStok() - p.getJumlah());
+            em.merge(m);
+        }
         em.getTransaction().commit();
         em.close();
     }
@@ -66,11 +73,11 @@ public class DaoPembelian implements ServisPembelian {
     }
 
     @Override
-    public List<Pembelian> getByTanggal(String tanggal) {
+    public List<Pembelian> getByTanggal(Date tanggal) {
         EntityManager em = Persistence.createEntityManagerFactory("NewCafe2KPU").createEntityManager();
         em.getTransaction().begin();
         TypedQuery<Pembelian> query = em.createNamedQuery("Pembelian.getByTanggal", Pembelian.class);
-        query.setParameter("tanggal", "%"+tanggal+"%");
+        query.setParameter("tanggal", tanggal);
         List<Pembelian> list = query.getResultList();
         em.getTransaction().commit();
         em.close();

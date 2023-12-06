@@ -4,6 +4,7 @@
  */
 package servis;
 
+import java.util.Date;
 import java.util.List;
 import model.Pembelian;
 
@@ -17,7 +18,7 @@ public interface ServisPembelian {
     
     List<Pembelian> ambilData();
     List<Pembelian> getByNO(String no);
-    List<Pembelian> getByTanggal(String tanggal);
+    List<Pembelian> getByTanggal(Date tanggal);
     List<Pembelian> getByPetugas(String nama);
     List<Pembelian> getByPelanggan(String nama);
     Pembelian getByNo(String no);

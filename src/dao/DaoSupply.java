@@ -11,6 +11,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
+import model.Bahan;
+import model.DetailSupply;
 import model.Supply;
 import servis.ServisSupply;
 
@@ -25,6 +27,11 @@ public class DaoSupply implements ServisSupply {
         EntityManager em = Persistence.createEntityManagerFactory("NewCafe2KPU").createEntityManager();
         em.getTransaction().begin();
         em.persist(mod);
+        for(DetailSupply s : mod.getDetailSupplyCollection()){
+            Bahan b = s.getBahan();
+            b.setStok(b.getStok() + s.getJumlah());
+            em.merge(b);
+        }
         em.getTransaction().commit();
         em.close();
     }
@@ -66,11 +73,11 @@ public class DaoSupply implements ServisSupply {
     }
 
     @Override
-    public List<Supply> getByTanggal(String tanggal) {
+    public List<Supply> getByTanggal(Date tanggal) {
         EntityManager em = Persistence.createEntityManagerFactory("NewCafe2KPU").createEntityManager();
         em.getTransaction().begin();
         TypedQuery<Supply> query = em.createNamedQuery("Supply.getByTanggal", Supply.class);
-        query.setParameter("tanggal", "%"+tanggal+"%");
+        query.setParameter("tanggal", tanggal);
         List<Supply> list = query.getResultList();
         em.getTransaction().commit();
         em.close();

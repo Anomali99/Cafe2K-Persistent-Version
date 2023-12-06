@@ -7,6 +7,7 @@ package view;
 import dao.DaoMasak;
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -51,9 +52,10 @@ public class MenuMasak extends javax.swing.JPanel {
         btnBatal = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
-        btn_cari = new javax.swing.JButton();
-        tf_cari = new javax.swing.JTextField();
-        cbx_cari = new javax.swing.JComboBox<>();
+        btnCari = new javax.swing.JButton();
+        tfCari = new javax.swing.JTextField();
+        cbxCari = new javax.swing.JComboBox<>();
+        dateCoser = new com.toedter.calendar.JDateChooser();
 
         setLayout(new java.awt.CardLayout());
 
@@ -145,31 +147,36 @@ public class MenuMasak extends javax.swing.JPanel {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/masak1.png"))); // NOI18N
         jLabel1.setText("Data Masakan");
 
-        btn_cari.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
-        btn_cari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cari.png"))); // NOI18N
-        btn_cari.addActionListener(new java.awt.event.ActionListener() {
+        btnCari.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        btnCari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cari.png"))); // NOI18N
+        btnCari.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_cariActionPerformed(evt);
+                btnCariActionPerformed(evt);
             }
         });
 
-        tf_cari.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        tf_cari.setForeground(new java.awt.Color(204, 204, 204));
-        tf_cari.setText("Cari");
-        tf_cari.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
-        tf_cari.addFocusListener(new java.awt.event.FocusAdapter() {
+        tfCari.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        tfCari.setForeground(new java.awt.Color(204, 204, 204));
+        tfCari.setText("Cari");
+        tfCari.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
+        tfCari.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                tf_cariFocusGained(evt);
+                tfCariFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                tf_cariFocusLost(evt);
+                tfCariFocusLost(evt);
             }
         });
 
-        cbx_cari.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        cbx_cari.setForeground(new java.awt.Color(204, 204, 204));
-        cbx_cari.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "NO", "TANGGAL", "PETUGAS", "MENU" }));
-        cbx_cari.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        cbxCari.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        cbxCari.setForeground(new java.awt.Color(204, 204, 204));
+        cbxCari.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "NO", "TANGGAL", "PETUGAS", "MENU" }));
+        cbxCari.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        cbxCari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxCariActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnMainLayout = new javax.swing.GroupLayout(pnMain);
         pnMain.setLayout(pnMainLayout);
@@ -190,13 +197,15 @@ public class MenuMasak extends javax.swing.JPanel {
                                 .addComponent(btnHapus)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnBatal)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 205, Short.MAX_VALUE)
                         .addGroup(pnMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(cbx_cari, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbxCari, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(pnMainLayout.createSequentialGroup()
-                                .addComponent(tf_cari, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(dateCoser, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btn_cari, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(tfCari, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnCari, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 792, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -211,10 +220,11 @@ public class MenuMasak extends javax.swing.JPanel {
                 .addGroup(pnMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnMainLayout.createSequentialGroup()
                         .addGroup(pnMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tf_cari, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_cari, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(tfCari, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnCari, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(dateCoser, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cbx_cari, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(cbxCari, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(btnBatal, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnHapus, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -233,15 +243,16 @@ public class MenuMasak extends javax.swing.JPanel {
         btnTambah.setIcon(tambah);
     }//GEN-LAST:event_btnTambahMouseExited
 
-    private void btn_cariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cariActionPerformed
-        String sc = tf_cari.getText();
+    private void btnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariActionPerformed
+        String sc = tfCari.getText();
+        Date sc1 = dateCoser.getDate();
         List list = new ArrayList();
-        switch (cbx_cari.getSelectedIndex()) {
+        switch (cbxCari.getSelectedIndex()) {
             case 0:
                 list = servis.getByNO(sc);
                 break;
             case 1:
-                list = servis.getByTanggal(sc);
+                list = servis.getByTanggal(sc1);
                 break;
             case 2:
                 list = servis.getByPetugas(sc);
@@ -251,17 +262,17 @@ public class MenuMasak extends javax.swing.JPanel {
                 break;
         }
         tbl.setData(list);
-    }//GEN-LAST:event_btn_cariActionPerformed
+    }//GEN-LAST:event_btnCariActionPerformed
 
-    private void tf_cariFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tf_cariFocusGained
-        if (tf_cari.getText().equals("Cari") || tf_cari.getText().equalsIgnoreCase(""))
-            tf_cari.setText("");
-    }//GEN-LAST:event_tf_cariFocusGained
+    private void tfCariFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCariFocusGained
+        if (tfCari.getText().equals("Cari") || tfCari.getText().equalsIgnoreCase(""))
+            tfCari.setText("");
+    }//GEN-LAST:event_tfCariFocusGained
 
-    private void tf_cariFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tf_cariFocusLost
-        if (tf_cari.getText().equals("Cari") || tf_cari.getText().equalsIgnoreCase(""))
-            tf_cari.setText("Cari");
-    }//GEN-LAST:event_tf_cariFocusLost
+    private void tfCariFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCariFocusLost
+        if (tfCari.getText().equals("Cari") || tfCari.getText().equalsIgnoreCase(""))
+            tfCari.setText("Cari");
+    }//GEN-LAST:event_tfCariFocusLost
 
     private void btnTambahMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTambahMouseMoved
         btnTambah.setForeground(Color.WHITE);
@@ -292,7 +303,6 @@ public class MenuMasak extends javax.swing.JPanel {
     private void tblContenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblContenMouseClicked
         btnBatal.setVisible(true);
         btnHapus.setVisible(true);
-        btnTambah.setIcon(new ImageIcon(getClass().getResource("/img/edit1.png")));
     }//GEN-LAST:event_tblContenMouseClicked
 
     private void btnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBatalActionPerformed
@@ -313,19 +323,31 @@ public class MenuMasak extends javax.swing.JPanel {
         resetData();
     }//GEN-LAST:event_btnHapusActionPerformed
 
+    private void cbxCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxCariActionPerformed
+        if (cbxCari.getSelectedIndex() == 1) {
+            tfCari.setVisible(false);
+            dateCoser.setVisible(true);
+        } else {
+            dateCoser.setVisible(false);
+            tfCari.setVisible(true);
+        }
+        tfCari.setText("Cari");
+    }//GEN-LAST:event_cbxCariActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBatal;
+    private javax.swing.JButton btnCari;
     private javax.swing.JButton btnHapus;
     private javax.swing.JButton btnTambah;
-    private javax.swing.JButton btn_cari;
-    private javax.swing.JComboBox<String> cbx_cari;
+    private javax.swing.JComboBox<String> cbxCari;
+    private com.toedter.calendar.JDateChooser dateCoser;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JPanel pnMain;
     private javax.swing.JTable tblConten;
-    private javax.swing.JTextField tf_cari;
+    private javax.swing.JTextField tfCari;
     // End of variables declaration//GEN-END:variables
 
     private void resetData() {
@@ -334,6 +356,7 @@ public class MenuMasak extends javax.swing.JPanel {
         btnHapus.setVisible(false);
         btnTambah.setIcon(new ImageIcon(getClass().getResource("/img/tambah1.png")));
         btnTambah.setVisible(true);
+        dateCoser.setVisible(false);
         jLabel1.requestFocus();
     }
 

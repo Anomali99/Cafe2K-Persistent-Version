@@ -20,6 +20,8 @@ public class CetakNota extends javax.swing.JDialog {
     /**
      * Creates new form KartuAnggota
      */
+    int xx, xy;
+    
     public CetakNota(JFrame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -64,6 +66,16 @@ public class CetakNota extends javax.swing.JDialog {
         setTitle("KTA");
         setIconImage(null);
         setUndecorated(true);
+        addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                formMouseDragged(evt);
+            }
+        });
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                formMousePressed(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(79, 42, 24));
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -237,6 +249,17 @@ public class CetakNota extends javax.swing.JDialog {
     private void btn_hapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_hapusActionPerformed
         dispose();
     }//GEN-LAST:event_btn_hapusActionPerformed
+
+    private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
+        xx = evt.getX();
+        xy = evt.getY();
+    }//GEN-LAST:event_formMousePressed
+
+    private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x - xx, y - xy);
+    }//GEN-LAST:event_formMouseDragged
 
     /**
      * @param args the command line arguments

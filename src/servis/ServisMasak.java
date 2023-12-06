@@ -4,6 +4,7 @@
  */
 package servis;
 
+import java.util.Date;
 import java.util.List;
 import model.Memasak;
 
@@ -17,7 +18,7 @@ public interface ServisMasak {
     
     List<Memasak> ambilData();
     List<Memasak> getByNO(String no);
-    List<Memasak> getByTanggal(String tanggal);
+    List<Memasak> getByTanggal(Date tanggal);
     List<Memasak> getByPetugas(String nama);
     List<Memasak> getByMenu(String nama);
     Memasak getByNo(String no);

@@ -319,6 +319,7 @@ public class FormLogin extends javax.swing.JFrame {
         Pegawai p = new DaoPetugas().login(user, pass);
         if(p!=null){
             MenuUtama menu = new MenuUtama(p);
+            menu.repaint();
             menu.setVisible(true);
             menu.revalidate();
             dispose();

@@ -5,12 +5,18 @@
 package view;
 
 import dao.DaoMasak;
+import dao.DaoMenu;
 import java.awt.Color;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import model.DetailMasak;
+import model.DetailMasakPK;
 import model.Memasak;
+import model.MemasakPK;
 import model.Menu;
 import servis.ServisMasak;
 
@@ -221,10 +227,15 @@ public class TambahMasakan extends javax.swing.JDialog {
                 "Kode", "Menu", "Komposisi", "Jumlah"
             }
         ));
+        tblMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblMenuMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblMenu);
 
         btnUbah.setBackground(new java.awt.Color(79, 42, 24));
-        btnUbah.setForeground(new java.awt.Color(0, 0, 0));
+        btnUbah.setForeground(new java.awt.Color(79, 42, 24));
         btnUbah.setText("Ubah");
         btnUbah.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -233,7 +244,7 @@ public class TambahMasakan extends javax.swing.JDialog {
         });
 
         btnHapus.setBackground(new java.awt.Color(200, 0, 0));
-        btnHapus.setForeground(new java.awt.Color(0, 0, 0));
+        btnHapus.setForeground(new java.awt.Color(200, 0, 0));
         btnHapus.setText("Hapus");
         btnHapus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -242,7 +253,7 @@ public class TambahMasakan extends javax.swing.JDialog {
         });
 
         btnBatal1.setBackground(new java.awt.Color(166, 145, 138));
-        btnBatal1.setForeground(new java.awt.Color(0, 0, 0));
+        btnBatal1.setForeground(new java.awt.Color(166, 145, 138));
         btnBatal1.setText("Batal");
         btnBatal1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -384,7 +395,7 @@ public class TambahMasakan extends javax.swing.JDialog {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(tfKom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnBatal2, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 33, Short.MAX_VALUE))
@@ -450,12 +461,30 @@ public class TambahMasakan extends javax.swing.JDialog {
 
     private void btnSimpanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSimpanMouseClicked
         if (validData()) {
-//            mod.setNoMasak(tfId.getText());
-//            mod.setTgl(tfTgl.getText());
-//            mod.setKeterangan(tfKeterangan.getText());
-//            mod.setPegawai(MenuUtama.mod);
-//            mod.setMenu(modM);
-//            servis.tambahData(mod);
+            DefaultTableModel tbl = (DefaultTableModel) tblMenu.getModel();
+            MemasakPK pk = new MemasakPK();
+            pk.setNoMasak(tfId.getText());
+            pk.setIdPegawai(MenuUtama.mod.getIdPegawai());
+            mod.setMemasakPK(pk);
+            mod.setTgl(tfTgl.getText());
+            mod.setKeterangan(tfKeterangan.getText());
+            mod.setPegawai(MenuUtama.mod);
+            List list = new ArrayList();
+            for (int i = 0; i < tbl.getRowCount(); i++) {
+                DetailMasak dm = new DetailMasak();
+                DetailMasakPK dpk = new DetailMasakPK();
+                Menu m = new DaoMenu().getByKode(tbl.getValueAt(i, 0).toString());
+                dpk.setIdPegawai(MenuUtama.mod.getIdPegawai());
+                dpk.setKodeMenu(m.getKodeMenu());
+                dpk.setNoMasak(mod.getMemasakPK().getNoMasak());
+                dm.setDetailMasakPK(dpk);
+                dm.setMenu(m);
+                dm.setMemasak(mod);
+                dm.setJumlah(Integer.parseInt(tbl.getValueAt(i, 3).toString()));
+                list.add(dm);
+            }
+            mod.setDetailMasakCollection(list);
+            servis.tambahData(mod);
             dispose();
         }
     }//GEN-LAST:event_btnSimpanMouseClicked
@@ -484,20 +513,43 @@ public class TambahMasakan extends javax.swing.JDialog {
     }//GEN-LAST:event_btnPilihActionPerformed
 
     private void btnUbahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUbahActionPerformed
-        // TODO add your handling code here:
+        btnTambah.setText("Perbarui Menu");
+        btnBatal2.setVisible(true);
+        btnPilih.setVisible(true);
+
+        tfKode.setVisible(true);
+        tfNama.setVisible(true);
+        tfJml.setVisible(true);
+        tfKom.setVisible(true);
+
+        lbKode.setVisible(true);
+        lbMenu.setVisible(true);
+        lbJml.setVisible(true);
+        lbKom.setVisible(true);
+
+        DefaultTableModel tbl = (DefaultTableModel) tblMenu.getModel();
+        tfKode.setText(tbl.getValueAt(tblMenu.getSelectedRow(), 0).toString());
+        tfNama.setText(tbl.getValueAt(tblMenu.getSelectedRow(), 1).toString());
+        tfJml.setText(tbl.getValueAt(tblMenu.getSelectedRow(), 3).toString());
+        tfKom.setText(tbl.getValueAt(tblMenu.getSelectedRow(), 2).toString());
+        jLabel1.requestFocus();
     }//GEN-LAST:event_btnUbahActionPerformed
 
     private void btnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusActionPerformed
-        // TODO add your handling code here:
+        DefaultTableModel tbl = (DefaultTableModel) tblMenu.getModel();
+        tbl.removeRow(tblMenu.getSelectedRow());
+        jLabel1.requestFocus();
+        reset();
     }//GEN-LAST:event_btnHapusActionPerformed
 
     private void btnBatal1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBatal1ActionPerformed
-        // TODO add your handling code here:
+        reset();
     }//GEN-LAST:event_btnBatal1ActionPerformed
 
     private void btnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahActionPerformed
         DefaultTableModel tbl = (DefaultTableModel) tblMenu.getModel();
         if (!lbKode.isVisible()) {
+            btnTambah.setText("Tambah Menu");
             btnBatal2.setVisible(true);
             btnPilih.setVisible(true);
 
@@ -515,14 +567,21 @@ public class TambahMasakan extends javax.swing.JDialog {
             for (int i = 0; i < tbl.getRowCount(); i++) {
                 if (tbl.getValueAt(i, 0).toString().equals(tfKode.getText())) {
                     c = i;
+                    modM = new DaoMenu().getByKode(tfKode.getText());
                 }
             }
             if (c == -1) {
-                tbl.addRow(new Object[]{tfKode.getText(), tfNama.getText(), tfKom.getText(), tfJml.getText()});
+                tbl.addRow(new Object[]{tfKode.getText(), tfNama.getText(), modM.getAllBahan(Integer.parseInt(tfJml.getText())), tfJml.getText()});
             } else {
                 int k = Integer.parseInt(tbl.getValueAt(c, 3).toString());
                 int j = Integer.parseInt(tfJml.getText()) + k;
-                tbl.setValueAt(j, c, 3);
+                if (btnTambah.getText().equals("Tambah Menu")) {
+                    tbl.setValueAt(j, c, 3);
+                    tbl.setValueAt(modM.getAllBahan(j), c, 2);
+                } else {
+                    tbl.setValueAt(tfJml.getText(), c, 3);
+                    tbl.setValueAt(modM.getAllBahan(Integer.parseInt(tfJml.getText())), c, 2);
+                }
             }
             reset();
         }
@@ -554,6 +613,12 @@ public class TambahMasakan extends javax.swing.JDialog {
     private void btnBatal2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBatal2MouseExited
         btnBatal2.setForeground(new Color(166, 145, 138));
     }//GEN-LAST:event_btnBatal2MouseExited
+
+    private void tblMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblMenuMouseClicked
+        btnUbah.setVisible(true);
+        btnHapus.setVisible(true);
+        btnBatal1.setVisible(true);
+    }//GEN-LAST:event_tblMenuMouseClicked
 
     /**
      * @param args the command line arguments
@@ -666,5 +731,6 @@ public class TambahMasakan extends javax.swing.JDialog {
 
         tblMenu.requestFocus();
         btnTambah.setText("Tambah Menu");
+        tblMenu.clearSelection();
     }
 }

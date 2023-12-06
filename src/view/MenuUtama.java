@@ -362,6 +362,17 @@ public class MenuUtama extends javax.swing.JFrame {
     }
 
     private void setEvent() {
+        btnDasbor.setAct(null);
+        btnMenu.setAct(null);
+        btnBahan.setAct(null);
+        btnPembelian.setAct(null);
+        btnSupply.setAct(null);
+        btnSupplier.setAct(null);
+        btnPelanggan.setAct(null);
+        btnPetugas.setAct(null);
+        btnMemasak.setAct(null);
+        btnLaporan.setAct(null);
+        
         btnDasbor.setAct(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
