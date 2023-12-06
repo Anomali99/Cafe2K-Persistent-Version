@@ -8,6 +8,7 @@ import dao.DaoBahan;
 import dao.DaoLaporan;
 import dao.DaoSupplier;
 import dao.DaoSupply;
+import dao.Rupiah;
 import java.awt.Color;
 import java.math.BigInteger;
 import java.text.SimpleDateFormat;
@@ -332,13 +333,13 @@ public class MenuSupply extends javax.swing.JPanel {
         jPanelCustom7.setKananBawah(10);
         jPanelCustom7.setKiriAtas(10);
         jPanelCustom7.setKiriBawah(10);
-        jPanelCustom7.setLayout(new java.awt.BorderLayout());
+        jPanelCustom7.setLayout(new java.awt.CardLayout());
 
         lbTotal.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lbTotal.setForeground(new java.awt.Color(79, 42, 24));
         lbTotal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbTotal.setText("Total");
-        jPanelCustom7.add(lbTotal, java.awt.BorderLayout.CENTER);
+        jPanelCustom7.add(lbTotal, "card2");
 
         jLabel22.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(79, 42, 24));
@@ -385,7 +386,7 @@ public class MenuSupply extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(jPanelCustom6, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanelCustom7, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jPanelCustom7, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1211,7 +1212,7 @@ public class MenuSupply extends javax.swing.JPanel {
         Supply mb = servis.getByNo(tblConten.getValueAt(tblConten.getSelectedRow(), 1).toString());
         tfNo.setText(mb.getSupplyPK().getNoSupply());
         lbTgl.setText(mb.getTgl());
-        lbTotal.setText(String.valueOf(mb.getTotal()));
+        lbTotal.setText(Rupiah.getRp(mb.getTotal()));
         lbIdPel.setText(mb.getSupplier().getIdSupplier());
         lbNamaPel.setText(mb.getSupplier().getNama());
         lbIdPet.setText(mb.getPegawai().getIdPegawai());

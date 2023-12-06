@@ -4,6 +4,7 @@
  */
 package view;
 
+import dao.DaoLaporan;
 import dao.DaoPetugas;
 import java.awt.Color;
 import java.awt.Image;
@@ -69,6 +70,7 @@ public class MenuProfil extends javax.swing.JPanel {
         tfLevel = new javax.swing.JTextField();
         btnUbahPass = new javax.swing.JButton();
         btnUbahPP = new javax.swing.JButton();
+        btnKta = new javax.swing.JButton();
 
         setLayout(new java.awt.CardLayout());
 
@@ -226,6 +228,26 @@ public class MenuProfil extends javax.swing.JPanel {
             }
         });
 
+        btnKta.setBackground(new java.awt.Color(0, 200, 0));
+        btnKta.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnKta.setForeground(new java.awt.Color(0, 200, 0));
+        btnKta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/kartu.png"))); // NOI18N
+        btnKta.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnKtaMouseMoved(evt);
+            }
+        });
+        btnKta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnKtaMouseExited(evt);
+            }
+        });
+        btnKta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKtaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnMainLayout = new javax.swing.GroupLayout(pnMain);
         pnMain.setLayout(pnMainLayout);
         pnMainLayout.setHorizontalGroup(
@@ -274,8 +296,9 @@ public class MenuProfil extends javax.swing.JPanel {
                                     .addComponent(btnUbahPP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(lbFoto, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE))))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnMainLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                    .addGroup(pnMainLayout.createSequentialGroup()
+                        .addComponent(btnKta, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel1)
                         .addContainerGap())))
         );
@@ -329,9 +352,14 @@ public class MenuProfil extends javax.swing.JPanel {
                             .addComponent(btnSimpan)
                             .addComponent(btnUbahPass))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnUbahPP)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addGroup(pnMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnMainLayout.createSequentialGroup()
+                        .addComponent(btnUbahPP)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
+                        .addComponent(jLabel1))
+                    .addGroup(pnMainLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnKta, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
@@ -419,9 +447,26 @@ public class MenuProfil extends javax.swing.JPanel {
         jLabel1.requestFocus();
     }//GEN-LAST:event_btnUbahPPActionPerformed
 
+    private void btnKtaMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnKtaMouseMoved
+        btnKta.setForeground(Color.white);
+        ImageIcon icon = new ImageIcon(getClass().getResource("/img/kartu1.png"));
+        btnKta.setIcon(icon);
+    }//GEN-LAST:event_btnKtaMouseMoved
+
+    private void btnKtaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnKtaMouseExited
+        btnKta.setForeground(new Color(0, 200, 0));
+        ImageIcon icon = new ImageIcon(getClass().getResource("/img/kartu.png"));
+        btnKta.setIcon(icon);
+    }//GEN-LAST:event_btnKtaMouseExited
+
+    private void btnKtaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKtaActionPerformed
+        new DaoLaporan().cetakKTA(MenuUtama.mod);
+    }//GEN-LAST:event_btnKtaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBatal;
+    private javax.swing.JButton btnKta;
     private javax.swing.JButton btnSimpan;
     private javax.swing.JButton btnUbahPP;
     private javax.swing.JButton btnUbahPass;

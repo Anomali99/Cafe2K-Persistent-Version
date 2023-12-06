@@ -37,9 +37,14 @@ public class CetakNota extends javax.swing.JDialog {
         pn_conten.revalidate();
     }
 
-    public CetakNota(java.awt.Frame parent, boolean modal, String id, String email) {
+    public CetakNota(java.awt.Frame parent, boolean modal, JasperPrint print, String email) {
         super(parent, modal);
         initComponents();
+        pn_conten.removeAll();
+        pn_conten.setLayout(new BorderLayout());
+        pn_conten.repaint();
+        pn_conten.add(new JRViewer(print));
+        pn_conten.revalidate();
         tf_email.setText(email);
     }
 

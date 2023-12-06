@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="157" pageHeight="250" orientation="Landscape" columnWidth="152" leftMargin="2" rightMargin="3" topMargin="2" bottomMargin="2" uuid="b2029499-1b15-4b84-9896-59cb9eb5f4ba">
+	<property name="ireport.zoom" value="2.3579476910000032"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="idPegawai" class="java.lang.String"/>
+	<field name="nama" class="java.lang.String"/>
+	<field name="level" class="java.lang.String"/>
+	<field name="foto" class="java.lang.Object"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="246" splitType="Stretch">
+			<image hAlign="Center" vAlign="Middle">
+				<reportElement x="0" y="0" width="152" height="246" uuid="257fe00d-8ed7-4763-8e01-5de11fd1ac59"/>
+				<imageExpression><![CDATA["C:\\Users\\fatiq\\Documents\\NetBeansProjects\\NewCafe2K\\src\\img\\KTACafe2K.jpg"]]></imageExpression>
+			</image>
+			<image hAlign="Center" vAlign="Middle">
+				<reportElement x="45" y="42" width="61" height="81" forecolor="#FFFFFF" backcolor="#FFFFFF" uuid="d3d1e692-7ac2-4368-84b9-00f594bbae8c"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<imageExpression><![CDATA[new java.io.ByteArrayInputStream($F{foto})]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="2" y="123" width="150" height="29" forecolor="#FFFFFF" uuid="f624456b-08f4-4837-8d60-3595cf0a6b6b"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Arial Black" size="12" isBold="true" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nama}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="2" y="152" width="150" height="13" forecolor="#FFFFFF" uuid="1b3b4a2a-4e26-4a9e-ae6d-b1ea6d8e4b82"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Arial" size="6" isBold="true" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{idPegawai}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="6" y="225" width="146" height="17" forecolor="#FFFFFF" uuid="7c028bc7-9876-49a8-bfe8-849d903ec069"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Arial Narrow" size="13" isBold="true" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{level}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="179" width="152" height="9" forecolor="#FFFFFF" uuid="5d588a32-ad6c-4060-98c4-0caad88808ff"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[Cafe2K merupakan cafe yang menyedikan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="188" width="152" height="9" forecolor="#FFFFFF" uuid="90d78186-915a-4ac8-95e3-363f487ee1f8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[berbagai kebutuhan konsumen. Cafe2K didirikan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="197" width="152" height="9" forecolor="#FFFFFF" uuid="738e058e-cd0c-457b-be34-e530de44a7a4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[sejak zaman batu.]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

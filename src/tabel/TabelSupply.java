@@ -4,6 +4,7 @@
  */
 package tabel;
 
+import dao.Rupiah;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
@@ -54,7 +55,7 @@ public class TabelSupply extends AbstractTableModel{
                 case 1 : return list.get(rowIndex).getTgl();
                 case 2 : return list.get(rowIndex).getPegawai().getNama();
                 case 3 : return list.get(rowIndex).getSupplier().getNama();
-                case 4 : return list.get(rowIndex).getTotal();
+                case 4 : return Rupiah.getRp(list.get(rowIndex).getTotal());
                 default : return null;
             }
             

@@ -313,7 +313,7 @@
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jPanelCustom6" min="-2" pref="101" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jPanelCustom7" min="-2" pref="96" max="-2" attributes="0"/>
+                                  <Component id="jPanelCustom7" min="-2" pref="190" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -535,7 +535,7 @@
                     <Property name="kiriBawah" type="int" value="10"/>
                   </Properties>
 
-                  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignCardLayout"/>
                   <SubComponents>
                     <Component class="javax.swing.JLabel" name="lbTotal">
                       <Properties>
@@ -549,8 +549,8 @@
                         <Property name="text" type="java.lang.String" value="Total"/>
                       </Properties>
                       <Constraints>
-                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
-                          <BorderConstraints direction="Center"/>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
+                          <CardConstraints cardName="card2"/>
                         </Constraint>
                       </Constraints>
                     </Component>

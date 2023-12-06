@@ -8,6 +8,7 @@ import dao.DaoLaporan;
 import dao.DaoMenu;
 import dao.DaoPelanggan;
 import dao.DaoPembelian;
+import dao.Rupiah;
 import java.awt.Color;
 import java.math.BigInteger;
 import java.text.SimpleDateFormat;
@@ -125,8 +126,6 @@ public class MenuPembelian extends javax.swing.JPanel {
         pnDetail = new javax.swing.JPanel();
         jPanelCustom2 = new custom.JPanelCustom();
         lbTgl = new javax.swing.JLabel();
-        jPanelCustom3 = new custom.JPanelCustom();
-        lbTotal = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel2 = new javax.swing.JLabel();
         tfNo = new javax.swing.JTextField();
@@ -144,6 +143,8 @@ public class MenuPembelian extends javax.swing.JPanel {
         btnBatal1 = new javax.swing.JButton();
         jPanelCustom4 = new custom.JPanelCustom();
         lbStatus = new javax.swing.JLabel();
+        jPanelCustom10 = new custom.JPanelCustom();
+        lbTotal = new javax.swing.JLabel();
         dateCoser = new com.toedter.calendar.JDateChooser();
 
         setLayout(new java.awt.CardLayout());
@@ -908,19 +909,6 @@ public class MenuPembelian extends javax.swing.JPanel {
         lbTgl.setText("Tanggal ");
         jPanelCustom2.add(lbTgl, java.awt.BorderLayout.CENTER);
 
-        jPanelCustom3.setBackground(new java.awt.Color(166, 145, 138));
-        jPanelCustom3.setKananAtas(10);
-        jPanelCustom3.setKananBawah(10);
-        jPanelCustom3.setKiriAtas(10);
-        jPanelCustom3.setKiriBawah(10);
-        jPanelCustom3.setLayout(new java.awt.BorderLayout());
-
-        lbTotal.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        lbTotal.setForeground(new java.awt.Color(79, 42, 24));
-        lbTotal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbTotal.setText("Total");
-        jPanelCustom3.add(lbTotal, java.awt.BorderLayout.CENTER);
-
         jSeparator2.setBackground(new java.awt.Color(79, 42, 24));
         jSeparator2.setForeground(new java.awt.Color(79, 42, 24));
 
@@ -1016,6 +1004,19 @@ public class MenuPembelian extends javax.swing.JPanel {
         lbStatus.setText("Total");
         jPanelCustom4.add(lbStatus, java.awt.BorderLayout.CENTER);
 
+        jPanelCustom10.setBackground(new java.awt.Color(166, 145, 138));
+        jPanelCustom10.setKananAtas(10);
+        jPanelCustom10.setKananBawah(10);
+        jPanelCustom10.setKiriAtas(10);
+        jPanelCustom10.setKiriBawah(10);
+        jPanelCustom10.setLayout(new java.awt.CardLayout());
+
+        lbTotal.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        lbTotal.setForeground(new java.awt.Color(79, 42, 24));
+        lbTotal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbTotal.setText("Total");
+        jPanelCustom10.add(lbTotal, "card2");
+
         javax.swing.GroupLayout pnDetailLayout = new javax.swing.GroupLayout(pnDetail);
         pnDetail.setLayout(pnDetailLayout);
         pnDetailLayout.setHorizontalGroup(
@@ -1029,7 +1030,7 @@ public class MenuPembelian extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanelCustom2, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanelCustom3, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jPanelCustom10, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1068,7 +1069,7 @@ public class MenuPembelian extends javax.swing.JPanel {
                         .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanelCustom2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanelCustom3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanelCustom10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1250,7 +1251,7 @@ public class MenuPembelian extends javax.swing.JPanel {
         Pembelian mb = servis.getByNo(tblConten.getValueAt(tblConten.getSelectedRow(), 1).toString());
         tfNo.setText(mb.getPembelianPK().getNoPembelian());
         lbTgl.setText(mb.getTgl());
-        lbTotal.setText(String.valueOf(mb.getTotal()));
+        lbTotal.setText(Rupiah.getRp(mb.getTotal()));
         lbIdPel.setText(mb.getPelanggan().getIdPelanggan());
         lbNamaPel.setText(mb.getPelanggan().getNama());
         lbIdPet.setText(mb.getPegawai().getIdPegawai());
@@ -1521,8 +1522,8 @@ public class MenuPembelian extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private custom.JPanelCustom jPanelCustom1;
+    private custom.JPanelCustom jPanelCustom10;
     private custom.JPanelCustom jPanelCustom2;
-    private custom.JPanelCustom jPanelCustom3;
     private custom.JPanelCustom jPanelCustom4;
     private custom.JPanelCustom jPanelCustom5;
     private custom.JPanelCustom jPanelCustom6;

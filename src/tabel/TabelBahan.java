@@ -4,6 +4,7 @@
  */
 package tabel;
 
+import dao.Rupiah;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
@@ -52,7 +53,7 @@ public class TabelBahan extends AbstractTableModel{
             switch (columnIndex-1){
                 case 0 : return list.get(rowIndex).getKodeBahan();
                 case 1 : return list.get(rowIndex).getNama();
-                case 2 : return list.get(rowIndex).getHarga();
+                case 2 : return Rupiah.getRp(list.get(rowIndex).getHarga());
                 case 3 : return list.get(rowIndex).getStok();
                 default : return null;
             }

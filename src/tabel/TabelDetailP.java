@@ -4,6 +4,7 @@
  */
 package tabel;
 
+import dao.Rupiah;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
@@ -56,9 +57,9 @@ public class TabelDetailP extends AbstractTableModel{
                 case 0 : return list.get(rowIndex).getMenu().getKodeMenu();
                 case 1 : return list.get(rowIndex).getMenu().getNama();
                 case 2 : return list.get(rowIndex).getKeterangan();
-                case 3 : return list.get(rowIndex).getMenu().getHarga();
+                case 3 : return Rupiah.getRp(list.get(rowIndex).getMenu().getHarga());
                 case 4 : return list.get(rowIndex).getJumlah();
-                case 5 : return list.get(rowIndex).getSubtotal();
+                case 5 : return Rupiah.getRp(list.get(rowIndex).getSubtotal());
                 default : return null;
             }
             
