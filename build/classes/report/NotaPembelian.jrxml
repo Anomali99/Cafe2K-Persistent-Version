@@ -6,46 +6,33 @@
 	<parameter name="no" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
+	<parameter name="tgl" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="total" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="idP" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="namaP" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="idS" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="namaS" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
 	<queryString>
-		<![CDATA[SELECT *,
- pl.nama as nama_pelanggan,
- pg.nama as nama_petugas,
- m.nama as nama_menu
-FROM pembelian p 
-RIGHT JOIN pelanggan pl
-ON p.id_pelanggan = pl.id_pelanggan
-RIGHT JOIN pegawai pg 
-ON p.id_pegawai = pg.id_pegawai
-RIGHT JOIN detail_pembelian db
-ON p.no_pembelian = db.no_pembelian
-RIGHT JOIN menu m
-ON db.kode_menu = m.kode_menu
-WHERE p.no_pembelian = $P{no}]]>
+		<![CDATA[]]>
 	</queryString>
-	<field name="id_pegawai" class="java.lang.String"/>
-	<field name="id_pelanggan" class="java.lang.String"/>
-	<field name="no_pembelian" class="java.lang.String"/>
-	<field name="tanggal" class="java.sql.Date"/>
-	<field name="total" class="java.lang.Long"/>
-	<field name="nama" class="java.lang.String"/>
-	<field name="alamat" class="java.lang.String"/>
-	<field name="telephone" class="java.lang.String"/>
-	<field name="email" class="java.lang.String"/>
-	<field name="level" class="java.lang.String"/>
-	<field name="username" class="java.lang.String"/>
-	<field name="password" class="java.lang.String"/>
-	<field name="foto" class="java.lang.Object"/>
-	<field name="kode_menu" class="java.lang.String"/>
+	<field name="menu.nama" class="java.lang.String"/>
+	<field name="menu.rpHarga" class="java.lang.String"/>
+	<field name="rpSubtotal" class="java.lang.String"/>
 	<field name="jumlah" class="java.lang.Integer"/>
-	<field name="subtotal" class="java.lang.Long"/>
-	<field name="keterangan" class="java.lang.String"/>
-	<field name="harga" class="java.lang.Long"/>
-	<field name="stok" class="java.lang.Integer"/>
-	<field name="nama_pelanggan" class="java.lang.String"/>
-	<field name="nama_petugas" class="java.lang.String"/>
-	<field name="nama_menu" class="java.lang.String"/>
 	<variable name="total_1" class="java.lang.Integer" resetType="Column" calculation="Count">
-		<variableExpression><![CDATA[$F{total}]]></variableExpression>
+		<variableExpression><![CDATA[$P{total}]]></variableExpression>
 	</variable>
 	<background>
 		<band splitType="Stretch"/>
@@ -79,7 +66,7 @@ WHERE p.no_pembelian = $P{no}]]>
 				<textElement verticalAlignment="Middle">
 					<font size="14" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{no_pembelian}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{no}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="0" y="83" width="101" height="18" uuid="3138f1e4-4482-4891-ab14-464dbd307dbb"/>
@@ -100,14 +87,14 @@ WHERE p.no_pembelian = $P{no}]]>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{nama_pelanggan}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{namaS}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="101" y="83" width="150" height="18" uuid="83d5551e-0cf8-4f53-8921-b3670ad31417"/>
 				<textElement verticalAlignment="Middle">
 					<font size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{id_pelanggan}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{idS}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="271" y="83" width="87" height="18" uuid="f8043cc3-fcfd-4d2b-b704-535f0eba162e"/>
@@ -128,19 +115,19 @@ WHERE p.no_pembelian = $P{no}]]>
 				<textElement verticalAlignment="Middle">
 					<font size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{nama_petugas}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{namaP}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="358" y="83" width="176" height="18" uuid="0bbeefc1-2249-413f-9391-76c3b74263cf"/>
 				<textElement verticalAlignment="Middle">
 					<font size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{id_pegawai}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{idP}]]></textFieldExpression>
 			</textField>
 			<textField pattern="EEEEE dd MMMMM yyyy">
 				<reportElement x="417" y="5" width="138" height="20" uuid="9d857d2c-85d2-42b8-8a61-f11f23a182fe"/>
 				<textElement textAlignment="Right" verticalAlignment="Bottom"/>
-				<textFieldExpression><![CDATA[$F{tanggal}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{tgl}]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageHeader>
@@ -243,7 +230,7 @@ WHERE p.no_pembelian = $P{no}]]>
 					<font size="13" isBold="true"/>
 					<paragraph rightIndent="5"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{total}]]></textFieldExpression>
 			</textField>
 		</band>
 	</columnHeader>
@@ -261,7 +248,7 @@ WHERE p.no_pembelian = $P{no}]]>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<paragraph leftIndent="5"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{nama_menu}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{menu.nama}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="237" y="0" width="138" height="20" uuid="101fc3f9-61e8-497b-b286-d8f507500aa2"/>
@@ -275,7 +262,7 @@ WHERE p.no_pembelian = $P{no}]]>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<paragraph leftIndent="5"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{harga}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{menu.rpHarga}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="375" y="0" width="42" height="20" uuid="efe035d1-dd6e-4419-b388-bf1f1f2e8c17"/>
@@ -301,7 +288,7 @@ WHERE p.no_pembelian = $P{no}]]>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<paragraph rightIndent="5"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{subtotal}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{rpSubtotal}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="0" y="0" width="22" height="20" uuid="af10b73d-b41d-4b07-a5fe-7e948cf7d5d3"/>

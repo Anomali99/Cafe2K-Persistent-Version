@@ -4,6 +4,7 @@
  */
 package view;
 
+import dao.DaoLaporan;
 import dao.DaoPetugas;
 import dao.Encrypt;
 import java.awt.Color;
@@ -65,6 +66,7 @@ public class MenuPetugas extends javax.swing.JPanel {
         btn_cari = new javax.swing.JButton();
         tf_cari = new javax.swing.JTextField();
         cbx_cari = new javax.swing.JComboBox<>();
+        btnKta = new javax.swing.JButton();
         pnTambah = new javax.swing.JPanel();
         jSeparator3 = new javax.swing.JSeparator();
         jLabel4 = new javax.swing.JLabel();
@@ -212,6 +214,26 @@ public class MenuPetugas extends javax.swing.JPanel {
         cbx_cari.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID", "NAMA", "ALAMAT" }));
         cbx_cari.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
 
+        btnKta.setBackground(new java.awt.Color(0, 200, 0));
+        btnKta.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnKta.setForeground(new java.awt.Color(0, 200, 0));
+        btnKta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/kartu.png"))); // NOI18N
+        btnKta.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnKtaMouseMoved(evt);
+            }
+        });
+        btnKta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnKtaMouseExited(evt);
+            }
+        });
+        btnKta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKtaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnDataLayout = new javax.swing.GroupLayout(pnData);
         pnData.setLayout(pnDataLayout);
         pnDataLayout.setHorizontalGroup(
@@ -230,7 +252,9 @@ public class MenuPetugas extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnHapus)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnBatal)))
+                                .addComponent(btnBatal)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnKta, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(pnDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(cbx_cari, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -259,7 +283,8 @@ public class MenuPetugas extends javax.swing.JPanel {
                     .addGroup(pnDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(btnBatal, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnHapus, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnTambah, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(btnTambah, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnKta, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 467, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -631,6 +656,7 @@ public class MenuPetugas extends javax.swing.JPanel {
     private void tblContenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblContenMouseClicked
         btnBatal.setVisible(true);
         btnHapus.setVisible(true);
+        btnKta.setVisible(true);
         btnTambah.setIcon(new ImageIcon(getClass().getResource("/img/edit1.png")));
     }//GEN-LAST:event_tblContenMouseClicked
 
@@ -729,12 +755,16 @@ public class MenuPetugas extends javax.swing.JPanel {
     }//GEN-LAST:event_btnSimpanMouseExited
 
     private void btnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanActionPerformed
-        if (validData()) {
-            if (jLabel3.getText().equalsIgnoreCase("Perbarui Data Petugas")) {
+        if (jLabel3.getText().equalsIgnoreCase("Perbarui Data Petugas")) {
+            if (cbxLevel.getSelectedIndex() == 0) {
+                JOptionPane.showMessageDialog(this, "Masukkan level petugas terlebih dahulu");
+            } else {
                 mod.setLevel(cbxLevel.getSelectedItem().toString());
                 servis.ubahData(mod);
                 back();
-            } else {
+            }
+        } else {
+            if (validData()) {
                 mod.setIdPegawai(tfId.getText());
                 mod.setNama(tfNama.getText());
                 mod.setAlamat(tfAlamat.getText());
@@ -761,11 +791,30 @@ public class MenuPetugas extends javax.swing.JPanel {
         unhide.setVisible(false);
     }//GEN-LAST:event_unhideMouseClicked
 
+    private void btnKtaMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnKtaMouseMoved
+        btnKta.setForeground(Color.white);
+        ImageIcon icon = new ImageIcon(getClass().getResource("/img/kartu1.png"));
+        btnKta.setIcon(icon);
+    }//GEN-LAST:event_btnKtaMouseMoved
+
+    private void btnKtaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnKtaMouseExited
+        btnKta.setForeground(new Color(0, 200, 0));
+        ImageIcon icon = new ImageIcon(getClass().getResource("/img/kartu.png"));
+        btnKta.setIcon(icon);
+    }//GEN-LAST:event_btnKtaMouseExited
+
+    private void btnKtaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKtaActionPerformed
+        String s = (String) tblConten.getValueAt(tblConten.getSelectedRow(), 1);
+        new DaoLaporan().cetakKTA(servis.getById(s));
+        jLabel1.requestFocus();
+    }//GEN-LAST:event_btnKtaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBatal;
     private javax.swing.JButton btnBatal1;
     private javax.swing.JButton btnHapus;
+    private javax.swing.JButton btnKta;
     private javax.swing.JButton btnSimpan;
     private javax.swing.JButton btnTambah;
     private javax.swing.JButton btnTambah1;
@@ -809,6 +858,7 @@ public class MenuPetugas extends javax.swing.JPanel {
         tbl.setData(servis.ambilData());
         btnBatal.setVisible(false);
         btnHapus.setVisible(false);
+        btnKta.setVisible(false);
         btnTambah.setIcon(new ImageIcon(getClass().getResource("/img/tambah1.png")));
         btnTambah.setVisible(true);
         jLabel1.requestFocus();

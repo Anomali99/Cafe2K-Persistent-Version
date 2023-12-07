@@ -4,6 +4,7 @@
  */
 package model;
 
+import dao.Rupiah;
 import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.Collection;
@@ -146,26 +147,42 @@ public class Menu implements Serializable {
     public String toString() {
         return "model.Menu[ kodeMenu=" + kodeMenu + " ]";
     }
-    
-    public String getAllBahan(){
+
+    public String getAllBahan() {
         String b = "";
-        for(DetailBahan db : detailBahanCollection){
-            if(b.equals(""))
+        for (DetailBahan db : detailBahanCollection) {
+            if (b.equals("")) {
                 b = db.getBahan().getNama() + " " + db.getJumlah().toString() + "x";
-            else
+            } else {
                 b = b + ", " + db.getBahan().getNama() + " " + db.getJumlah().toString() + "x";
+            }
         }
         return b;
     }
-    
-    public String getAllBahan(int i){
+
+    public String getAllBahan(int i) {
         String b = "";
-        for(DetailBahan db : detailBahanCollection){
+        for (DetailBahan db : detailBahanCollection) {
             int j = db.getJumlah() * i;
-            if(b.equals(""))
+            if (b.equals("")) {
                 b = db.getBahan().getNama() + " " + j + "x";
-            else
+            } else {
                 b = b + ", " + db.getBahan().getNama() + " " + j + "x";
+            }
+        }
+        return b;
+    }
+
+    public String getRpHarga() {
+        return Rupiah.getRp(harga);
+    }
+
+    public boolean isBahanCukup(int i) {
+        boolean b = true;
+        for (DetailBahan db : detailBahanCollection) {
+            if (db.getJumlah() * i > db.getBahan().getStok()) {
+                b = false;
+            }
         }
         return b;
     }

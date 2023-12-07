@@ -501,6 +501,8 @@ public class TambahMenu extends javax.swing.JDialog {
                 pk.setKodeMenu(mod.getKodeMenu());
                 bn.setDetailBahanPK(pk);
                 bn.setJumlah(Integer.parseInt(tbl.getValueAt(i, 2).toString()));
+                bn.setMenu(mod);
+                bn.setBahan(new DaoBahan().getByKode(tbl.getValueAt(i, 0).toString()));
                 bahan.add(bn);
             }
             mod.setDetailBahanCollection(bahan);

@@ -4,6 +4,7 @@
  */
 package model;
 
+import dao.Rupiah;
 import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.Collection;
@@ -132,6 +133,10 @@ public class Bahan implements Serializable {
     @Override
     public String toString() {
         return "model.Bahan[ kodeBahan=" + kodeBahan + " ]";
+    }
+
+    public String getRpHarga() {
+        return Rupiah.getRp(harga);
     }
     
 }

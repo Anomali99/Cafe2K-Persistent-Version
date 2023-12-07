@@ -43,6 +43,7 @@ public class MenuPembelian extends javax.swing.JPanel {
     private final TabelPembelian tbl = new TabelPembelian();
     private final TabelDetailP tblP = new TabelDetailP();
     private ServisPembelian servis = new DaoPembelian();
+    private Menu mod = new Menu();
 
     public MenuPembelian() {
         initComponents();
@@ -1233,6 +1234,13 @@ public class MenuPembelian extends javax.swing.JPanel {
         pnMain.repaint();
         pnMain.revalidate();
         resetTable();
+        Date now = new Date();
+        SimpleDateFormat nonformat = new SimpleDateFormat("dd-MM-yyyy");
+        Pelanggan mod = new DaoPelanggan().getById("P000000001");
+        tfNama21.setText(mod.getNama());
+        tfId21.setText(mod.getIdPelanggan());
+        tfTgl.setText(nonformat.format(now));
+        tfNo.setText(servis.getNomer());
     }//GEN-LAST:event_btnTambahActionPerformed
 
     private void btnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusActionPerformed
@@ -1272,7 +1280,7 @@ public class MenuPembelian extends javax.swing.JPanel {
 
     private void btnBatal1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBatal1ActionPerformed
         String no = tfNo.getText();
-        new DaoLaporan().cetakNotaPembelian(no);
+        new DaoLaporan().cetakNotaPembelian(servis.getByNo(no));
     }//GEN-LAST:event_btnBatal1ActionPerformed
 
     private void btnBatal21MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBatal21MouseMoved
@@ -1355,6 +1363,7 @@ public class MenuPembelian extends javax.swing.JPanel {
         PilihMenu pn = new PilihMenu(null, true);
         pn.setVisible(true);
         try {
+            this.mod = pn.mod;
             tfKode21.setText(pn.mod.getKodeMenu());
             tfNamaMenu21.setText(pn.mod.getNama());
             tfHarga.setText(String.valueOf(pn.mod.getHarga()));
@@ -1408,16 +1417,36 @@ public class MenuPembelian extends javax.swing.JPanel {
                 }
             }
             if (c == -1) {
-                tbl1.addRow(new Object[]{kode, nama, harga, jml, subtotal, ket});
+                if (jml > mod.getStok()) {
+                    JOptionPane.showMessageDialog(this, "Stok " + mod.getNama() + " tersisa " + mod.getStok());
+                } else {
+                    tbl1.addRow(new Object[]{kode, nama, harga, jml, subtotal, ket});
+                    resetTable();
+                }
             } else {
                 int nJml = Integer.parseInt(tbl1.getValueAt(c, 3).toString()) + jml;
                 long nSubtotal = Long.parseLong(tbl1.getValueAt(c, 4).toString()) + subtotal;
-                tbl1.setValueAt(nJml, c, 3);
-                tbl1.setValueAt(nSubtotal, c, 4);
-                tbl1.setValueAt(ket, c, 4);
+                if (btnTambah21.getText().equals("TAMBAH MENU")) {
+                    if (nJml > mod.getStok()) {
+                        JOptionPane.showMessageDialog(this, "Stok " + mod.getNama() + " tersisa " + mod.getStok());
+                    } else {
+                        tbl1.setValueAt(nJml, c, 3);
+                        tbl1.setValueAt(nSubtotal, c, 4);
+                        tbl1.setValueAt(ket, c, 4);
+                        resetTable();
+                    }
+                } else {
+                    if (jml > mod.getStok()) {
+                        JOptionPane.showMessageDialog(this, "Stok " + mod.getNama() + " tersisa " + mod.getStok());
+                    } else {
+                        tbl1.setValueAt(jml, c, 3);
+                        tbl1.setValueAt(subtotal, c, 4);
+                        tbl1.setValueAt(ket, c, 4);
+                        resetTable();
+                    }
+                }
             }
             tblMn21.setModel(tbl1);
-            resetTable();
             setTotal();
         }
         jLabel1.requestFocus();
@@ -1455,7 +1484,14 @@ public class MenuPembelian extends javax.swing.JPanel {
     }//GEN-LAST:event_btnUbah21MouseExited
 
     private void btnUbah21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUbah21ActionPerformed
-
+        this.mod = new DaoMenu().getByKode(tblMn21.getValueAt(tblMn21.getSelectedRow(), 0).toString());
+        tfKode21.setText(mod.getKodeMenu());
+        tfNamaMenu21.setText(mod.getNama());
+        tfHarga.setText(String.valueOf(mod.getHarga()));
+        tfJml21.setText(tblMn21.getValueAt(tblMn21.getSelectedRow(), 3).toString());
+        tfSubtotal21.setText(tblMn21.getValueAt(tblMn21.getSelectedRow(), 4).toString());
+        tfKet21.setText(tblMn21.getValueAt(tblMn21.getSelectedRow(), 5).toString());
+        btnTambah21.setText("PERBARUI MENU");
     }//GEN-LAST:event_btnUbah21ActionPerformed
 
     private void btnBatal22MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBatal22MouseMoved
@@ -1566,6 +1602,7 @@ public class MenuPembelian extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void resetData() {
+        jLabel1.requestFocus();
         pnMain.removeAll();
         pnMain.add(pnData);
         pnMain.repaint();
@@ -1576,7 +1613,10 @@ public class MenuPembelian extends javax.swing.JPanel {
         pnDetail.setVisible(false);
         btnTambah.setVisible(true);
         dateCoser.setVisible(false);
-        jLabel1.requestFocus();
+        MenuUtama.setAktif(true);
+        btnTambah.setForeground(new Color(79, 42, 24));
+        Icon tambah = new ImageIcon(getClass().getResource("/img/tambah1.png"));
+        btnTambah.setIcon(tambah);
     }
 
     private void setColWidht(JTable tb, int[] noCol, int[] noColW) {
@@ -1592,7 +1632,8 @@ public class MenuPembelian extends javax.swing.JPanel {
         btnHapus21.setVisible(false);
         btnUbah21.setVisible(false);
         btnBatal22.setVisible(false);
-        tblMn21.setSelectionMode(0);
+        tblMn21.clearSelection();
+        btnTambah21.setText("TAMBAH MENU");
 
         tfKode21.setText("");
         tfNamaMenu21.setText("");
@@ -1600,13 +1641,6 @@ public class MenuPembelian extends javax.swing.JPanel {
         tfHarga.setText("0");
         tfSubtotal21.setText("0");
         tfKet21.setText("Tidak Ada");
-        Date now = new Date();
-        SimpleDateFormat nonformat = new SimpleDateFormat("dd-MM-yyyy");
-        Pelanggan mod = new DaoPelanggan().getById("P000000001");
-        tfNama21.setText(mod.getNama());
-        tfId21.setText(mod.getIdPelanggan());
-        tfTgl.setText(nonformat.format(now));
-        tfNo.setText(servis.getNomer());
     }
 
     private void setTotal() {
@@ -1626,9 +1660,6 @@ public class MenuPembelian extends javax.swing.JPanel {
         } else if (tfJml21.getText().equals("") || tfJml21.getText().equals("0")) {
             valid = false;
             JOptionPane.showMessageDialog(this, "Masukkan jumlah pesanan terlebih dahulu");
-//        }else if (Integer.parseInt(tfJml21.getText())>new DaoMenu().getByKode(tfKode21.getText()).getStok()) {
-//            valid = false;
-//            JOptionPane.showMessageDialog(this, "Stok Menu kurang dari "+tfJml21.getText());
         }
         return valid;
     }

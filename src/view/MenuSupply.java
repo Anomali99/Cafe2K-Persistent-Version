@@ -1235,7 +1235,7 @@ public class MenuSupply extends javax.swing.JPanel {
     }//GEN-LAST:event_btnBatal1MouseExited
 
     private void btnBatal1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBatal1ActionPerformed
-        new DaoLaporan().cetakNotaSupply(tfNo.getText());
+        new DaoLaporan().cetakNotaSupply(servis.getByNo(tfNo.getText()));
     }//GEN-LAST:event_btnBatal1ActionPerformed
 
     private void btnBatal2MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBatal2MouseMoved
@@ -1532,6 +1532,7 @@ public class MenuSupply extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void resetData() {
+        jLabel1.requestFocus();
         tblConten.setModel(tbl);
         tblConten1.setModel(tblP);
         int[] tbC = {0, 1, 2};
@@ -1546,7 +1547,9 @@ public class MenuSupply extends javax.swing.JPanel {
         pnDetail.setVisible(false);
         btnTambah.setVisible(true);
         dateCoser.setVisible(false);
-        jLabel1.requestFocus();
+        btnTambah.setForeground(new Color(79, 42, 24));
+        Icon tambah = new ImageIcon(getClass().getResource("/img/tambah1.png"));
+        btnTambah.setIcon(tambah);
     }
 
     private void setColWidht(JTable tb, int[] noCol, int[] noColW) {

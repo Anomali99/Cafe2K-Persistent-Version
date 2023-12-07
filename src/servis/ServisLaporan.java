@@ -4,7 +4,7 @@
  */
 package servis;
 
-import model.Pegawai;
+import model.*;
 import net.sf.jasperreports.engine.JasperPrint;
 
 /**
@@ -12,7 +12,7 @@ import net.sf.jasperreports.engine.JasperPrint;
  * @author fatiq
  */
 public interface ServisLaporan {
-    JasperPrint cetakNotaPembelian(String no);
-    JasperPrint cetakNotaSupply(String no);
+    JasperPrint cetakNotaPembelian(Pembelian mod);
+    JasperPrint cetakNotaSupply(Supply mod);
     JasperPrint cetakKTA(Pegawai mod);
 }

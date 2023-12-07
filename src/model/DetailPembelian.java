@@ -4,6 +4,7 @@
  */
 package model;
 
+import dao.Rupiah;
 import java.io.Serializable;
 import java.math.BigInteger;
 import javax.persistence.Column;
@@ -136,6 +137,10 @@ public class DetailPembelian implements Serializable {
     @Override
     public String toString() {
         return "model.DetailPembelian[ detailPembelianPK=" + detailPembelianPK + " ]";
+    }
+
+    public String getRpSubtotal() {
+        return Rupiah.getRp(subtotal);
     }
     
 }

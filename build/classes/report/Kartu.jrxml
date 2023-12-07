@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="157" pageHeight="250" orientation="Landscape" columnWidth="152" leftMargin="2" rightMargin="3" topMargin="2" bottomMargin="2" uuid="b2029499-1b15-4b84-9896-59cb9eb5f4ba">
-	<property name="ireport.zoom" value="2.3579476910000032"/>
+	<property name="ireport.zoom" value="2.5937424601000076"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<field name="idPegawai" class="java.lang.String"/>
@@ -13,19 +13,12 @@
 	<title>
 		<band height="246" splitType="Stretch">
 			<image hAlign="Center" vAlign="Middle">
-				<reportElement x="0" y="0" width="152" height="246" uuid="257fe00d-8ed7-4763-8e01-5de11fd1ac59"/>
-				<imageExpression><![CDATA["C:\\Users\\fatiq\\Documents\\NetBeansProjects\\NewCafe2K\\src\\img\\KTACafe2K.jpg"]]></imageExpression>
+				<reportElement x="45" y="58" width="62" height="59" uuid="a9ac8c49-b2bf-4ae2-b354-ae4d987cb9d3"/>
+				<imageExpression><![CDATA[new java.io.ByteArrayInputStream($F{foto})]]></imageExpression>
 			</image>
 			<image hAlign="Center" vAlign="Middle">
-				<reportElement x="45" y="42" width="61" height="81" forecolor="#FFFFFF" backcolor="#FFFFFF" uuid="d3d1e692-7ac2-4368-84b9-00f594bbae8c"/>
-				<box>
-					<pen lineWidth="0.0"/>
-					<topPen lineWidth="0.0"/>
-					<leftPen lineWidth="0.0"/>
-					<bottomPen lineWidth="0.0"/>
-					<rightPen lineWidth="0.0"/>
-				</box>
-				<imageExpression><![CDATA[new java.io.ByteArrayInputStream($F{foto})]]></imageExpression>
+				<reportElement x="0" y="0" width="152" height="246" uuid="257fe00d-8ed7-4763-8e01-5de11fd1ac59"/>
+				<imageExpression><![CDATA["C:\\Users\\fatiq\\Documents\\NetBeansProjects\\NewCafe2K\\src\\img\\KTACafe2K.png"]]></imageExpression>
 			</image>
 			<textField>
 				<reportElement x="2" y="123" width="150" height="29" forecolor="#FFFFFF" uuid="f624456b-08f4-4837-8d60-3595cf0a6b6b"/>

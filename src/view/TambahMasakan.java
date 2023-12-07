@@ -528,6 +528,7 @@ public class TambahMasakan extends javax.swing.JDialog {
         lbKom.setVisible(true);
 
         DefaultTableModel tbl = (DefaultTableModel) tblMenu.getModel();
+        modM = new DaoMenu().getByKode(tbl.getValueAt(tblMenu.getSelectedRow(), 0).toString());
         tfKode.setText(tbl.getValueAt(tblMenu.getSelectedRow(), 0).toString());
         tfNama.setText(tbl.getValueAt(tblMenu.getSelectedRow(), 1).toString());
         tfJml.setText(tbl.getValueAt(tblMenu.getSelectedRow(), 3).toString());
@@ -563,6 +564,7 @@ public class TambahMasakan extends javax.swing.JDialog {
             lbJml.setVisible(true);
             lbKom.setVisible(true);
         } else {
+            int jml = Integer.parseInt(tfJml.getText());
             int c = -1;
             for (int i = 0; i < tbl.getRowCount(); i++) {
                 if (tbl.getValueAt(i, 0).toString().equals(tfKode.getText())) {
@@ -571,19 +573,33 @@ public class TambahMasakan extends javax.swing.JDialog {
                 }
             }
             if (c == -1) {
-                tbl.addRow(new Object[]{tfKode.getText(), tfNama.getText(), modM.getAllBahan(Integer.parseInt(tfJml.getText())), tfJml.getText()});
+                if (modM.isBahanCukup(jml)) {
+                    tbl.addRow(new Object[]{tfKode.getText(), tfNama.getText(), modM.getAllBahan(Integer.parseInt(tfJml.getText())), tfJml.getText()});
+                    reset();
+                } else {
+                    JOptionPane.showMessageDialog(this, "Bahan tidak cukup");
+                }
             } else {
                 int k = Integer.parseInt(tbl.getValueAt(c, 3).toString());
-                int j = Integer.parseInt(tfJml.getText()) + k;
+                int j = jml + k;
                 if (btnTambah.getText().equals("Tambah Menu")) {
-                    tbl.setValueAt(j, c, 3);
-                    tbl.setValueAt(modM.getAllBahan(j), c, 2);
+                    if (modM.isBahanCukup(jml)) {
+                        tbl.setValueAt(j, c, 3);
+                        tbl.setValueAt(modM.getAllBahan(j), c, 2);
+                        reset();
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Bahan tidak cukup");
+                    }
                 } else {
-                    tbl.setValueAt(tfJml.getText(), c, 3);
-                    tbl.setValueAt(modM.getAllBahan(Integer.parseInt(tfJml.getText())), c, 2);
+                    if (modM.isBahanCukup(jml)) {
+                        tbl.setValueAt(tfJml.getText(), c, 3);
+                        tbl.setValueAt(modM.getAllBahan(jml), c, 2);
+                        reset();
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Bahan tidak cukup");
+                    }
                 }
             }
-            reset();
         }
         jLabel1.requestFocus();
     }//GEN-LAST:event_btnTambahActionPerformed
@@ -594,8 +610,12 @@ public class TambahMasakan extends javax.swing.JDialog {
 
     private void tfJmlKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfJmlKeyTyped
         char a = evt.getKeyChar();
-        if (!Character.isDigit(a))
+        if (!Character.isDigit(a)) {
             evt.consume();
+        } else {
+            String s = tfJml.getText() + String.copyValueOf(new char[]{a});
+            tfKom.setText(modM.getAllBahan(Integer.parseInt(s)));
+        }
     }//GEN-LAST:event_tfJmlKeyTyped
 
     private void btnTambahMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTambahMouseExited
@@ -697,13 +717,10 @@ public class TambahMasakan extends javax.swing.JDialog {
 
     private boolean validData() {
         boolean valid = true;
-//        if (tfKode.getText().equals("")) {
-//            valid = false;
-//            JOptionPane.showMessageDialog(this, "Masukkan menu terlebih dahulu");
-//        } else if (modM.isKurang()) {
-//            valid = false;
-//            JOptionPane.showMessageDialog(this, "Stok bahan tidak mencukupi");
-//        }
+        if (tblMenu.getRowCount() == 0) {
+            valid = false;
+            JOptionPane.showMessageDialog(this, "Masukkan menu terlebih dahulu");
+        }
         return valid;
     }
 

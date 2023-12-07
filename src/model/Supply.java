@@ -4,6 +4,7 @@
  */
 package model;
 
+import dao.Rupiah;
 import java.io.Serializable;
 import java.math.BigInteger;
 import java.text.ParseException;
@@ -166,6 +167,10 @@ public class Supply implements Serializable {
         } catch (ParseException e) {
             e.printStackTrace();
         }
+    }
+    
+    public String getRpTotal(){
+        return Rupiah.getRp(total);
     }
     
 }
