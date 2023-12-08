@@ -39,6 +39,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Memasak.getByTanggal", query = "SELECT m FROM Memasak m WHERE m.tanggal = :tanggal ORDER BY m.memasakPK.noMasak"),
     @NamedQuery(name = "Memasak.getByKeterangan", query = "SELECT m FROM Memasak m WHERE LOWER(m.keterangan) LIKE LOWER(:keterangan) ORDER BY m.memasakPK.noMasak"),
     @NamedQuery(name = "Memasak.getByNO", query = "SELECT m FROM Memasak m WHERE LOWER(m.memasakPK.noMasak) LIKE LOWER(:noMasak) ORDER BY m.memasakPK.noMasak"),
+    @NamedQuery(name = "Memasak.getPerBulan", query = "SELECT m FROM Memasak m WHERE m.tanggal BETWEEN :tglAwal AND :tglAkhir ORDER BY m.memasakPK.noMasak"),
     @NamedQuery(name = "Memasak.getByMenu", query = "SELECT m FROM Memasak m WHERE m.memasakPK.noMasak IN (SELECT dm.detailMasakPK.noMasak FROM DetailMasak dm WHERE LOWER(dm.menu.nama) LIKE LOWER(:menu)) ORDER BY m.memasakPK.noMasak"),
     @NamedQuery(name = "Memasak.getNomer", query = "SELECT SUBSTRING(m.memasakPK.noMasak, LENGTH(m.memasakPK.noMasak) - 2) AS nomor FROM Memasak m WHERE m.memasakPK.noMasak LIKE 'C%' ORDER BY m.memasakPK.noMasak DESC")})
 public class Memasak implements Serializable {

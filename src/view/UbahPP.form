@@ -117,7 +117,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="tfFoto" min="-2" pref="163" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="btnTambah" min="-2" pref="27" max="-2" attributes="0"/>
+                              <Component id="btnTambah" pref="27" max="32767" attributes="0"/>
                           </Group>
                           <Component id="btnSimpan" alignment="0" max="32767" attributes="0"/>
                           <Component id="btnBatal" max="32767" attributes="0"/>

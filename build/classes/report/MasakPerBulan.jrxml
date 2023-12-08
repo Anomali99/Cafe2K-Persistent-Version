@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4217ec09-0f50-4c9a-a744-e887afe45233">
 	<property name="ireport.zoom" value="1.7715610000000053"/>
 	<property name="ireport.x" value="5"/>
-	<property name="ireport.y" value="192"/>
+	<property name="ireport.y" value="0"/>
 	<parameter name="bulan" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -15,12 +15,11 @@
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
-	<field name="pembelianPK.noPembelian" class="java.lang.String"/>
+	<field name="memasakPK.noMasak" class="java.lang.String"/>
 	<field name="tanggal" class="java.util.Date"/>
 	<field name="pegawai.idPegawai" class="java.lang.String"/>
 	<field name="pegawai.nama" class="java.lang.String"/>
-	<field name="rpTotal" class="java.lang.String"/>
-	<field name="status" class="java.lang.String"/>
+	<field name="allMenu" class="java.lang.String"/>
 	<variable name="total_1" class="java.lang.Integer" resetType="Column" calculation="Count">
 		<variableExpression><![CDATA[$P{total}]]></variableExpression>
 	</variable>
@@ -31,42 +30,42 @@
 		<band splitType="Stretch"/>
 	</title>
 	<pageHeader>
-		<band height="165" splitType="Stretch">
+		<band height="162" splitType="Stretch">
 			<staticText>
-				<reportElement x="2" y="99" width="63" height="26" uuid="de9e6067-c239-4371-9c65-0571b31ae054"/>
+				<reportElement x="1" y="99" width="63" height="26" uuid="de9e6067-c239-4371-9c65-0571b31ae054"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font size="14" isBold="true" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[Bulan   :]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="65" y="99" width="138" height="26" uuid="d15d0ae2-e1ef-470c-a3ae-19bd6b392f9d"/>
+				<reportElement x="64" y="99" width="138" height="26" uuid="d15d0ae2-e1ef-470c-a3ae-19bd6b392f9d"/>
 				<textElement verticalAlignment="Middle">
 					<font size="14" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{bulan}]]></textFieldExpression>
 			</textField>
 			<textField pattern="EEEEE dd MMMMM yyyy">
-				<reportElement x="431" y="79" width="125" height="20" uuid="5c8edd2d-3e1c-4cf0-a361-19339e14f8a5"/>
+				<reportElement x="430" y="79" width="125" height="20" uuid="5c8edd2d-3e1c-4cf0-a361-19339e14f8a5"/>
 				<textElement textAlignment="Right"/>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="2" y="125" width="63" height="26" uuid="4af87b22-c911-4a64-bbc7-a506ffd3b9e9"/>
+				<reportElement x="1" y="125" width="63" height="26" uuid="4af87b22-c911-4a64-bbc7-a506ffd3b9e9"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font size="14" isBold="true" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[Tahun   :]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="65" y="125" width="138" height="26" uuid="59888251-6840-47c7-a7a7-56a99f0016bf"/>
+				<reportElement x="64" y="125" width="138" height="26" uuid="59888251-6840-47c7-a7a7-56a99f0016bf"/>
 				<textElement verticalAlignment="Middle">
 					<font size="14" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{tahun}]]></textFieldExpression>
 			</textField>
 			<image hAlign="Center" vAlign="Middle">
-				<reportElement x="1" y="0" width="555" height="79" uuid="8d1d836b-2cae-498e-8015-d0722d2ce484"/>
+				<reportElement x="0" y="0" width="555" height="79" uuid="8d1d836b-2cae-498e-8015-d0722d2ce484"/>
 				<imageExpression><![CDATA[getClass().getResource("/img/NotaCafe2K.png")]]></imageExpression>
 			</image>
 		</band>
@@ -74,7 +73,7 @@
 	<columnHeader>
 		<band height="56" splitType="Stretch">
 			<staticText>
-				<reportElement x="243" y="36" width="139" height="20" uuid="6239de7d-d4b0-41bc-9c9c-d542ae5e5abb"/>
+				<reportElement x="217" y="36" width="126" height="20" uuid="6239de7d-d4b0-41bc-9c9c-d542ae5e5abb"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -88,7 +87,7 @@
 				<text><![CDATA[Pegawai]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="1" y="36" width="87" height="20" uuid="ef10001d-9c5f-4ad6-8f74-c5e00b9606f6"/>
+				<reportElement x="1" y="36" width="76" height="20" uuid="ef10001d-9c5f-4ad6-8f74-c5e00b9606f6"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -99,10 +98,10 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[NO Pembelian]]></text>
+				<text><![CDATA[NO Masak]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="177" y="36" width="66" height="20" uuid="581ccb6e-6080-46a4-a6a7-e9e0d9e8e590"/>
+				<reportElement x="151" y="36" width="66" height="20" uuid="581ccb6e-6080-46a4-a6a7-e9e0d9e8e590"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -116,7 +115,7 @@
 				<text><![CDATA[ID]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="88" y="36" width="89" height="20" uuid="1320454b-b4d8-4c98-aa0a-b887ce178b63"/>
+				<reportElement x="77" y="36" width="74" height="20" uuid="1320454b-b4d8-4c98-aa0a-b887ce178b63"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -130,7 +129,7 @@
 				<text><![CDATA[Tanggal]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="382" y="36" width="89" height="20" uuid="32e75a00-4c09-46c0-bb82-9bf293a58170"/>
+				<reportElement x="343" y="36" width="212" height="20" uuid="86b7e246-9d4d-4d9b-9eab-9bb21df4da7a"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -141,42 +140,14 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[Total]]></text>
+				<text><![CDATA[Menu]]></text>
 			</staticText>
-			<staticText>
-				<reportElement x="471" y="36" width="84" height="20" uuid="5ac93176-51db-40d4-b41e-472f91a9e3d9"/>
-				<box>
-					<pen lineWidth="1.0"/>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[Status]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="1" y="0" width="133" height="26" uuid="30dd0461-1684-4c0d-8827-ff961f6cfab2"/>
-				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font size="14" isBold="true" isUnderline="false"/>
-				</textElement>
-				<text><![CDATA[Total Pendapatan  :]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="134" y="0" width="138" height="26" uuid="17cc901b-1a92-4734-95df-82129bab0c84"/>
-				<textElement verticalAlignment="Middle">
-					<font size="14" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{total}]]></textFieldExpression>
-			</textField>
 		</band>
 	</columnHeader>
 	<detail>
 		<band height="20" splitType="Stretch">
 			<textField>
-				<reportElement x="243" y="0" width="139" height="20" uuid="101fc3f9-61e8-497b-b286-d8f507500aa2"/>
+				<reportElement x="217" y="0" width="126" height="20" uuid="101fc3f9-61e8-497b-b286-d8f507500aa2"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -190,7 +161,7 @@
 				<textFieldExpression><![CDATA[$F{pegawai.nama}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="1" y="0" width="87" height="20" uuid="ea3f9779-860f-4b5e-87d7-cab8a6a6fab7"/>
+				<reportElement x="1" y="0" width="76" height="20" uuid="ea3f9779-860f-4b5e-87d7-cab8a6a6fab7"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -201,10 +172,10 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<paragraph leftIndent="5"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{pembelianPK.noPembelian}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{memasakPK.noMasak}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="177" y="0" width="66" height="20" uuid="2b59f04f-3839-4165-8aba-629ccb50c1fd"/>
+				<reportElement x="151" y="0" width="66" height="20" uuid="2b59f04f-3839-4165-8aba-629ccb50c1fd"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -218,7 +189,7 @@
 				<textFieldExpression><![CDATA[$F{pegawai.idPegawai}]]></textFieldExpression>
 			</textField>
 			<textField pattern="dd/MM/yyyy">
-				<reportElement x="88" y="0" width="89" height="20" uuid="4b288ec8-6e15-42f2-86fd-cf186fef4643"/>
+				<reportElement x="77" y="0" width="74" height="20" uuid="4b288ec8-6e15-42f2-86fd-cf186fef4643"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -232,7 +203,7 @@
 				<textFieldExpression><![CDATA[$F{tanggal}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="382" y="0" width="89" height="20" uuid="ed6cb876-1a84-4924-955a-c62c2f385774"/>
+				<reportElement x="343" y="0" width="212" height="20" uuid="42677168-0893-4cd8-9575-e55ca22e116c"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -243,21 +214,7 @@
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<paragraph leftIndent="5"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{rpTotal}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="471" y="0" width="84" height="20" uuid="4b72b54c-98f5-4869-a458-61799181b633"/>
-				<box>
-					<pen lineWidth="1.0"/>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<paragraph leftIndent="5"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{status}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{allMenu}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

@@ -17,4 +17,6 @@ public interface ServisLaporan {
     JasperPrint cetakNotaSupply(Supply mod);
     JasperPrint cetakKTA(Pegawai mod);
     JasperPrint cetakPembelianPerBulan(JPanel pn,int bulan, int tahun);
+    JasperPrint cetakSupplyPerBulan(JPanel pn,int bulan, int tahun);
+    JasperPrint cetakMasakPerBulan(JPanel pn,int bulan, int tahun);
 }

@@ -5,6 +5,9 @@
 package view;
 
 import dao.DaoLaporan;
+import java.awt.Color;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  *
@@ -17,6 +20,8 @@ public class MenuLaporan extends javax.swing.JPanel {
      */
     public MenuLaporan() {
         initComponents();
+        pnTgl.setVisible(false);
+        btnLoad.setVisible(false);
     }
 
     /**
@@ -28,16 +33,16 @@ public class MenuLaporan extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jSpinField1 = new com.toedter.components.JSpinField();
         pnMain = new javax.swing.JPanel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jPanel3 = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
-        bulan = new com.toedter.calendar.JMonthChooser();
-        tahun = new com.toedter.calendar.JYearChooser();
-        jButton1 = new javax.swing.JButton();
+        cbxPilih = new javax.swing.JComboBox<>();
+        pnTgl = new javax.swing.JPanel();
+        bulan = new javax.swing.JComboBox<>();
+        tahun = new javax.swing.JSpinner();
+        btnLoad = new javax.swing.JButton();
         pnLaporan = new javax.swing.JPanel();
 
         setLayout(new java.awt.CardLayout());
@@ -55,27 +60,38 @@ public class MenuLaporan extends javax.swing.JPanel {
         jPanel1.setBackground(new java.awt.Color(79, 42, 24));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(79, 42, 24)));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-Pilih Laporan-", "Pembelian per Bulan", "Supply per Bulan", "Masak per Bulan", "Pendapatan per Bulan", "Pengeluaran per Bulan" }));
+        cbxPilih.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-Pilih Laporan-", "Pembelian per Bulan", "Supply per Bulan", "Masak per Bulan" }));
+        cbxPilih.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxPilihActionPerformed(evt);
+            }
+        });
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel3.setLayout(new java.awt.CardLayout());
+        pnTgl.setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        bulan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember" }));
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        tahun.setModel(new javax.swing.SpinnerNumberModel(1000, 1000, 9999, 1));
+        tahun.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tahunKeyTyped(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnTglLayout = new javax.swing.GroupLayout(pnTgl);
+        pnTgl.setLayout(pnTglLayout);
+        pnTglLayout.setHorizontalGroup(
+            pnTglLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnTglLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(bulan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(tahun, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addGroup(pnTglLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(bulan, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(tahun))
+                .addContainerGap())
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        pnTglLayout.setVerticalGroup(
+            pnTglLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnTglLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(bulan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -83,15 +99,23 @@ public class MenuLaporan extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel3.add(jPanel4, "card2");
-
-        jButton1.setBackground(new java.awt.Color(166, 145, 138));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(166, 145, 138));
-        jButton1.setText("LOAD");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnLoad.setBackground(new java.awt.Color(166, 145, 138));
+        btnLoad.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnLoad.setForeground(new java.awt.Color(166, 145, 138));
+        btnLoad.setText("LOAD");
+        btnLoad.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnLoadMouseMoved(evt);
+            }
+        });
+        btnLoad.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnLoadMouseExited(evt);
+            }
+        });
+        btnLoad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnLoadActionPerformed(evt);
             }
         });
 
@@ -102,21 +126,21 @@ public class MenuLaporan extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(cbxPilih, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnTgl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnLoad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cbxPilih, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnTgl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
-                .addContainerGap(331, Short.MAX_VALUE))
+                .addComponent(btnLoad)
+                .addContainerGap(324, Short.MAX_VALUE))
         );
 
         pnLaporan.setBackground(new java.awt.Color(255, 255, 255));
@@ -126,7 +150,7 @@ public class MenuLaporan extends javax.swing.JPanel {
         pnLaporan.setLayout(pnLaporanLayout);
         pnLaporanLayout.setHorizontalGroup(
             pnLaporanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 646, Short.MAX_VALUE)
         );
         pnLaporanLayout.setVerticalGroup(
             pnLaporanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -139,17 +163,16 @@ public class MenuLaporan extends javax.swing.JPanel {
             pnMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jSeparator1)
             .addGroup(pnMainLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(pnMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnMainLayout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(jLabel1)
-                        .addGap(0, 551, Short.MAX_VALUE))
-                    .addGroup(pnMainLayout.createSequentialGroup()
-                        .addContainerGap()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(pnLaporan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(6, 6, 6))
+                        .addComponent(pnLaporan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(pnMainLayout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         pnMainLayout.setVerticalGroup(
             pnMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -168,25 +191,66 @@ public class MenuLaporan extends javax.swing.JPanel {
         add(pnMain, "card3");
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnLoadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoadActionPerformed
         // TODO add your handling code here:
-        new DaoLaporan().cetakPembelianPerBulan(pnLaporan, bulan.getMonth(), tahun.getYear());
-       
-    }//GEN-LAST:event_jButton1ActionPerformed
+        int bln = bulan.getSelectedIndex();
+        int th = Integer.parseInt(tahun.getValue().toString());
+        switch (cbxPilih.getSelectedIndex()) {
+            case 1:
+                new DaoLaporan().cetakPembelianPerBulan(pnLaporan, bln, th);
+                break;
+            case 2:
+                new DaoLaporan().cetakSupplyPerBulan(pnLaporan, bln, th);
+                break;
+            case 3:
+                new DaoLaporan().cetakMasakPerBulan(pnLaporan, bln, th);
+                break;
+        }
+    }//GEN-LAST:event_btnLoadActionPerformed
+
+    private void cbxPilihActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxPilihActionPerformed
+        if (cbxPilih.getSelectedIndex() != 0) {
+            Date d = new Date();
+            SimpleDateFormat dt = new SimpleDateFormat("MM-yyyy");
+            String[] s = dt.format(d).split("-");
+            bulan.setSelectedIndex(Integer.parseInt(s[0]) - 1);
+            tahun.setValue(Integer.parseInt(s[1]));
+            pnTgl.setVisible(true);
+            btnLoad.setVisible(true);
+        } else {
+            pnTgl.setVisible(false);
+            btnLoad.setVisible(false);
+            pnLaporan.removeAll();
+        }
+    }//GEN-LAST:event_cbxPilihActionPerformed
+
+    private void tahunKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tahunKeyTyped
+        char a = evt.getKeyChar();
+        if ((!Character.isDigit(a)) || tahun.getValue().toString().length() >= 4)
+            evt.consume();
+    }//GEN-LAST:event_tahunKeyTyped
+
+    private void btnLoadMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoadMouseMoved
+        btnLoad.setForeground(Color.WHITE);
+    }//GEN-LAST:event_btnLoadMouseMoved
+
+    private void btnLoadMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoadMouseExited
+        btnLoad.setForeground(new Color(166, 145, 138));
+    }//GEN-LAST:event_btnLoadMouseExited
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.toedter.calendar.JMonthChooser bulan;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JButton btnLoad;
+    private javax.swing.JComboBox<String> bulan;
+    private javax.swing.JComboBox<String> cbxPilih;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JSeparator jSeparator1;
+    private com.toedter.components.JSpinField jSpinField1;
     private javax.swing.JPanel pnLaporan;
     private javax.swing.JPanel pnMain;
-    private com.toedter.calendar.JYearChooser tahun;
+    private javax.swing.JPanel pnTgl;
+    private javax.swing.JSpinner tahun;
     // End of variables declaration//GEN-END:variables
 
 }

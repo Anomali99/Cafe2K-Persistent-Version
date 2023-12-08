@@ -42,6 +42,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Supply.getByNO", query = "SELECT s FROM Supply s WHERE LOWER(s.supplyPK.noSupply) LIKE LOWER(:noSupply) ORDER BY s.supplyPK.noSupply"),
     @NamedQuery(name = "Supply.getByTanggal", query = "SELECT s FROM Supply s WHERE s.tanggal = :tanggal ORDER BY s.supplyPK.noSupply"),
     @NamedQuery(name = "Supply.getByTotal", query = "SELECT s FROM Supply s WHERE s.total = :total ORDER BY s.supplyPK.noSupply"),
+    @NamedQuery(name = "Supply.getPerBulan", query = "SELECT s FROM Supply s WHERE s.tanggal BETWEEN :tglAwal AND :tglAkhir ORDER BY s.supplyPK.noSupply"),
     @NamedQuery(name = "Supply.getNomer", query = "SELECT SUBSTRING(s.supplyPK.noSupply, LENGTH(s.supplyPK.noSupply) - 2) AS nomor FROM Supply s WHERE s.supplyPK.noSupply LIKE 'R%' ORDER BY s.supplyPK.noSupply DESC")})
 public class Supply implements Serializable {
 
