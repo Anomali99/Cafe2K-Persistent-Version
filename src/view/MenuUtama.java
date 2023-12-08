@@ -558,7 +558,7 @@ public class MenuUtama extends javax.swing.JFrame {
                 btnMemasak.reset();
 
                 pnMain.removeAll();
-//                pn_main.add(new MenuPetugas(pn_main));
+                pnMain.add(new MenuLaporan());
                 pnMain.repaint();
                 pnMain.revalidate();
             }

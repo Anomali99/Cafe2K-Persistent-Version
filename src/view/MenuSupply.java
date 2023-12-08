@@ -919,7 +919,7 @@ public class MenuSupply extends javax.swing.JPanel {
         btnTambah1.setBackground(new java.awt.Color(166, 145, 138));
         btnTambah1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnTambah1.setForeground(new java.awt.Color(166, 145, 138));
-        btnTambah1.setText("TAMBAH MENU");
+        btnTambah1.setText("TAMBAH BAHAN");
         btnTambah1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
                 btnTambah1MouseMoved(evt);
@@ -978,7 +978,7 @@ public class MenuSupply extends javax.swing.JPanel {
         btnHapus1.setBackground(new java.awt.Color(200, 0, 0));
         btnHapus1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnHapus1.setForeground(new java.awt.Color(200, 0, 0));
-        btnHapus1.setText("HAPUS MENU");
+        btnHapus1.setText("HAPUS BAHAN");
         btnHapus1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
                 btnHapus1MouseMoved(evt);
@@ -998,7 +998,7 @@ public class MenuSupply extends javax.swing.JPanel {
         btnUbah.setBackground(new java.awt.Color(79, 42, 24));
         btnUbah.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnUbah.setForeground(new java.awt.Color(79, 42, 24));
-        btnUbah.setText("UBAH MENU");
+        btnUbah.setText("UBAH BAHAN");
         btnUbah.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
                 btnUbahMouseMoved(evt);
@@ -1296,6 +1296,11 @@ public class MenuSupply extends javax.swing.JPanel {
             tfId.setText("");
             tfNama.setText("");
             tbl1.setRowCount(0);
+            String s = "Supply berhasil.\nApakah anda ingin mencetak nota ?";
+            ImageIcon icon = new ImageIcon(getClass().getResource("/img/laporan1.png"));
+            if (JOptionPane.showConfirmDialog(this, s, "Pemberitahuan", 0, 0, icon) == 0) {
+                new DaoLaporan().cetakNotaSupply(mod);
+            }
         }
         jLabel3.requestFocus();
     }//GEN-LAST:event_btnSimpanActionPerformed
@@ -1317,7 +1322,7 @@ public class MenuSupply extends javax.swing.JPanel {
         try {
             tfKode.setText(pn.mod.getKodeBahan());
             tfNamaMenu.setText(pn.mod.getNama());
-            tfHarga.setText(String.valueOf(pn.mod.getHarga()));
+            tfHarga.setText(pn.mod.getRpHarga());
         } catch (NullPointerException e) {
         }
         jLabel3.requestFocus();
@@ -1329,8 +1334,8 @@ public class MenuSupply extends javax.swing.JPanel {
             evt.consume();
         } else {
             String s = tfJml.getText() + String.copyValueOf(new char[]{a});
-            long l = Long.parseLong(tfHarga.getText());
-            tfSubtotal.setText(String.valueOf(l * Integer.parseInt(s)));
+            long l = Rupiah.getLong(tfHarga.getText());
+            tfSubtotal.setText(Rupiah.getRp(l * Long.parseLong(s)));
         }
     }//GEN-LAST:event_tfJmlKeyTyped
 
@@ -1358,7 +1363,7 @@ public class MenuSupply extends javax.swing.JPanel {
             String kode = tfKode.getText();
             String nama = tfNamaMenu.getText();
             int jml = Integer.parseInt(tfJml.getText());
-            long harga = Long.parseLong(tfHarga.getText());
+            long harga = Rupiah.getLong(tfHarga.getText());
             long subtotal = jml * harga;
             String ket = tfKet.getText();
             int c = -1;
@@ -1368,12 +1373,17 @@ public class MenuSupply extends javax.swing.JPanel {
                 }
             }
             if (c == -1) {
-                tbl1.addRow(new Object[]{kode, nama, harga, jml, subtotal, ket});
+                tbl1.addRow(new Object[]{kode, nama, Rupiah.getRp(harga), jml, Rupiah.getRp(subtotal), ket});
             } else {
                 int nJml = Integer.parseInt(tbl1.getValueAt(c, 3).toString()) + jml;
                 long nSubtotal = Long.parseLong(tbl1.getValueAt(c, 4).toString()) + subtotal;
-                tbl1.setValueAt(nJml, c, 3);
-                tbl1.setValueAt(nSubtotal, c, 4);
+                if (btnTambah1.getText().equals("TAMBAH BAHAN")) {
+                    tbl1.setValueAt(nJml, c, 3);
+                    tbl1.setValueAt(Rupiah.getRp(nSubtotal), c, 4);
+                } else {
+                    tbl1.setValueAt(jml, c, 3);
+                    tbl1.setValueAt(Rupiah.getRp(subtotal), c, 4);
+                }
                 tbl1.setValueAt(ket, c, 5);
             }
             tblMn.setModel(tbl1);
@@ -1415,7 +1425,14 @@ public class MenuSupply extends javax.swing.JPanel {
     }//GEN-LAST:event_btnUbahMouseExited
 
     private void btnUbahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUbahActionPerformed
-
+        DefaultTableModel tbl1 = (DefaultTableModel) tblMn.getModel();
+        tfKode.setText(tbl1.getValueAt(tblMn.getSelectedRow(), 0).toString());
+        tfNamaMenu.setText(tbl1.getValueAt(tblMn.getSelectedRow(), 1).toString());
+        tfHarga.setText(tbl1.getValueAt(tblMn.getSelectedRow(), 2).toString());
+        tfJml.setText(tbl1.getValueAt(tblMn.getSelectedRow(), 3).toString());
+        tfSubtotal.setText(tbl1.getValueAt(tblMn.getSelectedRow(), 4).toString());
+        tfKet.setText(tbl1.getValueAt(tblMn.getSelectedRow(), 5).toString());
+        btnTambah1.setText("PERBARUI BAHAN");
     }//GEN-LAST:event_btnUbahActionPerformed
 
     private void btnBatal3MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBatal3MouseMoved
@@ -1574,7 +1591,7 @@ public class MenuSupply extends javax.swing.JPanel {
         btnHapus1.setVisible(false);
         btnUbah.setVisible(false);
         btnBatal3.setVisible(false);
-        tblMn.setSelectionMode(0);
+        tblMn.clearSelection();
 
         tfKode.setText("");
         tfNamaMenu.setText("");
@@ -1582,15 +1599,16 @@ public class MenuSupply extends javax.swing.JPanel {
         tfHarga.setText("0");
         tfSubtotal.setText("0");
         tfKet.setText("Tidak Ada");
+        btnTambah1.setText("TAMBAH BAHAN");
     }
 
     private void setTotal() {
         DefaultTableModel tbll = (DefaultTableModel) tblMn.getModel();
         long i = 0;
         for (int a = 0; a < tbll.getRowCount(); a++) {
-            i = i + Long.parseLong(tbll.getValueAt(a, 4).toString());
+            i = i + Rupiah.getLong(tbll.getValueAt(a, 4).toString());
         }
-        tfTotal.setText(String.valueOf(i));
+        tfTotal.setText(Rupiah.getRp(i));
     }
 
     private boolean validMenu() {

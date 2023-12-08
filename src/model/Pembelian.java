@@ -42,6 +42,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Pembelian.getByNO", query = "SELECT p FROM Pembelian p WHERE LOWER(p.pembelianPK.noPembelian) LIKE LOWER(:noPembelian) ORDER BY p.pembelianPK.noPembelian"),
     @NamedQuery(name = "Pembelian.getByTanggal", query = "SELECT p FROM Pembelian p WHERE p.tanggal = :tanggal ORDER BY p.pembelianPK.noPembelian"),
     @NamedQuery(name = "Pembelian.getByTotal", query = "SELECT p FROM Pembelian p WHERE p.total = :total ORDER BY p.pembelianPK.noPembelian"),
+    @NamedQuery(name = "Pembelian.getPerBulan", query = "SELECT p FROM Pembelian p WHERE p.tanggal BETWEEN :tglAwal AND :tglAkhir ORDER BY p.pembelianPK.noPembelian"),
     @NamedQuery(name = "Pembelian.getByStatus", query = "SELECT p FROM Pembelian p WHERE LOWER(p.status) LIKE LOWER(:status) ORDER BY p.pembelianPK.noPembelian"),
     @NamedQuery(name = "Pembelian.getNomer", query = "SELECT SUBSTRING(p.pembelianPK.noPembelian, LENGTH(p.pembelianPK.noPembelian) - 2) AS nomor FROM Pembelian p WHERE p.pembelianPK.noPembelian LIKE 'T%' ORDER BY p.pembelianPK.noPembelian DESC")})
 public class Pembelian implements Serializable {

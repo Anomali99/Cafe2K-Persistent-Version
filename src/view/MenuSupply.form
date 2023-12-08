@@ -1527,7 +1527,7 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="8a" green="91" red="a6" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="TAMBAH MENU"/>
+                    <Property name="text" type="java.lang.String" value="TAMBAH BAHAN"/>
                   </Properties>
                   <Events>
                     <EventHandler event="mouseMoved" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="btnTambah1MouseMoved"/>
@@ -1574,7 +1574,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="c8" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="HAPUS MENU"/>
+                <Property name="text" type="java.lang.String" value="HAPUS BAHAN"/>
               </Properties>
               <Events>
                 <EventHandler event="mouseMoved" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="btnHapus1MouseMoved"/>
@@ -1593,7 +1593,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="18" green="2a" red="4f" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="UBAH MENU"/>
+                <Property name="text" type="java.lang.String" value="UBAH BAHAN"/>
               </Properties>
               <Events>
                 <EventHandler event="mouseMoved" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="btnUbahMouseMoved"/>

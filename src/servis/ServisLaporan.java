@@ -4,6 +4,7 @@
  */
 package servis;
 
+import javax.swing.JPanel;
 import model.*;
 import net.sf.jasperreports.engine.JasperPrint;
 
@@ -15,4 +16,5 @@ public interface ServisLaporan {
     JasperPrint cetakNotaPembelian(Pembelian mod);
     JasperPrint cetakNotaSupply(Supply mod);
     JasperPrint cetakKTA(Pegawai mod);
+    JasperPrint cetakPembelianPerBulan(JPanel pn,int bulan, int tahun);
 }

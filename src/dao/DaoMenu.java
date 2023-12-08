@@ -5,6 +5,7 @@
 package dao;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -66,11 +67,15 @@ public class DaoMenu implements ServisMenu {
             EntityManager em = Persistence.createEntityManagerFactory("NewCafe2KPU").createEntityManager();
             em.getTransaction().begin();
             TypedQuery<Menu> query = em.createNamedQuery("Menu.getTerlaris", Menu.class);
-            query.setMaxResults(6);
             List<Menu> list = query.getResultList();
             em.getTransaction().commit();
             em.close();
-            return list;
+            list.sort(Comparator.comparingInt(Menu -> Menu.getTerjual()));
+            if (list.size() <= 6) {
+                return list;
+            } else {
+                return list.subList(0, 5);
+            }
         } catch (PersistenceException e) {
             return new ArrayList();
         }

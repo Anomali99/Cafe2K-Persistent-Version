@@ -1344,6 +1344,11 @@ public class MenuPembelian extends javax.swing.JPanel {
             tfNama21.setText("");
             tbl1.setRowCount(0);
             cbxStatus.setSelectedIndex(0);
+            String s = "Pembelian berhasil.\nApakah anda ingin mencetak nota ?";
+            ImageIcon icon = new ImageIcon(getClass().getResource("/img/laporan1.png"));
+            if (JOptionPane.showConfirmDialog(this, s, "Pemberitahuan", 0, 0, icon) == 0) {
+                new DaoLaporan().cetakNotaPembelian(mod);
+            }
         }
         jLabel1.requestFocus();
     }//GEN-LAST:event_btnSimpan21ActionPerformed
@@ -1366,7 +1371,7 @@ public class MenuPembelian extends javax.swing.JPanel {
             this.mod = pn.mod;
             tfKode21.setText(pn.mod.getKodeMenu());
             tfNamaMenu21.setText(pn.mod.getNama());
-            tfHarga.setText(String.valueOf(pn.mod.getHarga()));
+            tfHarga.setText(Rupiah.getRp(pn.mod.getHarga()));
         } catch (NullPointerException e) {
         }
         jLabel1.requestFocus();
@@ -1378,8 +1383,8 @@ public class MenuPembelian extends javax.swing.JPanel {
             evt.consume();
         } else {
             String s = tfJml21.getText() + String.copyValueOf(new char[]{a});
-            long l = Long.parseLong(tfHarga.getText());
-            tfSubtotal21.setText(String.valueOf(l * Integer.parseInt(s)));
+            long l = Rupiah.getLong(tfHarga.getText());
+            tfSubtotal21.setText(Rupiah.getRp(l * Long.parseLong(s)));
         }
     }//GEN-LAST:event_tfJml21KeyTyped
 
@@ -1407,7 +1412,7 @@ public class MenuPembelian extends javax.swing.JPanel {
             String kode = tfKode21.getText();
             String nama = tfNamaMenu21.getText();
             int jml = Integer.parseInt(tfJml21.getText());
-            long harga = Long.parseLong(tfHarga.getText());
+            long harga = Rupiah.getLong(tfHarga.getText());
             long subtotal = jml * harga;
             String ket = tfKet21.getText();
             int c = -1;
@@ -1420,18 +1425,18 @@ public class MenuPembelian extends javax.swing.JPanel {
                 if (jml > mod.getStok()) {
                     JOptionPane.showMessageDialog(this, "Stok " + mod.getNama() + " tersisa " + mod.getStok());
                 } else {
-                    tbl1.addRow(new Object[]{kode, nama, harga, jml, subtotal, ket});
+                    tbl1.addRow(new Object[]{kode, nama, Rupiah.getRp(harga), jml, Rupiah.getRp(subtotal), ket});
                     resetTable();
                 }
             } else {
                 int nJml = Integer.parseInt(tbl1.getValueAt(c, 3).toString()) + jml;
-                long nSubtotal = Long.parseLong(tbl1.getValueAt(c, 4).toString()) + subtotal;
+                long nSubtotal = Rupiah.getLong(tbl1.getValueAt(c, 4).toString()) + subtotal;
                 if (btnTambah21.getText().equals("TAMBAH MENU")) {
                     if (nJml > mod.getStok()) {
                         JOptionPane.showMessageDialog(this, "Stok " + mod.getNama() + " tersisa " + mod.getStok());
                     } else {
                         tbl1.setValueAt(nJml, c, 3);
-                        tbl1.setValueAt(nSubtotal, c, 4);
+                        tbl1.setValueAt(Rupiah.getRp(nSubtotal), c, 4);
                         tbl1.setValueAt(ket, c, 4);
                         resetTable();
                     }
@@ -1440,7 +1445,7 @@ public class MenuPembelian extends javax.swing.JPanel {
                         JOptionPane.showMessageDialog(this, "Stok " + mod.getNama() + " tersisa " + mod.getStok());
                     } else {
                         tbl1.setValueAt(jml, c, 3);
-                        tbl1.setValueAt(subtotal, c, 4);
+                        tbl1.setValueAt(Rupiah.getRp(subtotal), c, 4);
                         tbl1.setValueAt(ket, c, 4);
                         resetTable();
                     }
@@ -1487,7 +1492,7 @@ public class MenuPembelian extends javax.swing.JPanel {
         this.mod = new DaoMenu().getByKode(tblMn21.getValueAt(tblMn21.getSelectedRow(), 0).toString());
         tfKode21.setText(mod.getKodeMenu());
         tfNamaMenu21.setText(mod.getNama());
-        tfHarga.setText(String.valueOf(mod.getHarga()));
+        tfHarga.setText(mod.getRpHarga());
         tfJml21.setText(tblMn21.getValueAt(tblMn21.getSelectedRow(), 3).toString());
         tfSubtotal21.setText(tblMn21.getValueAt(tblMn21.getSelectedRow(), 4).toString());
         tfKet21.setText(tblMn21.getValueAt(tblMn21.getSelectedRow(), 5).toString());
@@ -1647,9 +1652,9 @@ public class MenuPembelian extends javax.swing.JPanel {
         DefaultTableModel tbl = (DefaultTableModel) tblMn21.getModel();
         long i = 0;
         for (int a = 0; a < tbl.getRowCount(); a++) {
-            i = i + Long.parseLong(tbl.getValueAt(a, 4).toString());
+            i = i + Rupiah.getLong(tbl.getValueAt(a, 4).toString());
         }
-        tfTotal.setText(String.valueOf(i));
+        tfTotal.setText(Rupiah.getRp(i));
     }
 
     private boolean validMenu() {
