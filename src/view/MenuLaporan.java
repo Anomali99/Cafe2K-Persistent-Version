@@ -4,10 +4,12 @@
  */
 package view;
 
+import dao.DaoEmail;
 import dao.DaoLaporan;
 import java.awt.Color;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import net.sf.jasperreports.engine.JasperPrint;
 
 /**
  *
@@ -18,10 +20,14 @@ public class MenuLaporan extends javax.swing.JPanel {
     /**
      * Creates new form MenuPetugas
      */
+    private JasperPrint print;
+    private String sby;
+
     public MenuLaporan() {
         initComponents();
         pnTgl.setVisible(false);
         btnLoad.setVisible(false);
+        pnEmail.setVisible(false);
     }
 
     /**
@@ -43,6 +49,9 @@ public class MenuLaporan extends javax.swing.JPanel {
         bulan = new javax.swing.JComboBox<>();
         tahun = new javax.swing.JSpinner();
         btnLoad = new javax.swing.JButton();
+        pnEmail = new javax.swing.JPanel();
+        tfEmail = new javax.swing.JTextField();
+        btnEmail = new javax.swing.JButton();
         pnLaporan = new javax.swing.JPanel();
 
         setLayout(new java.awt.CardLayout());
@@ -119,6 +128,50 @@ public class MenuLaporan extends javax.swing.JPanel {
             }
         });
 
+        pnEmail.setBackground(new java.awt.Color(166, 145, 138));
+
+        tfEmail.setForeground(new java.awt.Color(166, 145, 138));
+        tfEmail.setText("Email");
+        tfEmail.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfEmailFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfEmailFocusLost(evt);
+            }
+        });
+
+        btnEmail.setBackground(new java.awt.Color(255, 255, 255));
+        btnEmail.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnEmail.setForeground(new java.awt.Color(166, 145, 138));
+        btnEmail.setText("KIRIM");
+        btnEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEmailActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnEmailLayout = new javax.swing.GroupLayout(pnEmail);
+        pnEmail.setLayout(pnEmailLayout);
+        pnEmailLayout.setHorizontalGroup(
+            pnEmailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnEmailLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnEmailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tfEmail)
+                    .addComponent(btnEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        pnEmailLayout.setVerticalGroup(
+            pnEmailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnEmailLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(tfEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -128,7 +181,8 @@ public class MenuLaporan extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(cbxPilih, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(pnTgl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnLoad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnLoad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -140,7 +194,9 @@ public class MenuLaporan extends javax.swing.JPanel {
                 .addComponent(pnTgl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnLoad)
-                .addContainerGap(324, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(240, Short.MAX_VALUE))
         );
 
         pnLaporan.setBackground(new java.awt.Color(255, 255, 255));
@@ -197,15 +253,22 @@ public class MenuLaporan extends javax.swing.JPanel {
         int th = Integer.parseInt(tahun.getValue().toString());
         switch (cbxPilih.getSelectedIndex()) {
             case 1:
-                new DaoLaporan().cetakPembelianPerBulan(pnLaporan, bln, th);
+                pnEmail.setVisible(true);
+                print = new DaoLaporan().cetakPembelianPerBulan(pnLaporan, bln, th);
+                sby = "Laporan Pembelian per Bulan";
                 break;
             case 2:
-                new DaoLaporan().cetakSupplyPerBulan(pnLaporan, bln, th);
+                pnEmail.setVisible(true);
+                print = new DaoLaporan().cetakSupplyPerBulan(pnLaporan, bln, th);
+                sby = "Laporan Supply per Bulan";
                 break;
             case 3:
-                new DaoLaporan().cetakMasakPerBulan(pnLaporan, bln, th);
+                pnEmail.setVisible(true);
+                print = new DaoLaporan().cetakMasakPerBulan(pnLaporan, bln, th);
+                sby = "Laporan Masakan per Bulan";
                 break;
         }
+        jLabel1.requestFocus();
     }//GEN-LAST:event_btnLoadActionPerformed
 
     private void cbxPilihActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxPilihActionPerformed
@@ -219,6 +282,7 @@ public class MenuLaporan extends javax.swing.JPanel {
             btnLoad.setVisible(true);
         } else {
             pnTgl.setVisible(false);
+            pnEmail.setVisible(false);
             btnLoad.setVisible(false);
             pnLaporan.removeAll();
         }
@@ -238,8 +302,24 @@ public class MenuLaporan extends javax.swing.JPanel {
         btnLoad.setForeground(new Color(166, 145, 138));
     }//GEN-LAST:event_btnLoadMouseExited
 
+    private void tfEmailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfEmailFocusGained
+        if (tfEmail.getText().equals("Email"))
+            tfEmail.setText("");
+    }//GEN-LAST:event_tfEmailFocusGained
+
+    private void tfEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfEmailFocusLost
+        if (tfEmail.getText().equals(""))
+            tfEmail.setText("Email");
+    }//GEN-LAST:event_tfEmailFocusLost
+
+    private void btnEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmailActionPerformed
+        new DaoEmail().kririm(tfEmail.getText(), sby, print);
+        jLabel1.requestFocus();
+    }//GEN-LAST:event_btnEmailActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEmail;
     private javax.swing.JButton btnLoad;
     private javax.swing.JComboBox<String> bulan;
     private javax.swing.JComboBox<String> cbxPilih;
@@ -247,10 +327,12 @@ public class MenuLaporan extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private com.toedter.components.JSpinField jSpinField1;
+    private javax.swing.JPanel pnEmail;
     private javax.swing.JPanel pnLaporan;
     private javax.swing.JPanel pnMain;
     private javax.swing.JPanel pnTgl;
     private javax.swing.JSpinner tahun;
+    private javax.swing.JTextField tfEmail;
     // End of variables declaration//GEN-END:variables
 
 }

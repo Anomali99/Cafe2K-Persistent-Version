@@ -143,6 +143,11 @@ public class FormLogin extends javax.swing.JFrame {
         lbLupa.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         lbLupa.setForeground(new java.awt.Color(79, 42, 24));
         lbLupa.setText("Lupa Password ?");
+        lbLupa.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbLupaMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelCustom1Layout = new javax.swing.GroupLayout(jPanelCustom1);
         jPanelCustom1.setLayout(jPanelCustom1Layout);
@@ -266,6 +271,10 @@ public class FormLogin extends javax.swing.JFrame {
         xx = evt.getX();
         xy = evt.getY();
     }//GEN-LAST:event_formMousePressed
+
+    private void lbLupaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbLupaMouseClicked
+        new LupaPassword(null,true).setVisible(true);
+    }//GEN-LAST:event_lbLupaMouseClicked
 
     /**
      * @param args the command line arguments

@@ -4,7 +4,7 @@
  */
 package view;
 
-import dao.DaoLaporan;
+import dao.DaoEmail;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.JFrame;
@@ -20,7 +20,9 @@ public class CetakNota extends javax.swing.JDialog {
     /**
      * Creates new form KartuAnggota
      */
-    int xx, xy;
+    private int xx, xy;
+    private JasperPrint print;
+    private String sby;
     
     public CetakNota(JFrame parent, boolean modal) {
         super(parent, modal);
@@ -35,6 +37,7 @@ public class CetakNota extends javax.swing.JDialog {
         pn_conten.repaint();
         pn_conten.add(new JRViewer(print));
         pn_conten.revalidate();
+        this.print = print;
     }
 
     public CetakNota(java.awt.Frame parent, boolean modal, JasperPrint print, String email) {
@@ -46,6 +49,20 @@ public class CetakNota extends javax.swing.JDialog {
         pn_conten.add(new JRViewer(print));
         pn_conten.revalidate();
         tf_email.setText(email);
+        this.print = print;
+    }
+
+    public CetakNota(java.awt.Frame parent, boolean modal, JasperPrint print, String email, String sby) {
+        super(parent, modal);
+        initComponents();
+        pn_conten.removeAll();
+        pn_conten.setLayout(new BorderLayout());
+        pn_conten.repaint();
+        pn_conten.add(new JRViewer(print));
+        pn_conten.revalidate();
+        tf_email.setText(email);
+        this.print = print;
+        this.sby = sby;
     }
 
     /**
@@ -240,6 +257,7 @@ public class CetakNota extends javax.swing.JDialog {
 
     private void btn_ktaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ktaActionPerformed
         String email = tf_email.getText().toString();
+        new DaoEmail().kririm(email, sby, print);
         jLabel1.requestFocus();
     }//GEN-LAST:event_btn_ktaActionPerformed
 

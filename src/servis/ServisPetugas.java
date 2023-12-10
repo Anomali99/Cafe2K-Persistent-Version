@@ -22,5 +22,6 @@ public interface ServisPetugas {
     List<Pegawai> getByAlamat(String alamat);
     Pegawai getById(String id);
     Pegawai login(String user, String pass);
+    Pegawai lupaPass(String user, String email);
     String getNomer();
 }

@@ -50,7 +50,7 @@ public class DaoLaporan implements ServisLaporan {
             JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(result);
             JasperReport jasperReport = JasperCompileManager.compileReport(path);
             JasperPrint print = JasperFillManager.fillReport(jasperReport, par, dataSource);
-            new CetakNota(null, true, print).setVisible(true);
+            new CetakNota(null, true, print,"","Nota Pembelian").setVisible(true);
             return print;
         } catch (JRException ex) {
             Logger.getLogger(DaoLaporan.class.getName()).log(Level.SEVERE, null, ex);
@@ -75,7 +75,7 @@ public class DaoLaporan implements ServisLaporan {
             JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(result);
             JasperReport jasperReport = JasperCompileManager.compileReport(path);
             JasperPrint print = JasperFillManager.fillReport(jasperReport, par, dataSource);
-            new CetakNota(null, true, print).setVisible(true);
+            new CetakNota(null, true, print,"","Nota Supply").setVisible(true);
             return print;
         } catch (JRException ex) {
             Logger.getLogger(DaoLaporan.class.getName()).log(Level.SEVERE, null, ex);
@@ -92,7 +92,7 @@ public class DaoLaporan implements ServisLaporan {
             JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(result);
             JasperReport jasperReport = JasperCompileManager.compileReport(path);
             JasperPrint print = JasperFillManager.fillReport(jasperReport, null, dataSource);
-            new CetakNota(null, true, print, mod.getEmail()).setVisible(true);
+            new CetakNota(null, true, print, mod.getEmail(),"Kartu Tanda Petugas").setVisible(true);
             return print;
         } catch (JRException ex) {
             Logger.getLogger(DaoLaporan.class.getName()).log(Level.SEVERE, null, ex);

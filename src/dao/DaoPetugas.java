@@ -121,7 +121,7 @@ public class DaoPetugas implements ServisPetugas {
             return "PT001";
         }
     }
-
+    
     @Override
     public Pegawai login(String user, String pass) {
         try {
@@ -130,6 +130,23 @@ public class DaoPetugas implements ServisPetugas {
             TypedQuery<Pegawai> query = em.createNamedQuery("Pegawai.login", Pegawai.class);
             query.setParameter("username", user);
             query.setParameter("password", Encrypt.getmd5java(pass));
+            Pegawai mod = query.getSingleResult();
+            em.getTransaction().commit();
+            em.close();
+            return mod;
+        } catch (NoResultException e) {
+            return null;
+        }
+    }
+
+    @Override
+    public Pegawai lupaPass(String user, String email) {
+        try {
+            EntityManager em = Persistence.createEntityManagerFactory("NewCafe2KPU").createEntityManager();
+            em.getTransaction().begin();
+            TypedQuery<Pegawai> query = em.createNamedQuery("Pegawai.lupaPass", Pegawai.class);
+            query.setParameter("username", user);
+            query.setParameter("email", email);
             Pegawai mod = query.getSingleResult();
             em.getTransaction().commit();
             em.close();

@@ -36,7 +36,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Pegawai.getByEmail", query = "SELECT p FROM Pegawai p WHERE LOWER(p.email) LIKE LOWER(:email) ORDER BY p.idPegawai"),
     @NamedQuery(name = "Pegawai.getByLevel", query = "SELECT p FROM Pegawai p WHERE LOWER(p.level) LIKE LOWER(:level) ORDER BY p.idPegawai"),
     @NamedQuery(name = "Pegawai.getNomer", query = "SELECT SUBSTRING(p.idPegawai, LENGTH(p.idPegawai) - 2) AS nomor FROM Pegawai p WHERE p.idPegawai LIKE 'PT%' ORDER BY p.idPegawai DESC"),
-    @NamedQuery(name = "Pegawai.login", query = "SELECT p FROM Pegawai p WHERE p.username = :username AND p.password = :password")})
+    @NamedQuery(name = "Pegawai.login", query = "SELECT p FROM Pegawai p WHERE p.username = :username AND p.password = :password"),
+    @NamedQuery(name = "Pegawai.lupaPass", query = "SELECT p FROM Pegawai p WHERE p.username = :username AND p.email = :email")})
 public class Pegawai implements Serializable {
 
     private static final long serialVersionUID = 1L;

@@ -1269,7 +1269,7 @@ public class MenuSupply extends javax.swing.JPanel {
             mod.setPegawai(MenuUtama.mod);
             mod.setSupplier(new DaoSupplier().getById(tfId.getText()));
             mod.setTgl(tfTgl.getText());
-            mod.setTotal(BigInteger.valueOf(Long.parseLong(tfTotal.getText())));
+            mod.setTotal(Rupiah.getBigInt(tfTotal.getText()));
             List<DetailSupply> list = new ArrayList();
             DefaultTableModel tbl1 = (DefaultTableModel) tblMn.getModel();
             int index = tbl1.getRowCount() - 1;
@@ -1281,7 +1281,7 @@ public class MenuSupply extends javax.swing.JPanel {
                 ds.setNoSupply(tfNo1.getText());
                 ds.setKodeBahan(tbl1.getValueAt(i, 0).toString());
                 p.setJumlah(Integer.parseInt(tbl1.getValueAt(i, 3).toString()));
-                p.setSubtotal(BigInteger.valueOf(Long.parseLong(tbl1.getValueAt(i, 4).toString())));
+                p.setSubtotal(Rupiah.getBigInt(tbl1.getValueAt(i, 4).toString()));
                 p.setDetailSupplyPK(ds);
                 p.setBahan(new DaoBahan().getByKode(tbl1.getValueAt(i, 0).toString()));
                 p.setSupply(mod);
@@ -1293,8 +1293,6 @@ public class MenuSupply extends javax.swing.JPanel {
             resetTable();
             tfNo.setText(servis.getNomer());
             tfTotal.setText("");
-            tfId.setText("");
-            tfNama.setText("");
             tbl1.setRowCount(0);
             String s = "Supply berhasil.\nApakah anda ingin mencetak nota ?";
             ImageIcon icon = new ImageIcon(getClass().getResource("/img/laporan1.png"));

@@ -220,6 +220,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Lupa Password ?"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lbLupaMouseClicked"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

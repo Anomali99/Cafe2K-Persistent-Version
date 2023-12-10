@@ -1314,7 +1314,7 @@ public class MenuPembelian extends javax.swing.JPanel {
             mod.setPegawai(MenuUtama.mod);
             mod.setPelanggan(new DaoPelanggan().getById(tfId21.getText()));
             mod.setTgl(tfTgl.getText());
-            mod.setTotal(BigInteger.valueOf(Long.parseLong(tfTotal.getText())));
+            mod.setTotal(Rupiah.getBigInt(tfTotal.getText()));
             List<DetailPembelian> list = new ArrayList();
             DefaultTableModel tbl1 = (DefaultTableModel) tblMn21.getModel();
             int index = tbl1.getRowCount() - 1;
@@ -1328,7 +1328,7 @@ public class MenuPembelian extends javax.swing.JPanel {
                 ds.setNoPembelian(mod.getPembelianPK().getNoPembelian());
                 p.setMenu(bn);
                 p.setJumlah(Integer.parseInt(tbl1.getValueAt(i, 3).toString()));
-                p.setSubtotal(BigInteger.valueOf(Long.parseLong(tbl1.getValueAt(i, 4).toString())));
+                p.setSubtotal(Rupiah.getBigInt(tbl1.getValueAt(i, 4).toString()));
                 p.setDetailPembelianPK(ds);
                 p.setPembelian(mod);
                 p.setKeterangan(tbl1.getValueAt(i, 5).toString());
@@ -1340,8 +1340,6 @@ public class MenuPembelian extends javax.swing.JPanel {
             resetTable();
             tfNo.setText(servis.getNomer());
             tfTotal.setText("");
-            tfId21.setText("");
-            tfNama21.setText("");
             tbl1.setRowCount(0);
             cbxStatus.setSelectedIndex(0);
             String s = "Pembelian berhasil.\nApakah anda ingin mencetak nota ?";
