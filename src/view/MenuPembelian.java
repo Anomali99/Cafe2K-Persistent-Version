@@ -10,7 +10,6 @@ import dao.DaoPelanggan;
 import dao.DaoPembelian;
 import dao.Rupiah;
 import java.awt.Color;
-import java.math.BigInteger;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -43,6 +42,7 @@ public class MenuPembelian extends javax.swing.JPanel {
     private final TabelPembelian tbl = new TabelPembelian();
     private final TabelDetailP tblP = new TabelDetailP();
     private ServisPembelian servis = new DaoPembelian();
+    private Pembelian mb = new Pembelian();
     private Menu mod = new Menu();
 
     public MenuPembelian() {
@@ -146,6 +146,8 @@ public class MenuPembelian extends javax.swing.JPanel {
         lbStatus = new javax.swing.JLabel();
         jPanelCustom10 = new custom.JPanelCustom();
         lbTotal = new javax.swing.JLabel();
+        btnUbah = new javax.swing.JButton();
+        btnLuans = new javax.swing.JButton();
         dateCoser = new com.toedter.calendar.JDateChooser();
 
         setLayout(new java.awt.CardLayout());
@@ -733,7 +735,7 @@ public class MenuPembelian extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnBatal22, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnHapus21, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)))))
+                                .addComponent(btnHapus21, javax.swing.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
         pnTambahLayout.setVerticalGroup(
@@ -1018,6 +1020,46 @@ public class MenuPembelian extends javax.swing.JPanel {
         lbTotal.setText("Total");
         jPanelCustom10.add(lbTotal, "card2");
 
+        btnUbah.setBackground(new java.awt.Color(79, 42, 24));
+        btnUbah.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnUbah.setForeground(new java.awt.Color(0, 0, 200));
+        btnUbah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/edit1.png"))); // NOI18N
+        btnUbah.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnUbahMouseMoved(evt);
+            }
+        });
+        btnUbah.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnUbahMouseExited(evt);
+            }
+        });
+        btnUbah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUbahActionPerformed(evt);
+            }
+        });
+
+        btnLuans.setBackground(new java.awt.Color(0, 0, 200));
+        btnLuans.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnLuans.setForeground(new java.awt.Color(255, 255, 255));
+        btnLuans.setText("TANDAI LUNAS");
+        btnLuans.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnLuansMouseMoved(evt);
+            }
+        });
+        btnLuans.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnLuansMouseExited(evt);
+            }
+        });
+        btnLuans.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLuansActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnDetailLayout = new javax.swing.GroupLayout(pnDetail);
         pnDetail.setLayout(pnDetailLayout);
         pnDetailLayout.setHorizontalGroup(
@@ -1032,7 +1074,7 @@ public class MenuPembelian extends javax.swing.JPanel {
                         .addComponent(jPanelCustom2, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanelCustom10, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 293, Short.MAX_VALUE)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(tfNo, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1055,7 +1097,11 @@ public class MenuPembelian extends javax.swing.JPanel {
                                 .addComponent(lbIdPet, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGap(79, 79, 79)
                         .addComponent(jPanelCustom4, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnLuans, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnUbah)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnBatal1))
                     .addComponent(jScrollPane2))
                 .addContainerGap())
@@ -1091,7 +1137,9 @@ public class MenuPembelian extends javax.swing.JPanel {
                             .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(8, 8, 8))
                     .addComponent(btnBatal1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanelCustom4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanelCustom4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnUbah, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnLuans, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -1116,7 +1164,7 @@ public class MenuPembelian extends javax.swing.JPanel {
                                 .addComponent(btnHapus)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnBatal)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 311, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 437, Short.MAX_VALUE)
                         .addGroup(pnDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(cbxCari, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(pnDataLayout.createSequentialGroup()
@@ -1125,7 +1173,7 @@ public class MenuPembelian extends javax.swing.JPanel {
                                 .addComponent(tfCari, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnCari, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 918, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1044, Short.MAX_VALUE))
                 .addContainerGap())
             .addComponent(pnDetail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -1237,10 +1285,12 @@ public class MenuPembelian extends javax.swing.JPanel {
         Date now = new Date();
         SimpleDateFormat nonformat = new SimpleDateFormat("dd-MM-yyyy");
         Pelanggan mod = new DaoPelanggan().getById("P000000001");
+        jLabel3.setText("Tambah Pembelian");
         tfNama21.setText(mod.getNama());
         tfId21.setText(mod.getIdPelanggan());
         tfTgl.setText(nonformat.format(now));
-        tfNo.setText(servis.getNomer());
+        tfNo1.setText(servis.getNomer());
+        tfTotal.setText("");
     }//GEN-LAST:event_btnTambahActionPerformed
 
     private void btnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusActionPerformed
@@ -1256,16 +1306,8 @@ public class MenuPembelian extends javax.swing.JPanel {
         btnBatal.setVisible(true);
         btnHapus.setVisible(true);
         pnDetail.setVisible(true);
-        Pembelian mb = servis.getByNo(tblConten.getValueAt(tblConten.getSelectedRow(), 1).toString());
-        tfNo.setText(mb.getPembelianPK().getNoPembelian());
-        lbTgl.setText(mb.getTgl());
-        lbTotal.setText(Rupiah.getRp(mb.getTotal()));
-        lbIdPel.setText(mb.getPelanggan().getIdPelanggan());
-        lbNamaPel.setText(mb.getPelanggan().getNama());
-        lbIdPet.setText(mb.getPegawai().getIdPegawai());
-        lbNamaPet.setText(mb.getPegawai().getNama());
-        lbStatus.setText(mb.getStatus());
-        tblP.setData(mb);
+        mb = servis.getByNo(tblConten.getValueAt(tblConten.getSelectedRow(), 1).toString());
+        setDetail();
     }//GEN-LAST:event_tblContenMouseClicked
 
     private void btnBatal1MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBatal1MouseMoved
@@ -1307,7 +1349,7 @@ public class MenuPembelian extends javax.swing.JPanel {
         if (validPesanan()) {
             Pembelian mod = new Pembelian();
             PembelianPK pk = new PembelianPK();
-            pk.setNoPembelian(tfNo.getText());
+            pk.setNoPembelian(tfNo1.getText());
             pk.setIdPegawai(MenuUtama.mod.getIdPegawai());
             pk.setIdPelanggan(tfId21.getText());
             mod.setPembelianPK(pk);
@@ -1336,11 +1378,16 @@ public class MenuPembelian extends javax.swing.JPanel {
             }
             mod.setDetailPembelianCollection(list);
             mod.setStatus(cbxStatus.getSelectedItem().toString());
-            servis.tambahData(mod);
+            if (jLabel3.getText().equals("Tambah Pembelian")) {
+                servis.tambahData(mod);
+            } else {
+                servis.ubahData(mod);
+            }
             resetTable();
             tfNo.setText(servis.getNomer());
             tfTotal.setText("");
             tbl1.setRowCount(0);
+            jLabel3.setText("Tambah Pembelian");
             cbxStatus.setSelectedIndex(0);
             String s = "Pembelian berhasil.\nApakah anda ingin mencetak nota ?";
             ImageIcon icon = new ImageIcon(getClass().getResource("/img/laporan1.png"));
@@ -1435,7 +1482,7 @@ public class MenuPembelian extends javax.swing.JPanel {
                     } else {
                         tbl1.setValueAt(nJml, c, 3);
                         tbl1.setValueAt(Rupiah.getRp(nSubtotal), c, 4);
-                        tbl1.setValueAt(ket, c, 4);
+                        tbl1.setValueAt(ket, c, 5);
                         resetTable();
                     }
                 } else {
@@ -1444,7 +1491,7 @@ public class MenuPembelian extends javax.swing.JPanel {
                     } else {
                         tbl1.setValueAt(jml, c, 3);
                         tbl1.setValueAt(Rupiah.getRp(subtotal), c, 4);
-                        tbl1.setValueAt(ket, c, 4);
+                        tbl1.setValueAt(ket, c, 5);
                         resetTable();
                     }
                 }
@@ -1520,6 +1567,60 @@ public class MenuPembelian extends javax.swing.JPanel {
         tfCari.setText("Cari");
     }//GEN-LAST:event_cbxCariActionPerformed
 
+    private void btnUbahMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUbahMouseMoved
+        btnUbah.setForeground(new Color(0, 200, 0));
+        btnUbah.setIcon(new ImageIcon(getClass().getResource("/img/edit.png")));
+    }//GEN-LAST:event_btnUbahMouseMoved
+
+    private void btnUbahMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUbahMouseExited
+        btnUbah.setForeground(new Color(79, 42, 24));
+        btnUbah.setIcon(new ImageIcon(getClass().getResource("/img/edit1.png")));
+    }//GEN-LAST:event_btnUbahMouseExited
+
+    private void btnUbahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUbahActionPerformed
+        MenuUtama.setAktif(false);
+        pnMain.removeAll();
+        pnMain.add(pnTambah);
+        pnMain.repaint();
+        pnMain.revalidate();
+        resetTable();
+        Date now = new Date();
+        SimpleDateFormat nonformat = new SimpleDateFormat("dd-MM-yyyy");
+        Pelanggan mod = mb.getPelanggan();
+        jLabel3.setText("Perbarui Pembelian");
+        tfNama21.setText(mod.getNama());
+        tfId21.setText(mod.getIdPelanggan());
+        tfTgl.setText(nonformat.format(now));
+        tfNo1.setText(mb.getPembelianPK().getNoPembelian());
+        tfTotal.setText(mb.getRpTotal());
+        DefaultTableModel tb = (DefaultTableModel) tblMn21.getModel();
+        tb.setRowCount(0);
+        for(DetailPembelian dp : mb.getDetailPembelianCollection()){
+            tb.addRow(new Object[]{
+                dp.getMenu().getKodeMenu(),
+                dp.getMenu().getNama(),
+                dp.getMenu().getRpHarga(),
+                dp.getJumlah(),
+                dp.getRpSubtotal(),
+                dp.getKeterangan()
+            });
+        }
+    }//GEN-LAST:event_btnUbahActionPerformed
+
+    private void btnLuansMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLuansMouseMoved
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLuansMouseMoved
+
+    private void btnLuansMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLuansMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLuansMouseExited
+
+    private void btnLuansActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuansActionPerformed
+        mb.setStatus("Lunas");
+        servis.ubahData(mb);
+        setDetail();
+    }//GEN-LAST:event_btnLuansActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBatal;
@@ -1529,9 +1630,11 @@ public class MenuPembelian extends javax.swing.JPanel {
     private javax.swing.JButton btnCari;
     private javax.swing.JButton btnHapus;
     private javax.swing.JButton btnHapus21;
+    private javax.swing.JButton btnLuans;
     private javax.swing.JButton btnSimpan21;
     private javax.swing.JButton btnTambah;
     private javax.swing.JButton btnTambah21;
+    private javax.swing.JButton btnUbah;
     private javax.swing.JButton btnUbah21;
     private javax.swing.JComboBox<String> cbxCari;
     private javax.swing.JComboBox<String> cbxStatus;
@@ -1677,5 +1780,22 @@ public class MenuPembelian extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Pilih Menu terlebih dahulu");
         }
         return valid;
+    }
+
+    private void setDetail() {
+        tfNo.setText(mb.getPembelianPK().getNoPembelian());
+        lbTgl.setText(mb.getTgl());
+        lbTotal.setText(Rupiah.getRp(mb.getTotal()));
+        lbIdPel.setText(mb.getPelanggan().getIdPelanggan());
+        lbNamaPel.setText(mb.getPelanggan().getNama());
+        lbIdPet.setText(mb.getPegawai().getIdPegawai());
+        lbNamaPet.setText(mb.getPegawai().getNama());
+        lbStatus.setText(mb.getStatus());
+        tblP.setData(mb);
+        if (mb.getStatus().equals("Lunas")) {
+            btnLuans.setVisible(false);
+        } else {
+            btnLuans.setVisible(true);
+        }
     }
 }

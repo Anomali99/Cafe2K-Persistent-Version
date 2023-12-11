@@ -15,7 +15,7 @@ public class Rupiah {
     public static String getRp(BigInteger bg) {
         return getRp(String.valueOf(bg));
     }
-    
+
     public static String getRp(long l) {
         return getRp(String.valueOf(l));
     }
@@ -43,30 +43,25 @@ public class Rupiah {
     }
 
     public static String getString(String s) {
-        String p, q, r, t, u, v;
-        p = s.replace('-', ' ');
-        q = p.replace('.', ' ');
-        r = q.replace('R', ' ');
-        t = r.replace('p', ' ');
-        u = t.replace(',', ' ');
-        v = "";
-        for (char c : u.toCharArray()) {
-            if (!" ".equals(String.valueOf(c))) {
-                v = v + c;
+        char[] c = s.toCharArray();
+        String v = "";
+        for (char a : c) {
+            if (Character.isDigit(a)) {
+                v = v + String.valueOf(a);
             }
         }
         return v;
     }
-    
-    public static long getLong(String s){
+
+    public static Long getLong(String s) {
         return Long.parseLong(getString(s));
     }
-    
-    public  static int getInt(String s){
+
+    public static Integer getInt(String s) {
         return Integer.parseInt(s);
     }
-    
-    public static BigInteger getBigInt(String s){
+
+    public static BigInteger getBigInt(String s) {
         return BigInteger.valueOf(getLong(s));
     }
 

@@ -14,6 +14,7 @@ import model.Pembelian;
  */
 public interface ServisPembelian {
     void tambahData(Pembelian mod);
+    void ubahData(Pembelian mod);
     void hapusData(String id);
     
     List<Pembelian> ambilData();

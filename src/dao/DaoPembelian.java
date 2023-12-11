@@ -27,11 +27,40 @@ public class DaoPembelian implements ServisPembelian {
         EntityManager em = Persistence.createEntityManagerFactory("NewCafe2KPU").createEntityManager();
         em.getTransaction().begin();
         em.persist(mod);
-        for(DetailPembelian p : mod.getDetailPembelianCollection()){
+        for (DetailPembelian p : mod.getDetailPembelianCollection()) {
             Menu m = p.getMenu();
             m.setStok(m.getStok() - p.getJumlah());
             em.merge(m);
         }
+        em.getTransaction().commit();
+        em.close();
+    }
+
+    @Override
+    public void ubahData(Pembelian mod) {
+        EntityManager em = Persistence.createEntityManagerFactory("NewCafe2KPU").createEntityManager();
+        em.getTransaction().begin();
+        TypedQuery<Pembelian> query = em.createNamedQuery("Pembelian.getByNo", Pembelian.class);
+        query.setParameter("noPembelian", mod.getPembelianPK().getNoPembelian());
+        query.setMaxResults(1);
+        Pembelian old = query.getSingleResult();
+        for (DetailPembelian p : mod.getDetailPembelianCollection()) {
+            Menu m = p.getMenu();
+            DetailPembelian b = null;
+            for (DetailPembelian d : old.getDetailPembelianCollection()) {
+                if (m.getKodeMenu().equals(d.getMenu().getKodeMenu())) {
+                    b = d;
+                }
+            }
+            if (b != null) {
+                int i = p.getJumlah() - b.getJumlah();
+                m.setStok(m.getStok() - i);
+            } else {
+                m.setStok(m.getStok() - p.getJumlah());
+            }
+            em.merge(m);
+        }
+        em.merge(mod);
         em.getTransaction().commit();
         em.close();
     }
@@ -65,7 +94,7 @@ public class DaoPembelian implements ServisPembelian {
         EntityManager em = Persistence.createEntityManagerFactory("NewCafe2KPU").createEntityManager();
         em.getTransaction().begin();
         TypedQuery<Pembelian> query = em.createNamedQuery("Pembelian.getByNO", Pembelian.class);
-        query.setParameter("noPembelian", "%"+no+"%");
+        query.setParameter("noPembelian", "%" + no + "%");
         List<Pembelian> list = query.getResultList();
         em.getTransaction().commit();
         em.close();
@@ -89,7 +118,7 @@ public class DaoPembelian implements ServisPembelian {
         EntityManager em = Persistence.createEntityManagerFactory("NewCafe2KPU").createEntityManager();
         em.getTransaction().begin();
         TypedQuery<Pembelian> query = em.createNamedQuery("Pembelian.getByPegawai", Pembelian.class);
-        query.setParameter("nama", "%"+nama+"%");
+        query.setParameter("nama", "%" + nama + "%");
         List<Pembelian> list = query.getResultList();
         em.getTransaction().commit();
         em.close();
@@ -101,7 +130,7 @@ public class DaoPembelian implements ServisPembelian {
         EntityManager em = Persistence.createEntityManagerFactory("NewCafe2KPU").createEntityManager();
         em.getTransaction().begin();
         TypedQuery<Pembelian> query = em.createNamedQuery("Pembelian.getByPelanggan", Pembelian.class);
-        query.setParameter("nama", "%"+nama+"%");
+        query.setParameter("nama", "%" + nama + "%");
         List<Pembelian> list = query.getResultList();
         em.getTransaction().commit();
         em.close();
@@ -141,5 +170,5 @@ public class DaoPembelian implements ServisPembelian {
             return "T" + no + "001";
         }
     }
-    
+
 }
