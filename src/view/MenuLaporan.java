@@ -47,7 +47,7 @@ public class MenuLaporan extends javax.swing.JPanel {
         cbxPilih = new javax.swing.JComboBox<>();
         pnTgl = new javax.swing.JPanel();
         bulan = new javax.swing.JComboBox<>();
-        tahun = new javax.swing.JSpinner();
+        tahun = new com.toedter.calendar.JYearChooser();
         btnLoad = new javax.swing.JButton();
         pnEmail = new javax.swing.JPanel();
         tfEmail = new javax.swing.JTextField();
@@ -69,7 +69,7 @@ public class MenuLaporan extends javax.swing.JPanel {
         jPanel1.setBackground(new java.awt.Color(79, 42, 24));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(79, 42, 24)));
 
-        cbxPilih.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-Pilih Laporan-", "Pembelian per Bulan", "Supply per Bulan", "Masak per Bulan" }));
+        cbxPilih.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-Pilih Laporan-", "Pembelian per Bulan", "Supply per Bulan", "Masak per Bulan", "Pembelian per Tahun", "Supply per Tahun", "Masak per Tahun" }));
         cbxPilih.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbxPilihActionPerformed(evt);
@@ -80,13 +80,6 @@ public class MenuLaporan extends javax.swing.JPanel {
 
         bulan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember" }));
 
-        tahun.setModel(new javax.swing.SpinnerNumberModel(1000, 1000, 9999, 1));
-        tahun.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                tahunKeyTyped(evt);
-            }
-        });
-
         javax.swing.GroupLayout pnTglLayout = new javax.swing.GroupLayout(pnTgl);
         pnTgl.setLayout(pnTglLayout);
         pnTglLayout.setHorizontalGroup(
@@ -95,7 +88,7 @@ public class MenuLaporan extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(pnTglLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(bulan, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(tahun))
+                    .addComponent(tahun, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         pnTglLayout.setVerticalGroup(
@@ -206,7 +199,7 @@ public class MenuLaporan extends javax.swing.JPanel {
         pnLaporan.setLayout(pnLaporanLayout);
         pnLaporanLayout.setHorizontalGroup(
             pnLaporanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 646, Short.MAX_VALUE)
+            .addGap(0, 641, Short.MAX_VALUE)
         );
         pnLaporanLayout.setVerticalGroup(
             pnLaporanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -250,7 +243,7 @@ public class MenuLaporan extends javax.swing.JPanel {
     private void btnLoadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoadActionPerformed
         // TODO add your handling code here:
         int bln = bulan.getSelectedIndex();
-        int th = Integer.parseInt(tahun.getValue().toString());
+        int th = tahun.getYear();
         switch (cbxPilih.getSelectedIndex()) {
             case 1:
                 pnEmail.setVisible(true);
@@ -267,32 +260,46 @@ public class MenuLaporan extends javax.swing.JPanel {
                 print = new DaoLaporan().cetakMasakPerBulan(pnLaporan, bln, th);
                 sby = "Laporan Masakan per Bulan";
                 break;
+            case 4:
+                pnEmail.setVisible(true);
+                print = new DaoLaporan().cetakPembelianPerTahun(pnLaporan, th);
+                sby = "Laporan Pembelian per Tahun";
+                break;
+            case 5:
+                pnEmail.setVisible(true);
+                print = new DaoLaporan().cetakSupplyPerTahun(pnLaporan, th);
+                sby = "Laporan Supply per Tahun";
+                break;
+            case 6:
+                pnEmail.setVisible(true);
+                print = new DaoLaporan().cetakMasakPerTahun(pnLaporan, th);
+                sby = "Laporan Masakan per Tahun";
+                break;
         }
         jLabel1.requestFocus();
     }//GEN-LAST:event_btnLoadActionPerformed
 
     private void cbxPilihActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxPilihActionPerformed
-        if (cbxPilih.getSelectedIndex() != 0) {
-            Date d = new Date();
-            SimpleDateFormat dt = new SimpleDateFormat("MM-yyyy");
-            String[] s = dt.format(d).split("-");
-            bulan.setSelectedIndex(Integer.parseInt(s[0]) - 1);
-            tahun.setValue(Integer.parseInt(s[1]));
-            pnTgl.setVisible(true);
-            btnLoad.setVisible(true);
-        } else {
+        int x = cbxPilih.getSelectedIndex();
+        if (x == 0) {
             pnTgl.setVisible(false);
             pnEmail.setVisible(false);
             btnLoad.setVisible(false);
             pnLaporan.removeAll();
+        } else if (x == 1 || x == 2 || x == 3){
+            Date d = new Date();
+            SimpleDateFormat dt = new SimpleDateFormat("MM");
+            bulan.setVisible(true);
+            bulan.setSelectedIndex(Integer.parseInt(dt.format(d)) - 1);
+            pnTgl.setVisible(true);
+            btnLoad.setVisible(true);
+        } else {
+            Date d = new Date();
+            bulan.setVisible(false);
+            pnTgl.setVisible(true);
+            btnLoad.setVisible(true);
         }
     }//GEN-LAST:event_cbxPilihActionPerformed
-
-    private void tahunKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tahunKeyTyped
-        char a = evt.getKeyChar();
-        if ((!Character.isDigit(a)) || tahun.getValue().toString().length() >= 4)
-            evt.consume();
-    }//GEN-LAST:event_tahunKeyTyped
 
     private void btnLoadMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoadMouseMoved
         btnLoad.setForeground(Color.WHITE);
@@ -331,7 +338,7 @@ public class MenuLaporan extends javax.swing.JPanel {
     private javax.swing.JPanel pnLaporan;
     private javax.swing.JPanel pnMain;
     private javax.swing.JPanel pnTgl;
-    private javax.swing.JSpinner tahun;
+    private com.toedter.calendar.JYearChooser tahun;
     private javax.swing.JTextField tfEmail;
     // End of variables declaration//GEN-END:variables
 

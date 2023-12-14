@@ -144,11 +144,14 @@
             <Component class="javax.swing.JComboBox" name="cbxPilih">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="4">
+                  <StringArray count="7">
                     <StringItem index="0" value="-Pilih Laporan-"/>
                     <StringItem index="1" value="Pembelian per Bulan"/>
                     <StringItem index="2" value="Supply per Bulan"/>
                     <StringItem index="3" value="Masak per Bulan"/>
+                    <StringItem index="4" value="Pembelian per Tahun"/>
+                    <StringItem index="5" value="Supply per Tahun"/>
+                    <StringItem index="6" value="Masak per Tahun"/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -215,15 +218,7 @@
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
                 </Component>
-                <Component class="javax.swing.JSpinner" name="tahun">
-                  <Properties>
-                    <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-                      <SpinnerModel initial="1000" maximum="9999" minimum="1000" numberType="java.lang.Integer" stepSize="1" type="number"/>
-                    </Property>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tahunKeyTyped"/>
-                  </Events>
+                <Component class="com.toedter.calendar.JYearChooser" name="tahun">
                 </Component>
               </SubComponents>
             </Container>
@@ -329,7 +324,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="646" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="641" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">

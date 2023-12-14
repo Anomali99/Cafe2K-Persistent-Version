@@ -217,6 +217,117 @@ public class DaoLaporan implements ServisLaporan {
         }
     }
 
+    @Override
+    public JasperPrint cetakPembelianPerTahun(JPanel pn, int tahun) {
+        try {
+            String path = "src/report/PembelianPerTahun.jrxml";
+            SimpleDateFormat tgl = new SimpleDateFormat("dd-MM-yyyy");
+            EntityManager em = Persistence.createEntityManagerFactory("NewCafe2KPU").createEntityManager();
+            em.getTransaction().begin();
+            TypedQuery<Pembelian> query = em.createNamedQuery("Pembelian.getPerBulan", Pembelian.class);
+            query.setParameter("tglAwal", tgl.parse("01-01-"+String.valueOf(tahun)));
+            query.setParameter("tglAkhir", tgl.parse("31-12-"+String.valueOf(tahun)));
+            List<Pembelian> result = query.getResultList();
+            em.getTransaction().commit();
+            em.close();
+            long total = 0;
+            for (Pembelian p : result) {
+                long l = Long.parseLong(p.getTotal().toString());
+                total = total + l;
+            }
+            HashMap<String, Object> par = new HashMap<>();
+            par.put("tahun", String.valueOf(tahun));
+            par.put("total", Rupiah.getRp(total));
+            JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(result);
+            JasperReport jasperReport = JasperCompileManager.compileReport(path);
+            JasperPrint print = JasperFillManager.fillReport(jasperReport, par, dataSource);
+            pn.removeAll();
+            pn.setLayout(new BorderLayout());
+            pn.repaint();
+            pn.add(new JRViewer(print));
+            pn.revalidate();
+            return print;
+        } catch (JRException ex) {
+            Logger.getLogger(DaoLaporan.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        } catch (ParseException ex) {
+            Logger.getLogger(DaoLaporan.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+
+    @Override
+    public JasperPrint cetakSupplyPerTahun(JPanel pn, int tahun) {
+        try {
+            String path = "src/report/SupplyPerBulan.jrxml";
+            SimpleDateFormat tgl = new SimpleDateFormat("dd-MM-yyyy");
+            EntityManager em = Persistence.createEntityManagerFactory("NewCafe2KPU").createEntityManager();
+            em.getTransaction().begin();
+            TypedQuery<Supply> query = em.createNamedQuery("Supply.getPerBulan", Supply.class);
+            query.setParameter("tglAwal", tgl.parse("01-01-"+String.valueOf(tahun)));
+            query.setParameter("tglAkhir", tgl.parse("31-12-"+String.valueOf(tahun)));
+            List<Supply> result = query.getResultList();
+            em.getTransaction().commit();
+            em.close();
+            long total = 0;
+            for (Supply p : result) {
+                long l = Long.parseLong(p.getTotal().toString());
+                total = total + l;
+            }
+            HashMap<String, Object> par = new HashMap<>();
+            par.put("tahun", String.valueOf(tahun));
+            par.put("total", Rupiah.getRp(total));
+            JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(result);
+            JasperReport jasperReport = JasperCompileManager.compileReport(path);
+            JasperPrint print = JasperFillManager.fillReport(jasperReport, par, dataSource);
+            pn.removeAll();
+            pn.setLayout(new BorderLayout());
+            pn.repaint();
+            pn.add(new JRViewer(print));
+            pn.revalidate();
+            return print;
+        } catch (JRException ex) {
+            Logger.getLogger(DaoLaporan.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        } catch (ParseException ex) {
+            Logger.getLogger(DaoLaporan.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+
+    @Override
+    public JasperPrint cetakMasakPerTahun(JPanel pn, int tahun) {
+        try {
+            String path = "src/report/MasakPerBulan.jrxml";
+            SimpleDateFormat tgl = new SimpleDateFormat("dd-MM-yyyy");
+            EntityManager em = Persistence.createEntityManagerFactory("NewCafe2KPU").createEntityManager();
+            em.getTransaction().begin();
+            TypedQuery<Memasak> query = em.createNamedQuery("Memasak.getPerBulan", Memasak.class);
+            query.setParameter("tglAwal", tgl.parse("01-01-"+String.valueOf(tahun)));
+            query.setParameter("tglAkhir", tgl.parse("31-12-"+String.valueOf(tahun)));
+            List<Memasak> result = query.getResultList();
+            em.getTransaction().commit();
+            em.close();
+            HashMap<String, Object> par = new HashMap<>();
+            par.put("tahun", String.valueOf(tahun));
+            JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(result);
+            JasperReport jasperReport = JasperCompileManager.compileReport(path);
+            JasperPrint print = JasperFillManager.fillReport(jasperReport, par, dataSource);
+            pn.removeAll();
+            pn.setLayout(new BorderLayout());
+            pn.repaint();
+            pn.add(new JRViewer(print));
+            pn.revalidate();
+            return print;
+        } catch (JRException ex) {
+            Logger.getLogger(DaoLaporan.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        } catch (ParseException ex) {
+            Logger.getLogger(DaoLaporan.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+
     private String getBulan(int i) {
         String s = "";
         switch (i) {

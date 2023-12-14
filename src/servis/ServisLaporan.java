@@ -19,4 +19,7 @@ public interface ServisLaporan {
     JasperPrint cetakPembelianPerBulan(JPanel pn,int bulan, int tahun);
     JasperPrint cetakSupplyPerBulan(JPanel pn,int bulan, int tahun);
     JasperPrint cetakMasakPerBulan(JPanel pn,int bulan, int tahun);
+    JasperPrint cetakPembelianPerTahun(JPanel pn, int tahun);
+    JasperPrint cetakSupplyPerTahun(JPanel pn, int tahun);
+    JasperPrint cetakMasakPerTahun(JPanel pn, int tahun);
 }
