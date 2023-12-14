@@ -806,7 +806,6 @@ public class MenuPetugas extends javax.swing.JPanel {
     private void btnKtaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKtaActionPerformed
         String s = (String) tblConten.getValueAt(tblConten.getSelectedRow(), 1);
         new DaoLaporan().cetakKTA(servis.getById(s));
-        jLabel1.requestFocus();
     }//GEN-LAST:event_btnKtaActionPerformed
 
 

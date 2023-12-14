@@ -66,7 +66,7 @@ public class MenuLaporan extends javax.swing.JPanel {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/laporan1.png"))); // NOI18N
         jLabel1.setText("Laporan Cafe2K");
 
-        jPanel1.setBackground(new java.awt.Color(79, 42, 24));
+        jPanel1.setBackground(new java.awt.Color(166, 145, 138));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(79, 42, 24)));
 
         cbxPilih.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-Pilih Laporan-", "Pembelian per Bulan", "Supply per Bulan", "Masak per Bulan", "Pembelian per Tahun", "Supply per Tahun", "Masak per Tahun" }));
@@ -101,9 +101,9 @@ public class MenuLaporan extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        btnLoad.setBackground(new java.awt.Color(166, 145, 138));
+        btnLoad.setBackground(new java.awt.Color(79, 42, 24));
         btnLoad.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnLoad.setForeground(new java.awt.Color(166, 145, 138));
+        btnLoad.setForeground(new java.awt.Color(79, 42, 24));
         btnLoad.setText("LOAD");
         btnLoad.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
@@ -121,7 +121,7 @@ public class MenuLaporan extends javax.swing.JPanel {
             }
         });
 
-        pnEmail.setBackground(new java.awt.Color(166, 145, 138));
+        pnEmail.setBackground(new java.awt.Color(79, 42, 24));
 
         tfEmail.setForeground(new java.awt.Color(166, 145, 138));
         tfEmail.setText("Email");
@@ -306,7 +306,7 @@ public class MenuLaporan extends javax.swing.JPanel {
     }//GEN-LAST:event_btnLoadMouseMoved
 
     private void btnLoadMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoadMouseExited
-        btnLoad.setForeground(new Color(166, 145, 138));
+        btnLoad.setForeground(new Color(79,42,24));
     }//GEN-LAST:event_btnLoadMouseExited
 
     private void tfEmailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfEmailFocusGained

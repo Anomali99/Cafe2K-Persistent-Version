@@ -1713,7 +1713,6 @@ public class MenuPembelian extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void resetData() {
-        jLabel1.requestFocus();
         pnMain.removeAll();
         pnMain.add(pnData);
         pnMain.repaint();
@@ -1728,6 +1727,7 @@ public class MenuPembelian extends javax.swing.JPanel {
         btnTambah.setForeground(new Color(79, 42, 24));
         Icon tambah = new ImageIcon(getClass().getResource("/img/tambah1.png"));
         btnTambah.setIcon(tambah);
+        jLabel1.requestFocus();
     }
 
     private void setColWidht(JTable tb, int[] noCol, int[] noColW) {

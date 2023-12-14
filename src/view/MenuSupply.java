@@ -1547,7 +1547,6 @@ public class MenuSupply extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void resetData() {
-        jLabel1.requestFocus();
         tblConten.setModel(tbl);
         tblConten1.setModel(tblP);
         int[] tbC = {0, 1, 2};
@@ -1565,6 +1564,7 @@ public class MenuSupply extends javax.swing.JPanel {
         btnTambah.setForeground(new Color(79, 42, 24));
         Icon tambah = new ImageIcon(getClass().getResource("/img/tambah1.png"));
         btnTambah.setIcon(tambah);
+        jLabel1.requestFocus();
     }
 
     private void setColWidht(JTable tb, int[] noCol, int[] noColW) {

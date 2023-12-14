@@ -123,9 +123,9 @@ public class DaoPelanggan implements ServisPelanggan {
             String s = query.getSingleResult();
             em.getTransaction().commit();
             em.close();
-            return "S" + no + String.format("%03d", Integer.parseInt(s) + 1);
+            return "P" + no + String.format("%03d", Integer.parseInt(s) + 1);
         } catch (NoResultException e) {
-            return "S" + no + "001";
+            return "P" + no + "001";
         }
     }
 
