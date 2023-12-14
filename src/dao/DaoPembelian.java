@@ -138,6 +138,18 @@ public class DaoPembelian implements ServisPembelian {
     }
 
     @Override
+    public List<Pembelian> getByStatus(String status) {
+        EntityManager em = Persistence.createEntityManagerFactory("NewCafe2KPU").createEntityManager();
+        em.getTransaction().begin();
+        TypedQuery<Pembelian> query = em.createNamedQuery("Pembelian.getByStatus", Pembelian.class);
+        query.setParameter("status", "%" + status + "%");
+        List<Pembelian> list = query.getResultList();
+        em.getTransaction().commit();
+        em.close();
+        return list;
+    }
+
+    @Override
     public Pembelian getByNo(String no) {
         EntityManager em = Persistence.createEntityManagerFactory("NewCafe2KPU").createEntityManager();
         em.getTransaction().begin();

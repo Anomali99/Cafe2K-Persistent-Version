@@ -49,8 +49,8 @@ public class MenuPembelian extends javax.swing.JPanel {
         initComponents();
         tblConten.setModel(tbl);
         tblConten1.setModel(tblP);
-        int[] tbC = {0, 1, 2};
-        int[] tbCW = {35, 90, 70};
+        int[] tbC = {0, 1, 2,6};
+        int[] tbCW = {35, 90, 70, 70};
         int[] tbC1 = {0, 1, 5};
         int[] tbC1W = {35, 70, 70};
         setColWidht(tblConten, tbC, tbCW);
@@ -147,7 +147,7 @@ public class MenuPembelian extends javax.swing.JPanel {
         jPanelCustom10 = new custom.JPanelCustom();
         lbTotal = new javax.swing.JLabel();
         btnUbah = new javax.swing.JButton();
-        btnLuans = new javax.swing.JButton();
+        btnLunas = new javax.swing.JButton();
         dateCoser = new com.toedter.calendar.JDateChooser();
 
         setLayout(new java.awt.CardLayout());
@@ -735,7 +735,7 @@ public class MenuPembelian extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnBatal22, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnHapus21, javax.swing.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE)))))
+                                .addComponent(btnHapus21, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
         pnTambahLayout.setVerticalGroup(
@@ -888,7 +888,7 @@ public class MenuPembelian extends javax.swing.JPanel {
 
         cbxCari.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         cbxCari.setForeground(new java.awt.Color(204, 204, 204));
-        cbxCari.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "NO", "TANGGAL", "PETUGAS", "PELANGGAN" }));
+        cbxCari.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "NO", "TANGGAL", "PETUGAS", "PELANGGAN", "STATUS" }));
         cbxCari.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         cbxCari.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1040,23 +1040,23 @@ public class MenuPembelian extends javax.swing.JPanel {
             }
         });
 
-        btnLuans.setBackground(new java.awt.Color(0, 0, 200));
-        btnLuans.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnLuans.setForeground(new java.awt.Color(255, 255, 255));
-        btnLuans.setText("TANDAI LUNAS");
-        btnLuans.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+        btnLunas.setBackground(new java.awt.Color(166, 145, 138));
+        btnLunas.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnLunas.setForeground(new java.awt.Color(166, 145, 138));
+        btnLunas.setText("TANDAI LUNAS");
+        btnLunas.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
-                btnLuansMouseMoved(evt);
+                btnLunasMouseMoved(evt);
             }
         });
-        btnLuans.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnLunas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnLuansMouseExited(evt);
+                btnLunasMouseExited(evt);
             }
         });
-        btnLuans.addActionListener(new java.awt.event.ActionListener() {
+        btnLunas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLuansActionPerformed(evt);
+                btnLunasActionPerformed(evt);
             }
         });
 
@@ -1074,7 +1074,7 @@ public class MenuPembelian extends javax.swing.JPanel {
                         .addComponent(jPanelCustom2, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanelCustom10, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 293, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 289, Short.MAX_VALUE)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(tfNo, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1097,8 +1097,8 @@ public class MenuPembelian extends javax.swing.JPanel {
                                 .addComponent(lbIdPet, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGap(79, 79, 79)
                         .addComponent(jPanelCustom4, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnLuans, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnLunas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnUbah)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1139,7 +1139,7 @@ public class MenuPembelian extends javax.swing.JPanel {
                     .addComponent(btnBatal1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanelCustom4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnUbah, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnLuans, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnLunas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -1164,7 +1164,7 @@ public class MenuPembelian extends javax.swing.JPanel {
                                 .addComponent(btnHapus)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnBatal)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 437, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 433, Short.MAX_VALUE)
                         .addGroup(pnDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(cbxCari, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(pnDataLayout.createSequentialGroup()
@@ -1173,7 +1173,7 @@ public class MenuPembelian extends javax.swing.JPanel {
                                 .addComponent(tfCari, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnCari, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1044, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1040, Short.MAX_VALUE))
                 .addContainerGap())
             .addComponent(pnDetail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -1230,6 +1230,9 @@ public class MenuPembelian extends javax.swing.JPanel {
                 break;
             case 3:
                 list = servis.getByPelanggan(sc);
+                break;
+            case 4:
+                list = servis.getByStatus(sc);
                 break;
         }
         tbl.setData(list);
@@ -1607,19 +1610,21 @@ public class MenuPembelian extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnUbahActionPerformed
 
-    private void btnLuansMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLuansMouseMoved
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnLuansMouseMoved
+    private void btnLunasMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLunasMouseMoved
+        btnLunas.setForeground(Color.WHITE);
+    }//GEN-LAST:event_btnLunasMouseMoved
 
-    private void btnLuansMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLuansMouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnLuansMouseExited
+    private void btnLunasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLunasMouseExited
+        btnLunas.setForeground(new Color(166,145,138));
+    }//GEN-LAST:event_btnLunasMouseExited
 
-    private void btnLuansActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuansActionPerformed
+    private void btnLunasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLunasActionPerformed
         mb.setStatus("Lunas");
         servis.ubahData(mb);
+        tbl.setData(servis.ambilData());
         setDetail();
-    }//GEN-LAST:event_btnLuansActionPerformed
+        jLabel1.requestFocus();
+    }//GEN-LAST:event_btnLunasActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1630,7 +1635,7 @@ public class MenuPembelian extends javax.swing.JPanel {
     private javax.swing.JButton btnCari;
     private javax.swing.JButton btnHapus;
     private javax.swing.JButton btnHapus21;
-    private javax.swing.JButton btnLuans;
+    private javax.swing.JButton btnLunas;
     private javax.swing.JButton btnSimpan21;
     private javax.swing.JButton btnTambah;
     private javax.swing.JButton btnTambah21;
@@ -1793,9 +1798,9 @@ public class MenuPembelian extends javax.swing.JPanel {
         lbStatus.setText(mb.getStatus());
         tblP.setData(mb);
         if (mb.getStatus().equals("Lunas")) {
-            btnLuans.setVisible(false);
+            btnLunas.setVisible(false);
         } else {
-            btnLuans.setVisible(true);
+            btnLunas.setVisible(true);
         }
     }
 }

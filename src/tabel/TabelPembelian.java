@@ -17,7 +17,7 @@ import model.Pembelian;
 public class TabelPembelian extends AbstractTableModel{
 
     private List<Pembelian> list = new ArrayList<>();
-    private final String[] headerName = {"NO", "NO Pembelian", "Tanggal", "Petugas","Pembeli","Total"};
+    private final String[] headerName = {"NO", "NO Pembelian", "Tanggal", "Petugas","Pembeli","Total","Status"};
     
     public void clear (){
         list.clear();
@@ -56,6 +56,7 @@ public class TabelPembelian extends AbstractTableModel{
                 case 2 : return list.get(rowIndex).getPegawai().getNama();
                 case 3 : return list.get(rowIndex).getPelanggan().getNama();
                 case 4 : return Rupiah.getRp(list.get(rowIndex).getTotal());
+                case 5 : return list.get(rowIndex).getStatus();
                 default : return null;
             }
             

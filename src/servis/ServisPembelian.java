@@ -22,6 +22,7 @@ public interface ServisPembelian {
     List<Pembelian> getByTanggal(Date tanggal);
     List<Pembelian> getByPetugas(String nama);
     List<Pembelian> getByPelanggan(String nama);
+    List<Pembelian> getByStatus(String status);
     Pembelian getByNo(String no);
     String getNomer();
 }
