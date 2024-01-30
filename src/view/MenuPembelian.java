@@ -49,7 +49,7 @@ public class MenuPembelian extends javax.swing.JPanel {
         initComponents();
         tblConten.setModel(tbl);
         tblConten1.setModel(tblP);
-        int[] tbC = {0, 1, 2,6};
+        int[] tbC = {0, 1, 2, 6};
         int[] tbCW = {35, 90, 70, 70};
         int[] tbC1 = {0, 1, 5};
         int[] tbC1W = {35, 70, 70};
@@ -1337,7 +1337,13 @@ public class MenuPembelian extends javax.swing.JPanel {
     }//GEN-LAST:event_btnBatal21MouseExited
 
     private void btnBatal21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBatal21ActionPerformed
+        DefaultTableModel tbl1 = (DefaultTableModel) tblMn21.getModel();
         resetData();
+        resetTable();
+        tfTotal.setText("");
+        tbl1.setRowCount(0);
+        jLabel3.setText("Tambah Pembelian");
+        cbxStatus.setSelectedIndex(0);
     }//GEN-LAST:event_btnBatal21ActionPerformed
 
     private void btnSimpan21MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSimpan21MouseMoved
@@ -1386,8 +1392,8 @@ public class MenuPembelian extends javax.swing.JPanel {
             } else {
                 servis.ubahData(mod);
             }
-            resetTable();
             tfNo.setText(servis.getNomer());
+            resetTable();
             tfTotal.setText("");
             tbl1.setRowCount(0);
             jLabel3.setText("Tambah Pembelian");
@@ -1397,6 +1403,7 @@ public class MenuPembelian extends javax.swing.JPanel {
             if (JOptionPane.showConfirmDialog(this, s, "Pemberitahuan", 0, 0, icon) == 0) {
                 new DaoLaporan().cetakNotaPembelian(mod);
             }
+            resetData();
         }
         jLabel1.requestFocus();
     }//GEN-LAST:event_btnSimpan21ActionPerformed
@@ -1598,7 +1605,7 @@ public class MenuPembelian extends javax.swing.JPanel {
         tfTotal.setText(mb.getRpTotal());
         DefaultTableModel tb = (DefaultTableModel) tblMn21.getModel();
         tb.setRowCount(0);
-        for(DetailPembelian dp : mb.getDetailPembelianCollection()){
+        for (DetailPembelian dp : mb.getDetailPembelianCollection()) {
             tb.addRow(new Object[]{
                 dp.getMenu().getKodeMenu(),
                 dp.getMenu().getNama(),
@@ -1615,7 +1622,7 @@ public class MenuPembelian extends javax.swing.JPanel {
     }//GEN-LAST:event_btnLunasMouseMoved
 
     private void btnLunasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLunasMouseExited
-        btnLunas.setForeground(new Color(166,145,138));
+        btnLunas.setForeground(new Color(166, 145, 138));
     }//GEN-LAST:event_btnLunasMouseExited
 
     private void btnLunasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLunasActionPerformed

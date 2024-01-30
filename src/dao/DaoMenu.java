@@ -71,10 +71,14 @@ public class DaoMenu implements ServisMenu {
             em.getTransaction().commit();
             em.close();
             list.sort(Comparator.comparingInt(Menu -> Menu.getTerjual()));
-            if (list.size() <= 6) {
-                return list;
+            List<Menu> list1 = new ArrayList();
+            for(int i = list.size(); i > 0; i--){
+                list1.add(list.get(i-1));
+            }
+            if (list1.size() <= 6) {
+                return list1;
             } else {
-                return list.subList(0, 5);
+                return list1.subList(0, 5);
             }
         } catch (PersistenceException e) {
             return new ArrayList();

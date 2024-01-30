@@ -138,7 +138,7 @@ public class DaoMasak implements ServisMasak {
         try {
             EntityManager em = Persistence.createEntityManagerFactory("NewCafe2KPU").createEntityManager();
             em.getTransaction().begin();
-            TypedQuery<String> query = em.createNamedQuery("Pembelian.getNomer", String.class);
+            TypedQuery<String> query = em.createNamedQuery("Memasak.getNomer", String.class);
             query.setMaxResults(1);
             String s = query.getSingleResult();
             em.getTransaction().commit();

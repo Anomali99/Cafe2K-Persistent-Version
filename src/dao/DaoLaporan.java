@@ -259,7 +259,7 @@ public class DaoLaporan implements ServisLaporan {
     @Override
     public JasperPrint cetakSupplyPerTahun(JPanel pn, int tahun) {
         try {
-            String path = "src/report/SupplyPerBulan.jrxml";
+            String path = "src/report/SupplyPerTahun.jrxml";
             SimpleDateFormat tgl = new SimpleDateFormat("dd-MM-yyyy");
             EntityManager em = Persistence.createEntityManagerFactory("NewCafe2KPU").createEntityManager();
             em.getTransaction().begin();
@@ -298,7 +298,7 @@ public class DaoLaporan implements ServisLaporan {
     @Override
     public JasperPrint cetakMasakPerTahun(JPanel pn, int tahun) {
         try {
-            String path = "src/report/MasakPerBulan.jrxml";
+            String path = "src/report/MasakPerTahun.jrxml";
             SimpleDateFormat tgl = new SimpleDateFormat("dd-MM-yyyy");
             EntityManager em = Persistence.createEntityManagerFactory("NewCafe2KPU").createEntityManager();
             em.getTransaction().begin();

@@ -1247,6 +1247,10 @@ public class MenuSupply extends javax.swing.JPanel {
     }//GEN-LAST:event_btnBatal2MouseExited
 
     private void btnBatal2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBatal2ActionPerformed
+        DefaultTableModel tbl1 = (DefaultTableModel) tblMn.getModel();
+        resetTable();
+        tfTotal.setText("");
+        tbl1.setRowCount(0);
         back();
     }//GEN-LAST:event_btnBatal2ActionPerformed
 
@@ -1290,16 +1294,17 @@ public class MenuSupply extends javax.swing.JPanel {
             }
             mod.setDetailSupplyCollection(list);
             servis.tambahData(mod);
-            resetTable();
-            tfNo.setText(servis.getNomer());
-            tfTotal.setText("");
-            tbl1.setRowCount(0);
             String s = "Supply berhasil.\nApakah anda ingin mencetak nota ?";
             ImageIcon icon = new ImageIcon(getClass().getResource("/img/laporan1.png"));
             if (JOptionPane.showConfirmDialog(this, s, "Pemberitahuan", 0, 0, icon) == 0) {
                 new DaoLaporan().cetakNotaSupply(mod);
             }
+            resetTable();
+            tfTotal.setText("");
+            tbl1.setRowCount(0);
+            back();
         }
+        tfNo.setText(servis.getNomer());
         jLabel3.requestFocus();
     }//GEN-LAST:event_btnSimpanActionPerformed
 
@@ -1374,7 +1379,7 @@ public class MenuSupply extends javax.swing.JPanel {
                 tbl1.addRow(new Object[]{kode, nama, Rupiah.getRp(harga), jml, Rupiah.getRp(subtotal), ket});
             } else {
                 int nJml = Integer.parseInt(tbl1.getValueAt(c, 3).toString()) + jml;
-                long nSubtotal = Long.parseLong(tbl1.getValueAt(c, 4).toString()) + subtotal;
+                long nSubtotal = Rupiah.getLong(tbl1.getValueAt(c, 4).toString()) + subtotal;
                 if (btnTambah1.getText().equals("TAMBAH BAHAN")) {
                     tbl1.setValueAt(nJml, c, 3);
                     tbl1.setValueAt(Rupiah.getRp(nSubtotal), c, 4);

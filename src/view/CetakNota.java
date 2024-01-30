@@ -61,6 +61,7 @@ public class CetakNota extends javax.swing.JDialog {
         pn_conten.add(new JRViewer(print));
         pn_conten.revalidate();
         tf_email.setText(email);
+        jLabel1.setText("Cetak "+sby);
         this.print = print;
         this.sby = sby;
     }
