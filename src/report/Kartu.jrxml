@@ -18,7 +18,7 @@
 			</image>
 			<image hAlign="Center" vAlign="Middle">
 				<reportElement x="0" y="0" width="152" height="246" uuid="257fe00d-8ed7-4763-8e01-5de11fd1ac59"/>
-				<imageExpression><![CDATA["C:\\Users\\fatiq\\Documents\\NetBeansProjects\\NewCafe2K\\src\\img\\KTACafe2K.png"]]></imageExpression>
+				<imageExpression><![CDATA[getClass().getResource("/img/KTACafe2K.png")]]></imageExpression>
 			</image>
 			<textField>
 				<reportElement x="2" y="123" width="150" height="29" forecolor="#FFFFFF" uuid="f624456b-08f4-4837-8d60-3595cf0a6b6b"/>

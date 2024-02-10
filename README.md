@@ -11,7 +11,9 @@ Cafe2Kadalah aplikasi untuk memanjemen cafe sederhana;
 - PostgreSQL JDBC Driver `NetBeans`
 - Absolute Layout `NetBeans`
 - EnclipseLink (JPA 2.1) `NetBeans`
-- [Library lainnya](https://drive.google.com/drive/folders/1-1C7ivcdcNgZgFO-iLgTfvNCHY7bG2SJ?usp=sharing)
+- [JasperReport](https://drive.google.com/drive/folders/1j5_8GSWe5ZPekZ98PfehL3avy_HWa5Jr?usp=drive_link)
+- [JavaxMail](https://drive.google.com/drive/folders/1ZxoJk1mjWt1YF1eKs9BGL3a7xHVf7vnR?usp=drive_link)
+- [JCalendar](https://drive.google.com/drive/folders/16my4TG-ob4uI_akGUEDkvdCrCuhLc78n?usp=drive_link)
 
 
 ## Installation
@@ -1075,6 +1077,12 @@ INSERT INTO detail_bahan VALUES
 ('MN020','BN007',5),
 ('MN020','BN035',4),
 ('MN020','BN005',2);
+```
+
+Sesuaikan email dan password aplikasi
+```sh
+private String GMail = "emailmu@gmail.com";
+private String pass = "abcd abcd abcd abcd";
 ```
 
 
