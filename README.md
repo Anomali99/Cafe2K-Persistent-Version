@@ -1,5 +1,5 @@
 # Cafe2K
-Cafe2Kadalah aplikasi untuk memanjemen cafe sederhana; 
+Cafe2K adalah aplikasi untuk memanjemen cafe sederhana; 
 
 ## Tech
 ##### Perangkat Lunak
